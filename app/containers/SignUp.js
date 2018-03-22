@@ -46,7 +46,7 @@ class SignUp extends Component {
   static navigationOptions = {
     header : null
   };
-  
+
   signUp = () => {
     if (this.state.name.trim() === '') {
       Utils.showAlert('Name can not be empty', null)
@@ -104,6 +104,18 @@ class SignUp extends Component {
     this.props.resetSignUp()
   }
 
+  goLoginScreen = () => {
+    const resetAction = NavigationActions.reset({
+      index: 0,
+      actions: [
+        NavigationActions.navigate({
+          routeName: 'Login'
+        })
+      ]
+    })
+    this.props.navigation.dispatch(resetAction)
+  }
+
   render() {
     if (this.props.error) {
       Utils.showAlert('Sign up failed', this.onErrorDialogClicked)
@@ -144,6 +156,11 @@ class SignUp extends Component {
         <View style={styles.view} />
 
         <SignUpButton onPressed={() => this.signUp()} text='Send' />
+
+        <TouchableOpacity style={{ padding: 8 }} onPress={ () => this.goLoginScreen() }>
+          <Text style={ styles.login }>Log in</Text>
+        </TouchableOpacity>
+
         <Spinner visible={this.props.loading} />
       </View>
     )
@@ -177,6 +194,11 @@ const styles = StyleSheet.create({
     height: 144,
     width: 144,
     borderRadius: 72,
+  },
+  login: {
+    color: 'white',
+    fontSize: 14,
+    textDecorationLine: 'underline',
   },
 
 })
