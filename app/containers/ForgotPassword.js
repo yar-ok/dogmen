@@ -58,7 +58,7 @@ class ForgotPassword extends Component {
     if (Platform.OS === 'android') {
       return null
     } else {
-      return <TouchableOpacity style={{ padding: 8, width: 100 }} onPress={() => this.props.navigation.goBack()}>
+      return <TouchableOpacity style={{ marginTop: 15, padding: 8, width: 100 }} onPress={() => this.props.navigation.goBack()}>
           <Text style={ styles.back }>Back</Text>
         </TouchableOpacity>
     }
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
   },
   back: {
     color: 'white',
-    fontSize: 15,
+    fontSize: 16,
   },
 })
 
