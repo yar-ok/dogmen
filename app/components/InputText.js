@@ -11,7 +11,7 @@ class InputText extends Component {
         maxLength = {40}
         selectionColor={'white'}
         textAlign={'center'}
-        returnKeyType={'next'}
+        returnKeyType={'done'}
         onChangeText={(text) => this.props.textChanged === undefined ? console.log(text) : this.props.textChanged(text)}/>
     )
   }
