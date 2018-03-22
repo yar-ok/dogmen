@@ -32,6 +32,13 @@ class ForgotPassword extends Component {
     };
   }
 
+  static navigationOptions = {
+    headerTintColor: 'white',
+    headerStyle: {
+      backgroundColor: Resources.APP_COLOR
+    },
+  }
+
   emailChanged = (text) => {
     this.setState({
       email: text,

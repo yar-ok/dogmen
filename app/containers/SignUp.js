@@ -43,6 +43,10 @@ class SignUp extends Component {
     };
   }
 
+  static navigationOptions = {
+    header : null
+  };
+  
   signUp = () => {
     if (this.state.name.trim() === '') {
       Utils.showAlert('Name can not be empty', null)
@@ -91,6 +95,8 @@ class SignUp extends Component {
         (uri) => { console.log(uri) },
         (error) => { console.log(error) }
       )
+    } else {
+      this.props.navigation.navigate('Camera')
     }
   }
 

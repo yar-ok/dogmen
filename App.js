@@ -12,7 +12,8 @@ export default class App extends Component {
 }
 
 export const AppNavigator = StackNavigator(
-  Routs, {
-    headerMode: 'none'
-  }
+  Routs
+  // Routs, {
+  //   headerMode: 'none'
+  // }
 )
