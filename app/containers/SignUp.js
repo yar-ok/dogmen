@@ -104,16 +104,20 @@ class SignUp extends Component {
     this.props.resetSignUp()
   }
 
-  goLoginScreen = () => {
+  goToScreen = (screenName) => {
     const resetAction = NavigationActions.reset({
       index: 0,
       actions: [
         NavigationActions.navigate({
-          routeName: 'Login'
+          routeName: screenName
         })
       ]
     })
     this.props.navigation.dispatch(resetAction)
+  }
+
+  goLoginScreen = () => {
+    this.goToScreen('Login')
   }
 
   render() {
@@ -123,15 +127,7 @@ class SignUp extends Component {
 
     setTimeout (() => {
         if (!this.props.error && this.props.token !== undefined && this.props.token.trim() !== "") {
-          const resetAction = NavigationActions.reset({
-            index: 0,
-            actions: [
-              NavigationActions.navigate({
-                routeName: 'Welcome'
-              })
-            ]
-          })
-          this.props.navigation.dispatch(resetAction)
+          this.goToScreen('Welcome')
         }
     }, 200)
 

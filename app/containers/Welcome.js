@@ -9,6 +9,10 @@ import StartButtom from '../components/AppButton'
 import { IndicatorViewPager, PagerDotIndicator } from 'rn-viewpager'
 
 class Welcome extends Component {
+  static navigationOptions = {
+    header : null
+  };
+
   renderDotIndicator() {
     return <PagerDotIndicator pageCount={3} />;
   }

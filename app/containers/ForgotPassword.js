@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StatusBar, StyleSheet, View, Text } from 'react-native';
+import { Platform, StatusBar, StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import Styles from '../utils/App.style'
 import InputText from '../components/InputText'
 import Resources from '../utils/Resources'
@@ -33,10 +33,7 @@ class ForgotPassword extends Component {
   }
 
   static navigationOptions = {
-    headerTintColor: 'white',
-    headerStyle: {
-      backgroundColor: Resources.APP_COLOR
-    },
+    header : null
   }
 
   emailChanged = (text) => {
@@ -57,6 +54,16 @@ class ForgotPassword extends Component {
     this.props.resetLogin()
   }
 
+  getBackButton = () => {
+    if (Platform.OS === 'android') {
+      return null
+    } else {
+      return <TouchableOpacity style={{ padding: 8, width: 100 }} onPress={() => this.props.navigation.goBack()}>
+          <Text style={ styles.back }>Back</Text>
+        </TouchableOpacity>
+    }
+  }
+
   render() {
     if (!this.props.loading && !this.props.error && this.props.result) {
       setTimeout (() => {
@@ -69,11 +76,14 @@ class ForgotPassword extends Component {
     }
 
     return(
-      <View style={ Styles.backgroundContainer }>
-        <Text style={ styles.title }>Forgot password</Text>
-        <InputText placeholder='Enter your email' textChanged={(text) => this.emailChanged(text) } />
-        <SendButton onPressed={() => this.send()} text='Send' />
-        <Spinner visible={this.props.loading} />
+      <View style={{ flex: 1, backgroundColor: Resources.APP_COLOR }}>
+        {this.getBackButton()}
+        <View style={ Styles.backgroundContainer }>
+          <Text style={ styles.title }>Forgot password</Text>
+          <InputText placeholder='Enter your email' textChanged={(text) => this.emailChanged(text) } />
+          <SendButton onPressed={() => this.send()} text='Send' />
+          <Spinner visible={this.props.loading} />
+        </View>
       </View>
     )
   }
@@ -95,6 +105,10 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: 'white',
+  },
+  back: {
+    color: 'white',
+    fontSize: 15,
   },
 })
 
