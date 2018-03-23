@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "763831752973",
+    "firebase_url": "https://dogmen-5b44f.firebaseio.com",
+    "project_id": "dogmen-5b44f",
+    "storage_bucket": "dogmen-5b44f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:763831752973:android:77f9b3b608f6a7e3",
+        "android_client_info": {
+          "package_name": "com.dogmen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "763831752973-ueu5hlmeus8gqkhv2j5amjre77u19jhn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQLSXfzSLyMo-Mx2VN6j8XeaAfLy65r68"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

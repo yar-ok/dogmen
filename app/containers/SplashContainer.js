@@ -5,6 +5,9 @@ import { NavigationActions } from 'react-navigation';
 import Styles from '../utils/App.style'
 
 class SplashContainer extends Component {
+  constructor(props) {
+    super(props);
+  }
   static navigationOptions = {
     header : null
   };
