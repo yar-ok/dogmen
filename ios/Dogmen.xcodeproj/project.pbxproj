@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -12,6 +13,7 @@
 		00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
 		00E356F31AD99517003FC87E /* DogmenTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* DogmenTests.m */; };
+		01858914613A39D642BDBB95 /* libPods-Dogmen-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 43874E020B2D6A9347AB459A /* libPods-Dogmen-tvOSTests.a */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
 		139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
@@ -21,6 +23,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
+		16202E6CF8A4888E2A6D561D /* libPods-DogmenTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F6D3E559B5F63636F212461 /* libPods-DogmenTests.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -36,22 +39,13 @@
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		80F414015BDD49C58941FC07 /* libReactNativeKeyboardManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE96A6DBF4F64D5E9B81B577 /* libReactNativeKeyboardManager.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		882CB7E8E0DFBC0314FE1E44 /* libPods-Dogmen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 248BB0ECBEA37248D4CCEB61 /* libPods-Dogmen.a */; };
 		8B049F762063C4280047EE51 /* libRCTCameraRoll.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B049F452063C40F0047EE51 /* libRCTCameraRoll.a */; };
 		8B049FB2206400970047EE51 /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B049FB1206400970047EE51 /* IQKeyboardManager.bundle */; };
+		8B52C54D206540160017DD3A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B52C54C206540160017DD3A /* GoogleService-Info.plist */; };
+		8B52C5A820654BE30017DD3A /* libRNFIRMessaging.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B52C54B20653B820017DD3A /* libRNFIRMessaging.a */; };
+		92672C34BA3A6E8D66115771 /* libPods-Dogmen-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C4C2548FC04C868E682D993C /* libPods-Dogmen-tvOS.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
-		E435EECB4BEA4D02B9C98206 /* libRNFIRMessaging.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4012698A51FB46ABA983C030 /* libRNFIRMessaging.a */; };
-		79DFBEB226FC4EABAC95F75B /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 576EC557B50144D180D5EA48 /* Entypo.ttf */; };
-		5129CE53FDF641F9827BD625 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26C3039DBB74435FB410D293 /* EvilIcons.ttf */; };
-		CA10A5FBA66D4ECB83B3212C /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF81D74F76324A41A1485800 /* FontAwesome.ttf */; };
-		96118C9902A54B61BB0BD39F /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C39BB2C7AFCA4B7DA25432B4 /* Foundation.ttf */; };
-		313FE366594B40E0800A7218 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13756FC32E1742A295A8833D /* Ionicons.ttf */; };
-		ED5E1599177D4AAA8FE9921A /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CCC86C0464EF4BC3A90B2537 /* MaterialIcons.ttf */; };
-		9D99B7F930824A029BEE7511 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA44083B7F6D4B1C8B1E5ED7 /* Octicons.ttf */; };
-		94A5CD7BA219486BBD575E08 /* Roboto_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2BBCF433F06492DAB32630F /* Roboto_medium.ttf */; };
-		F61466288E434AB0BC8962CB /* Roboto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2CD13923B7543869508B675 /* Roboto.ttf */; };
-		EFBA73C131094ABBABD8013D /* rubicon-icon-font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8E7E3706EF814D7E9C3FF53D /* rubicon-icon-font.ttf */; };
-		2257D46BB91940668F07B1B3 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D289BC6BA8CA4E45A54AEE28 /* SimpleLineIcons.ttf */; };
-		CC2ECA6C1EFB4C60962B224D /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 86964BAE6CD54843990545C8 /* Zocial.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -335,6 +329,13 @@
 			remoteGlobalIDString = A51183591EFAC02F0077C68F;
 			remoteInfo = ReactNativeKeyboardManager;
 		};
+		8B52C54A20653B820017DD3A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE1AAD4F28FD4AE3A8303CC1 /* RNFIRMessaging.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNFIRMessaging;
+		};
 		ADBDB9261DFEBF0700ED6528 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */;
@@ -364,31 +365,32 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Dogmen/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Dogmen/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
+		182392D34A0B24104523074F /* Pods-Dogmen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dogmen.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dogmen/Pods-Dogmen.release.xcconfig"; sourceTree = "<group>"; };
+		248BB0ECBEA37248D4CCEB61 /* libPods-Dogmen.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Dogmen.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E47B1E0B4A5D006451C7 /* Dogmen-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dogmen-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* Dogmen-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dogmen-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DA38D65C8BA4B60B6CF33F4 /* ReactNativeKeyboardManager.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeKeyboardManager.xcodeproj; path = "../node_modules/react-native-keyboard-manager/ios/ReactNativeKeyboardManager.xcodeproj"; sourceTree = "<group>"; };
+		4012698A51FB46ABA983C030 /* libRNFIRMessaging.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNFIRMessaging.a; sourceTree = "<group>"; };
+		40AD70399DE627BD4B47E3E8 /* Pods-Dogmen-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dogmen-tvOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dogmen-tvOS/Pods-Dogmen-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		43874E020B2D6A9347AB459A /* libPods-Dogmen-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Dogmen-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		43A94DC7102A3E2572C1D91E /* Pods-Dogmen-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dogmen-tvOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dogmen-tvOSTests/Pods-Dogmen-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		4F6D3E559B5F63636F212461 /* libPods-DogmenTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DogmenTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		58AEEFD3A43EE61299AFFBA9 /* Pods-DogmenTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DogmenTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DogmenTests/Pods-DogmenTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5B56D410A831D57A5F5EA2CE /* Pods-DogmenTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DogmenTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DogmenTests/Pods-DogmenTests.release.xcconfig"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
+		67A49EC02E9E853DE47C34FC /* Pods-Dogmen-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dogmen-tvOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dogmen-tvOS/Pods-Dogmen-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		8B049F3B2063C40F0047EE51 /* RCTCameraRoll.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTCameraRoll.xcodeproj; path = "../node_modules/react-native/Libraries/CameraRoll/RCTCameraRoll.xcodeproj"; sourceTree = "<group>"; };
 		8B049FB1206400970047EE51 /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
+		8B52C54C206540160017DD3A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9934A81E300417C71BCD18BD /* Pods-Dogmen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dogmen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dogmen/Pods-Dogmen.debug.xcconfig"; sourceTree = "<group>"; };
+		A6E67992470666B4BB4C2707 /* Pods-Dogmen-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dogmen-tvOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dogmen-tvOSTests/Pods-Dogmen-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
+		AE1AAD4F28FD4AE3A8303CC1 /* RNFIRMessaging.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNFIRMessaging.xcodeproj; path = "../node_modules/react-native-fcm/ios/RNFIRMessaging.xcodeproj"; sourceTree = "<group>"; };
 		BE96A6DBF4F64D5E9B81B577 /* libReactNativeKeyboardManager.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libReactNativeKeyboardManager.a; sourceTree = "<group>"; };
-		AE1AAD4F28FD4AE3A8303CC1 /* RNFIRMessaging.xcodeproj */ = {isa = PBXFileReference; name = "RNFIRMessaging.xcodeproj"; path = "../node_modules/react-native-fcm/ios/RNFIRMessaging.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		4012698A51FB46ABA983C030 /* libRNFIRMessaging.a */ = {isa = PBXFileReference; name = "libRNFIRMessaging.a"; path = "libRNFIRMessaging.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
-		576EC557B50144D180D5EA48 /* Entypo.ttf */ = {isa = PBXFileReference; name = "Entypo.ttf"; path = "../node_modules/native-base/Fonts/Entypo.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		26C3039DBB74435FB410D293 /* EvilIcons.ttf */ = {isa = PBXFileReference; name = "EvilIcons.ttf"; path = "../node_modules/native-base/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		CF81D74F76324A41A1485800 /* FontAwesome.ttf */ = {isa = PBXFileReference; name = "FontAwesome.ttf"; path = "../node_modules/native-base/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		C39BB2C7AFCA4B7DA25432B4 /* Foundation.ttf */ = {isa = PBXFileReference; name = "Foundation.ttf"; path = "../node_modules/native-base/Fonts/Foundation.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		13756FC32E1742A295A8833D /* Ionicons.ttf */ = {isa = PBXFileReference; name = "Ionicons.ttf"; path = "../node_modules/native-base/Fonts/Ionicons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		CCC86C0464EF4BC3A90B2537 /* MaterialIcons.ttf */ = {isa = PBXFileReference; name = "MaterialIcons.ttf"; path = "../node_modules/native-base/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		EA44083B7F6D4B1C8B1E5ED7 /* Octicons.ttf */ = {isa = PBXFileReference; name = "Octicons.ttf"; path = "../node_modules/native-base/Fonts/Octicons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		C2BBCF433F06492DAB32630F /* Roboto_medium.ttf */ = {isa = PBXFileReference; name = "Roboto_medium.ttf"; path = "../node_modules/native-base/Fonts/Roboto_medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		B2CD13923B7543869508B675 /* Roboto.ttf */ = {isa = PBXFileReference; name = "Roboto.ttf"; path = "../node_modules/native-base/Fonts/Roboto.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		8E7E3706EF814D7E9C3FF53D /* rubicon-icon-font.ttf */ = {isa = PBXFileReference; name = "rubicon-icon-font.ttf"; path = "../node_modules/native-base/Fonts/rubicon-icon-font.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		D289BC6BA8CA4E45A54AEE28 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/native-base/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		86964BAE6CD54843990545C8 /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/native-base/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C4C2548FC04C868E682D993C /* libPods-Dogmen-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Dogmen-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -397,6 +399,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */,
+				16202E6CF8A4888E2A6D561D /* libPods-DogmenTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,6 +407,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B52C5A820654BE30017DD3A /* libRNFIRMessaging.a in Frameworks */,
 				8B049F762063C4280047EE51 /* libRCTCameraRoll.a in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
@@ -419,7 +423,7 @@
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				80F414015BDD49C58941FC07 /* libReactNativeKeyboardManager.a in Frameworks */,
-				E435EECB4BEA4D02B9C98206 /* libRNFIRMessaging.a in Frameworks */,
+				882CB7E8E0DFBC0314FE1E44 /* libPods-Dogmen.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,6 +439,7 @@
 				2D02E4C61E0B4AEC006451C7 /* libRCTSettings-tvOS.a in Frameworks */,
 				2D02E4C71E0B4AEC006451C7 /* libRCTText-tvOS.a in Frameworks */,
 				2D02E4C81E0B4AEC006451C7 /* libRCTWebSocket-tvOS.a in Frameworks */,
+				92672C34BA3A6E8D66115771 /* libPods-Dogmen-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +447,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01858914613A39D642BDBB95 /* libPods-Dogmen-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -535,6 +541,7 @@
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
+				8B52C54C206540160017DD3A /* GoogleService-Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
@@ -568,6 +575,10 @@
 			isa = PBXGroup;
 			children = (
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
+				248BB0ECBEA37248D4CCEB61 /* libPods-Dogmen.a */,
+				C4C2548FC04C868E682D993C /* libPods-Dogmen-tvOS.a */,
+				43874E020B2D6A9347AB459A /* libPods-Dogmen-tvOSTests.a */,
+				4F6D3E559B5F63636F212461 /* libPods-DogmenTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -631,6 +642,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				8B049F84206400080047EE51 /* Recovered References */,
+				C795EEEC933AE8DA89D7CC8E /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -660,6 +672,7 @@
 			isa = PBXGroup;
 			children = (
 				BE96A6DBF4F64D5E9B81B577 /* libReactNativeKeyboardManager.a */,
+				4012698A51FB46ABA983C030 /* libRNFIRMessaging.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -676,21 +689,17 @@
 			isa = PBXGroup;
 			children = (
 				8B049FB1206400970047EE51 /* IQKeyboardManager.bundle */,
-				576EC557B50144D180D5EA48 /* Entypo.ttf */,
-				26C3039DBB74435FB410D293 /* EvilIcons.ttf */,
-				CF81D74F76324A41A1485800 /* FontAwesome.ttf */,
-				C39BB2C7AFCA4B7DA25432B4 /* Foundation.ttf */,
-				13756FC32E1742A295A8833D /* Ionicons.ttf */,
-				CCC86C0464EF4BC3A90B2537 /* MaterialIcons.ttf */,
-				EA44083B7F6D4B1C8B1E5ED7 /* Octicons.ttf */,
-				C2BBCF433F06492DAB32630F /* Roboto_medium.ttf */,
-				B2CD13923B7543869508B675 /* Roboto.ttf */,
-				8E7E3706EF814D7E9C3FF53D /* rubicon-icon-font.ttf */,
-				D289BC6BA8CA4E45A54AEE28 /* SimpleLineIcons.ttf */,
-				86964BAE6CD54843990545C8 /* Zocial.ttf */,
 			);
 			name = Resources;
 			path = "../node_modules/react-native-keyboard-manager/ios/IQKeyboardManager/Resources";
+			sourceTree = "<group>";
+		};
+		8B52C54720653B820017DD3A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8B52C54B20653B820017DD3A /* libRNFIRMessaging.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		ADBDB9201DFEBF0600ED6528 /* Products */ = {
@@ -702,6 +711,21 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		C795EEEC933AE8DA89D7CC8E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9934A81E300417C71BCD18BD /* Pods-Dogmen.debug.xcconfig */,
+				182392D34A0B24104523074F /* Pods-Dogmen.release.xcconfig */,
+				67A49EC02E9E853DE47C34FC /* Pods-Dogmen-tvOS.debug.xcconfig */,
+				40AD70399DE627BD4B47E3E8 /* Pods-Dogmen-tvOS.release.xcconfig */,
+				A6E67992470666B4BB4C2707 /* Pods-Dogmen-tvOSTests.debug.xcconfig */,
+				43A94DC7102A3E2572C1D91E /* Pods-Dogmen-tvOSTests.release.xcconfig */,
+				58AEEFD3A43EE61299AFFBA9 /* Pods-DogmenTests.debug.xcconfig */,
+				5B56D410A831D57A5F5EA2CE /* Pods-DogmenTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -709,9 +733,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "DogmenTests" */;
 			buildPhases = (
+				EA4C0C48032B8E2231C83B9C /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
+				359779E36E9B62671AC36992 /* [CP] Embed Pods Frameworks */,
+				DC7D0156139B547C939B9DD7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -727,10 +754,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Dogmen" */;
 			buildPhases = (
+				63DCC255BDA6A6A387B22D93 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				B2ABDC1BE5D51FE768F1658B /* [CP] Embed Pods Frameworks */,
+				23708801069E255220C0D611 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -745,10 +775,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Dogmen-tvOS" */;
 			buildPhases = (
+				A3DC8FD18B8A5AAC31D36550 /* [CP] Check Pods Manifest.lock */,
 				2D02E4771E0B4A5D006451C7 /* Sources */,
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
 				2D02E4791E0B4A5D006451C7 /* Resources */,
 				2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */,
+				7545DBF7E69B25F296AB521F /* [CP] Embed Pods Frameworks */,
+				9E929FE82576757FB65203F0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -763,9 +796,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Dogmen-tvOSTests" */;
 			buildPhases = (
+				847775711E6DD648FA336BB7 /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
 				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
 				2D02E48E1E0B4A5D006451C7 /* Resources */,
+				510B61D1217A98AA221EC183 /* [CP] Embed Pods Frameworks */,
+				FDDF585810E253C5583516FF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -868,6 +904,10 @@
 				{
 					ProductGroup = 8B049FAB2064000A0047EE51 /* Products */;
 					ProjectRef = 2DA38D65C8BA4B60B6CF33F4 /* ReactNativeKeyboardManager.xcodeproj */;
+				},
+				{
+					ProductGroup = 8B52C54720653B820017DD3A /* Products */;
+					ProjectRef = AE1AAD4F28FD4AE3A8303CC1 /* RNFIRMessaging.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1147,6 +1187,13 @@
 			remoteRef = 8B049FAE2064000B0047EE51 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		8B52C54B20653B820017DD3A /* libRNFIRMessaging.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNFIRMessaging.a;
+			remoteRef = 8B52C54A20653B820017DD3A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1169,20 +1216,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				8B52C54D206540160017DD3A /* GoogleService-Info.plist in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				8B049FB2206400970047EE51 /* IQKeyboardManager.bundle in Resources */,
-				79DFBEB226FC4EABAC95F75B /* Entypo.ttf in Resources */,
-				5129CE53FDF641F9827BD625 /* EvilIcons.ttf in Resources */,
-				CA10A5FBA66D4ECB83B3212C /* FontAwesome.ttf in Resources */,
-				96118C9902A54B61BB0BD39F /* Foundation.ttf in Resources */,
-				313FE366594B40E0800A7218 /* Ionicons.ttf in Resources */,
-				ED5E1599177D4AAA8FE9921A /* MaterialIcons.ttf in Resources */,
-				9D99B7F930824A029BEE7511 /* Octicons.ttf in Resources */,
-				94A5CD7BA219486BBD575E08 /* Roboto_medium.ttf in Resources */,
-				F61466288E434AB0BC8962CB /* Roboto.ttf in Resources */,
-				EFBA73C131094ABBABD8013D /* rubicon-icon-font.ttf in Resources */,
-				2257D46BB91940668F07B1B3 /* SimpleLineIcons.ttf in Resources */,
-				CC2ECA6C1EFB4C60962B224D /* Zocial.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1218,6 +1254,21 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
+		23708801069E255220C0D611 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dogmen/Pods-Dogmen-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1231,6 +1282,183 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+		};
+		359779E36E9B62671AC36992 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DogmenTests/Pods-DogmenTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		510B61D1217A98AA221EC183 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dogmen-tvOSTests/Pods-Dogmen-tvOSTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		63DCC255BDA6A6A387B22D93 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Dogmen-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7545DBF7E69B25F296AB521F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dogmen-tvOS/Pods-Dogmen-tvOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		847775711E6DD648FA336BB7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Dogmen-tvOSTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9E929FE82576757FB65203F0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dogmen-tvOS/Pods-Dogmen-tvOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A3DC8FD18B8A5AAC31D36550 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Dogmen-tvOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B2ABDC1BE5D51FE768F1658B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dogmen/Pods-Dogmen-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DC7D0156139B547C939B9DD7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DogmenTests/Pods-DogmenTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EA4C0C48032B8E2231C83B9C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DogmenTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FDDF585810E253C5583516FF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dogmen-tvOSTests/Pods-Dogmen-tvOSTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1299,6 +1527,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 58AEEFD3A43EE61299AFFBA9 /* Pods-DogmenTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1329,6 +1558,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B56D410A831D57A5F5EA2CE /* Pods-DogmenTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -1356,6 +1586,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9934A81E300417C71BCD18BD /* Pods-Dogmen.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1379,6 +1610,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 182392D34A0B24104523074F /* Pods-Dogmen.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1401,6 +1633,7 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 67A49EC02E9E853DE47C34FC /* Pods-Dogmen-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1437,6 +1670,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 40AD70399DE627BD4B47E3E8 /* Pods-Dogmen-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1473,6 +1707,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A6E67992470666B4BB4C2707 /* Pods-Dogmen-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1499,6 +1734,7 @@
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43A94DC7102A3E2572C1D91E /* Pods-Dogmen-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
