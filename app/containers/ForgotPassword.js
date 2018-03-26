@@ -12,9 +12,9 @@ import SendButton from '../components/AppButton'
 import { connect } from 'react-redux'
 
 const mapStateToProps = (state) => ({
-  loading: state.loading,
-  error: state.error,
-  result: state.result,
+  loading: state.loginState.loading,
+  error: state.loginState.error,
+  result: state.loginState.result,
 });
 
 const mapDispatchToProps = (dispatch) => {

@@ -1,16 +1,16 @@
-import { types } from '../actions/OrdersActions';
+import { types } from '../actions/OrderActions';
 
 const initialState = {
   orders: [],
   loading: false,
 }
 
-const reducer = (state = initialState, action) {
+const reducer = (state = initialState, action) => {
   const { type, orders } = action;
   switch(type) {
     case types.ALL_ORDERS:
       return {
-        ..state,
+        ...state,
         orders: orders,
       }
       return

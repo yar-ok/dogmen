@@ -16,7 +16,7 @@ import { actionCreators } from '../actions/OrderActions'
 
 const mapStateToProps = (state) => ({
   // loading: state.loading,
-  orders: state.orders,
+  orders: state.ordersState.orders,
 });
 
 const mapDispatchToProps = (dispatch) => {
@@ -69,23 +69,13 @@ class PendingOrders extends Component {
   //   });
   // }
 
-  getName = () => {
-    let orders = this.state.orders;
-    for(let i = 0; i < orders.length; i++) {
-      let row = orders.item(i);
-      this.setState({
-        userName: row.walker
-      })
-    }
-  }
-
   render() {
     return(
       <View>
         <View style={{ alignItems: 'center' }}>
           <AddOrderButton text='Add Order' />
         </View>
-        <Text>{this.state.userName}</Text>
+        
       </View>
     )
   }

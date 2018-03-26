@@ -14,9 +14,9 @@ import Spinner from 'react-native-loading-spinner-overlay'
 import { NavigationActions } from 'react-navigation';
 
 const mapStateToProps = (state) => ({
-  loading: state.loading,
-  token: state.token,
-  error: state.error,
+  loading: state.loginState.loading,
+  token: state.loginState.token,
+  error: state.loginState.error,
 });
 
 const mapDispatchToProps = (dispatch) => {

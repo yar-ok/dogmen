@@ -20,9 +20,9 @@ const EMAIL = 'Email'
 const AGE = 'Age'
 
 const mapStateToProps = (state) => ({
-  loading: state.loading,
-  token: state.token,
-  error: state.error,
+  loading: state.loginState.loading,
+  token: state.loginState.token,
+  error: state.loginState.error,
 });
 
 const mapDispatchToProps = (dispatch) => {
