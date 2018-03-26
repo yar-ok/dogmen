@@ -39,7 +39,7 @@ class Dashboard extends Component {
   }
 
   showPendingOrders = () => {
-
+    this.props.navigation.navigate('PendingOrders')
   }
 
   settings = () => {
