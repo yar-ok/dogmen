@@ -17,7 +17,9 @@ class Dashboard extends Component {
       headerTintColor: 'white',
       headerRight: <View/>,
       headerLeft: (
-        <TouchableOpacity style={{flexDirection: 'row', alignItems: 'center', paddingLeft: 8}}>
+        <TouchableOpacity
+        style={{flexDirection: 'row', alignItems: 'center', paddingLeft: 8}}
+        onPress={ () => params.handleLogout() }>
           <Text style={{fontSize: 16, color: 'white'}}>Logout</Text>
         </TouchableOpacity>
       ),
@@ -26,6 +28,14 @@ class Dashboard extends Component {
       },
     }
   };
+
+  componentDidMount () {
+    this.props.navigation.setParams({ handleLogout: this.logout })
+  }
+
+  logout = () => {
+    alert('Back')
+  }
 
   render() {
     return(
