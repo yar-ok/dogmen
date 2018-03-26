@@ -1,11 +1,24 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { FlatList, Text, View } from 'react-native';
 
 import AppHeaderTitle from '../components/AppHeaderTitle'
 
+import AddOrderButton from '../components/AppButton'
 import Resources from '../utils/Resources'
 
+let SQLite = require('react-native-sqlite-storage')
+let db = SQLite.openDatabase(
+  {name: 'database.db', createFromLocation : "~database.db"},
+  this.openCB, this.errorCB);
+
 class PendingOrders extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      userName: '',
+    };
+  }
+
   static navigationOptions = ({ navigation }) => {
     const { params = {} } = navigation.state;
     return {
@@ -20,9 +33,34 @@ class PendingOrders extends Component {
     }
   };
 
+  componentDidMount() {
+    this.showAllOrders()
+  }
+
+  showAllOrders = () => {
+    db.transaction((tx) => {
+      tx.executeSql('SELECT * FROM orders', [], (tx, results) => {
+          var len = results.rows.length;
+          // for (let i = 0; i < len; i++) {
+          //   let row = results.rows.item(i);
+          //   this.setState({
+          //     userName: row.name
+          //   })
+          // }
+      });
+    });
+  }
+
+
+
   render() {
     return(
-      <Text>Pending</Text>
+      <View>
+        <View style={{ alignItems: 'center' }}>
+          <AddOrderButton text='Add Order' />
+        </View>
+        <Text>{this.state.userName}</Text>
+      </View>
     )
   }
 }

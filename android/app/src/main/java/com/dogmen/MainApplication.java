@@ -13,6 +13,9 @@ import com.facebook.soloader.SoLoader;
 import java.util.Arrays;
 import java.util.List;
 
+import org.pgsqlite.SQLitePluginPackage;
+
+
 public class MainApplication extends Application implements ReactApplication {
   private static MainApplication application;
 
@@ -27,7 +30,8 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
               new ReactModulePackage(),
-                new FIRMessagingPackage()
+                new FIRMessagingPackage(),
+                  new SQLitePluginPackage()
       );
     }
 
