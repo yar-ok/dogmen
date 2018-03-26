@@ -9,6 +9,8 @@ import Resources from '../utils/Resources'
 import { connect } from 'react-redux'
 import { actionCreators } from '../actions/OrderActions'
 
+import OrderItem from '../components/OrderItem'
+
 // let SQLite = require('react-native-sqlite-storage')
 // let db = SQLite.openDatabase(
 //   {name: 'database.db', createFromLocation : "~database.db"},
@@ -48,10 +50,6 @@ class PendingOrders extends Component {
   };
 
   componentDidMount() {
-    this.showAllOrders()
-  }
-
-  showAllOrders = () => {
     this.props.getAllOrdersFromDB()
   }
 
@@ -70,12 +68,22 @@ class PendingOrders extends Component {
   // }
 
   render() {
+
     return(
       <View>
         <View style={{ alignItems: 'center' }}>
           <AddOrderButton text='Add Order' />
         </View>
-        
+
+        <FlatList
+            data={this.props.orders}
+            numColumns={1}
+            keyExtractor={item => item.order_id.toString()}
+            renderItem={({item}) =>
+              <OrderItem {...item} />
+            }
+          />
+
       </View>
     )
   }

@@ -11,9 +11,14 @@ export const actionCreators = {
   getAllOrders: () => async(dispatch, getState) => {
     db.transaction((tx) => {
       tx.executeSql('SELECT * FROM orders', [], (tx, results) => {
+        let result = []
+        for(let i=0; i < results.rows.length; i++) {
+          let row = results.rows.item(i);
+          result.push(row);
+        }
         dispatch({
           type: types.ALL_ORDERS,
-          orders: results.rows,
+          orders: result,
         })
       });
     });
