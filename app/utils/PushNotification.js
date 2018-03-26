@@ -55,7 +55,6 @@ export default class PushNotification extends Component {
   }
 
   showLocalNotification(notif) {
-    ToastAndroid.show('Got notification: ' + notif.fcm.body, ToastAndroid.SHORT)
     FCM.presentLocalNotification({
       title: notif.fcm.title,
       body: notif.fcm.body,
