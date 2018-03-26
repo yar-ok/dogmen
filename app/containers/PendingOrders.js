@@ -6,10 +6,24 @@ import AppHeaderTitle from '../components/AppHeaderTitle'
 import AddOrderButton from '../components/AppButton'
 import Resources from '../utils/Resources'
 
-let SQLite = require('react-native-sqlite-storage')
-let db = SQLite.openDatabase(
-  {name: 'database.db', createFromLocation : "~database.db"},
-  this.openCB, this.errorCB);
+import { connect } from 'react-redux'
+import { actionCreators } from '../actions/OrderActions'
+
+// let SQLite = require('react-native-sqlite-storage')
+// let db = SQLite.openDatabase(
+//   {name: 'database.db', createFromLocation : "~database.db"},
+//   this.openCB, this.errorCB);
+
+const mapStateToProps = (state) => ({
+  // loading: state.loading,
+  orders: state.orders,
+});
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+      getAllOrdersFromDB: () => { dispatch(actionCreators.getAllOrders()) },
+  }
+}
 
 class PendingOrders extends Component {
   constructor(props) {
@@ -38,20 +52,32 @@ class PendingOrders extends Component {
   }
 
   showAllOrders = () => {
-    db.transaction((tx) => {
-      tx.executeSql('SELECT * FROM orders', [], (tx, results) => {
-          var len = results.rows.length;
-          // for (let i = 0; i < len; i++) {
-          //   let row = results.rows.item(i);
-          //   this.setState({
-          //     userName: row.name
-          //   })
-          // }
-      });
-    });
+    this.props.getAllOrdersFromDB()
   }
 
+  // showAllOrders = () => {
+  //   db.transaction((tx) => {
+  //     tx.executeSql('SELECT * FROM orders', [], (tx, results) => {
+  //         var len = results.rows.length;
+  //         // for (let i = 0; i < len; i++) {
+  //         //   let row = results.rows.item(i);
+  //         //   this.setState({
+  //         //     userName: row.name
+  //         //   })
+  //         // }
+  //     });
+  //   });
+  // }
 
+  getName = () => {
+    let orders = this.state.orders;
+    for(let i = 0; i < orders.length; i++) {
+      let row = orders.item(i);
+      this.setState({
+        userName: row.walker
+      })
+    }
+  }
 
   render() {
     return(
@@ -65,4 +91,4 @@ class PendingOrders extends Component {
   }
 }
 
-export default PendingOrders
+export default connect(mapStateToProps, mapDispatchToProps)(PendingOrders)
