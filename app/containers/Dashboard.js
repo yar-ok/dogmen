@@ -5,14 +5,15 @@ import PushNotification from '../utils/PushNotification'
 import Resources from '../utils/Resources'
 import Styles from '../utils/App.style'
 
+import AppButton from '../components/AppButton'
+import AppHeaderTitle from '../components/AppHeaderTitle'
+
 class Dashboard extends Component {
   static navigationOptions = ({ navigation }) => {
     const { params = {} } = navigation.state;
     return {
       headerTitle: (
-        <View style={{flex: 1, justifyContent: 'center', alignSelf: 'center', flexDirection: 'row'}}>
-          <Text style={{fontSize: 18, color: 'white'}}>Dogmen</Text>
-        </View>
+        <AppHeaderTitle title='Dashboard'/>
       ),
       headerTintColor: 'white',
       headerRight: <View/>,
@@ -37,12 +38,21 @@ class Dashboard extends Component {
     alert('Back')
   }
 
+  showPendingOrders = () => {
+
+  }
+
+  settings = () => {
+
+  }
+
   render() {
     return(
       <View style={Styles.backgroundContainer}>
         <PushNotification />
         <StatusBar hidden = {false} backgroundColor={Resources.STATUS_BAR_COLOR}/>
-        <Text>Dashboard screen</Text>
+        <AppButton text='Pending orders' onPressed={() => this.showPendingOrders()} />
+        <AppButton text='Settings' onPressed={() => this.settings()} />
       </View>
     )
   }
