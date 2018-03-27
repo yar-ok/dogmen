@@ -1,11 +1,19 @@
+import { Platform } from 'react-native';
+
 export const types = {
   ALL_ORDERS: 'ALL_ORDERS',
 }
 
 let SQLite = require('react-native-sqlite-storage')
 let db = SQLite.openDatabase(
-  {name: 'database.db', createFromLocation : "~database.db"},
+  Platform.OS === 'ios' ?
+    {name : "testDB.db", createFromLocation : 1}
+  : {name: 'database.db', createFromLocation : "~database.db"},
   this.openCB, this.errorCB);
+
+function  errorCB(err) {
+  alert("SQL Error: " + err);
+}
 
 export const actionCreators = {
   getAllOrders: () => async(dispatch, getState) => {

@@ -44,8 +44,11 @@
 		8B049FB2206400970047EE51 /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B049FB1206400970047EE51 /* IQKeyboardManager.bundle */; };
 		8B52C54D206540160017DD3A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B52C54C206540160017DD3A /* GoogleService-Info.plist */; };
 		8B52C5A820654BE30017DD3A /* libRNFIRMessaging.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B52C54B20653B820017DD3A /* libRNFIRMessaging.a */; };
+		8BEFA886206A79560030FB11 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BEFA85C206A79550030FB11 /* libsqlite3.0.tbd */; };
+		8BEFA890206A8EB60030FB11 /* www in Resources */ = {isa = PBXBuildFile; fileRef = 8BEFA88F206A8EB60030FB11 /* www */; };
 		92672C34BA3A6E8D66115771 /* libPods-Dogmen-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C4C2548FC04C868E682D993C /* libPods-Dogmen-tvOS.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
+		D77B8C6560DB40588FDFC0C1 /* libSQLite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5460D9A5B93B4263A7E4E5FC /* libSQLite.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -336,6 +339,13 @@
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RNFIRMessaging;
 		};
+		8B6CE642206A78CF000A62C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9E208F87D6274C89ADD28844 /* SQLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E23D7B471ACEFE2A00C59171;
+			remoteInfo = SQLite;
+		};
 		ADBDB9261DFEBF0700ED6528 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */;
@@ -376,6 +386,7 @@
 		43874E020B2D6A9347AB459A /* libPods-Dogmen-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Dogmen-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		43A94DC7102A3E2572C1D91E /* Pods-Dogmen-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dogmen-tvOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dogmen-tvOSTests/Pods-Dogmen-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		4F6D3E559B5F63636F212461 /* libPods-DogmenTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DogmenTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5460D9A5B93B4263A7E4E5FC /* libSQLite.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libSQLite.a; sourceTree = "<group>"; };
 		58AEEFD3A43EE61299AFFBA9 /* Pods-DogmenTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DogmenTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DogmenTests/Pods-DogmenTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5B56D410A831D57A5F5EA2CE /* Pods-DogmenTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DogmenTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DogmenTests/Pods-DogmenTests.release.xcconfig"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
@@ -385,7 +396,10 @@
 		8B049F3B2063C40F0047EE51 /* RCTCameraRoll.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTCameraRoll.xcodeproj; path = "../node_modules/react-native/Libraries/CameraRoll/RCTCameraRoll.xcodeproj"; sourceTree = "<group>"; };
 		8B049FB1206400970047EE51 /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
 		8B52C54C206540160017DD3A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8BEFA85C206A79550030FB11 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		8BEFA88F206A8EB60030FB11 /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; name = www; path = Dogmen/www; sourceTree = "<group>"; };
 		9934A81E300417C71BCD18BD /* Pods-Dogmen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dogmen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dogmen/Pods-Dogmen.debug.xcconfig"; sourceTree = "<group>"; };
+		9E208F87D6274C89ADD28844 /* SQLite.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "../node_modules/react-native-sqlite-storage/src/ios/SQLite.xcodeproj"; sourceTree = "<group>"; };
 		A6E67992470666B4BB4C2707 /* Pods-Dogmen-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dogmen-tvOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dogmen-tvOSTests/Pods-Dogmen-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		AE1AAD4F28FD4AE3A8303CC1 /* RNFIRMessaging.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNFIRMessaging.xcodeproj; path = "../node_modules/react-native-fcm/ios/RNFIRMessaging.xcodeproj"; sourceTree = "<group>"; };
@@ -407,6 +421,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BEFA886206A79560030FB11 /* libsqlite3.0.tbd in Frameworks */,
 				8B52C5A820654BE30017DD3A /* libRNFIRMessaging.a in Frameworks */,
 				8B049F762063C4280047EE51 /* libRCTCameraRoll.a in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
@@ -424,6 +439,7 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				80F414015BDD49C58941FC07 /* libReactNativeKeyboardManager.a in Frameworks */,
 				882CB7E8E0DFBC0314FE1E44 /* libPods-Dogmen.a in Frameworks */,
+				D77B8C6560DB40588FDFC0C1 /* libSQLite.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,6 +552,7 @@
 		13B07FAE1A68108700A75B9A /* Dogmen */ = {
 			isa = PBXGroup;
 			children = (
+				8BEFA88F206A8EB60030FB11 /* www */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -574,6 +591,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8BEFA85C206A79550030FB11 /* libsqlite3.0.tbd */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
 				248BB0ECBEA37248D4CCEB61 /* libPods-Dogmen.a */,
 				C4C2548FC04C868E682D993C /* libPods-Dogmen-tvOS.a */,
@@ -619,6 +637,7 @@
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				2DA38D65C8BA4B60B6CF33F4 /* ReactNativeKeyboardManager.xcodeproj */,
 				AE1AAD4F28FD4AE3A8303CC1 /* RNFIRMessaging.xcodeproj */,
+				9E208F87D6274C89ADD28844 /* SQLite.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -673,6 +692,7 @@
 			children = (
 				BE96A6DBF4F64D5E9B81B577 /* libReactNativeKeyboardManager.a */,
 				4012698A51FB46ABA983C030 /* libRNFIRMessaging.a */,
+				5460D9A5B93B4263A7E4E5FC /* libSQLite.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -698,6 +718,14 @@
 			isa = PBXGroup;
 			children = (
 				8B52C54B20653B820017DD3A /* libRNFIRMessaging.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8B6CE63F206A78CC000A62C6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8B6CE643206A78CF000A62C6 /* libSQLite.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -908,6 +936,10 @@
 				{
 					ProductGroup = 8B52C54720653B820017DD3A /* Products */;
 					ProjectRef = AE1AAD4F28FD4AE3A8303CC1 /* RNFIRMessaging.xcodeproj */;
+				},
+				{
+					ProductGroup = 8B6CE63F206A78CC000A62C6 /* Products */;
+					ProjectRef = 9E208F87D6274C89ADD28844 /* SQLite.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1194,6 +1226,13 @@
 			remoteRef = 8B52C54A20653B820017DD3A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		8B6CE643206A78CF000A62C6 /* libSQLite.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSQLite.a;
+			remoteRef = 8B6CE642206A78CF000A62C6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1218,6 +1257,7 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				8B52C54D206540160017DD3A /* GoogleService-Info.plist in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				8BEFA890206A8EB60030FB11 /* www in Resources */,
 				8B049FB2206400970047EE51 /* IQKeyboardManager.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1538,12 +1578,14 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-keyboard-manager/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-fcm/ios",
+					"$(SRCROOT)/../node_modules/react-native-sqlite-storage/src/ios",
 				);
 				INFOPLIST_FILE = DogmenTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
@@ -1566,12 +1608,14 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-keyboard-manager/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-fcm/ios",
+					"$(SRCROOT)/../node_modules/react-native-sqlite-storage/src/ios",
 				);
 				INFOPLIST_FILE = DogmenTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
@@ -1595,6 +1639,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-keyboard-manager/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-fcm/ios",
+					"$(SRCROOT)/../node_modules/react-native-sqlite-storage/src/ios",
 				);
 				INFOPLIST_FILE = Dogmen/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1618,6 +1663,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-keyboard-manager/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-fcm/ios",
+					"$(SRCROOT)/../node_modules/react-native-sqlite-storage/src/ios",
 				);
 				INFOPLIST_FILE = Dogmen/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1648,11 +1694,13 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-keyboard-manager/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-fcm/ios",
+					"$(SRCROOT)/../node_modules/react-native-sqlite-storage/src/ios",
 				);
 				INFOPLIST_FILE = "Dogmen-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
@@ -1685,11 +1733,13 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-keyboard-manager/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-fcm/ios",
+					"$(SRCROOT)/../node_modules/react-native-sqlite-storage/src/ios",
 				);
 				INFOPLIST_FILE = "Dogmen-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
@@ -1723,6 +1773,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.Dogmen-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1748,6 +1799,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
