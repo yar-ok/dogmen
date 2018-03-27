@@ -11,11 +11,6 @@ import { actionCreators } from '../actions/OrderActions'
 
 import OrderItem from '../components/OrderItem'
 
-// let SQLite = require('react-native-sqlite-storage')
-// let db = SQLite.openDatabase(
-//   {name: 'database.db', createFromLocation : "~database.db"},
-//   this.openCB, this.errorCB);
-
 const mapStateToProps = (state) => ({
   // loading: state.loading,
   orders: state.ordersState.orders,
@@ -52,20 +47,6 @@ class PendingOrders extends Component {
   componentDidMount() {
     this.props.getAllOrdersFromDB()
   }
-
-  // showAllOrders = () => {
-  //   db.transaction((tx) => {
-  //     tx.executeSql('SELECT * FROM orders', [], (tx, results) => {
-  //         var len = results.rows.length;
-  //         // for (let i = 0; i < len; i++) {
-  //         //   let row = results.rows.item(i);
-  //         //   this.setState({
-  //         //     userName: row.name
-  //         //   })
-  //         // }
-  //     });
-  //   });
-  // }
 
   render() {
 

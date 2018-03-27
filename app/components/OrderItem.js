@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Image, TouchableOpacity, Linking } from 'react-
 
 const OrderItem = (props) => (
   <View>
-    <Text>{props.walker}</Text>
+    <Text>Walker name: {props.walker_name} and Pet name: {props.pet_name}</Text>
   </View>
 )
 
