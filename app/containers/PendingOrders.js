@@ -34,6 +34,7 @@ const mapDispatchToProps = (dispatch) => {
       getAllWalkersFromDB: () => { dispatch(actionCreators.getAllWalkers()) },
       getFreePetsFromDB: () => { dispatch(actionCreators.getFreePets()) },
       createNewPet: (name) => { dispatch(actionCreators.createNewPet(name)) },
+      createOrder: (walkerId, petId) => { dispatch(actionCreators.createOrder(walkerId, petId)) },
   }
 }
 
@@ -124,9 +125,22 @@ class PendingOrders extends Component {
     }
   }
 
+  saveNewOrder = () => {
+    if (this.state.selectedWalker !== DEFAULT_VALUE && this.state.selectedPet!== DEFAULT_VALUE) {
+      this.closeDialog()
+      this.props.createOrder(
+        this.props.walkers[this.state.selectedWalker.walkers_id],
+        this.props.pets[this.state.selectedPet.pet_id]
+      )
+    } else {
+      alert('Select walker and pet')
+    }
+  }
+
   specificPopup = () => {
     if (this.state.showAddNewPetDialog) {
       return <TouchableOpacity onPress={() => 0} activeOpacity={1} style={styles.editablePopup}>
+      <Text style={{fontWeight: 'bold', fontSize: 19, color: 'black'}}>Add new pet</Text>
       <TextInput
         style={styles.textInput}
         placeholder='Enter pet name'
@@ -165,6 +179,10 @@ class PendingOrders extends Component {
                 title="Add pet"
                 color={Resources.APP_COLOR}/>
           </View>
+        </View>
+
+        <View style={{ alignItems: 'center' }}>
+          <AddOrderButton text='Save order' onPressed={() => this.saveNewOrder()} />
         </View>
       </TouchableOpacity>
     }
@@ -206,19 +224,19 @@ const popupWidth = SCREEN_WIDTH - 2 * POPUP_MARGIN;
 
 const styles = StyleSheet.create({
   popup: {
-    height: 250,
     width: popupWidth,
     backgroundColor:'white',
     borderRadius: 5,
+    padding: 8,
   },
 
   editablePopup: {
-    height: 250,
     width: popupWidth,
     backgroundColor:'white',
     borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',
+    padding: 8,
   },
 
   dropdownContainer: {
