@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, FlatList, Text, View, Button, TouchableOpacity, Modal, Dimensions } from 'react-native';
+import { StyleSheet, FlatList, Text, TextInput, View, Button, TouchableOpacity, Modal, Dimensions } from 'react-native';
 
 import AppPicker from '../components/AppPicker'
 
@@ -12,6 +12,7 @@ import { connect } from 'react-redux'
 import { actionCreators } from '../actions/OrderActions'
 
 import OrderItem from '../components/OrderItem'
+import Utils from '../utils/Utils'
 
 const DEFAULT_VALUE = -1;
 
@@ -32,6 +33,7 @@ const mapDispatchToProps = (dispatch) => {
       getAllOrdersFromDB: () => { dispatch(actionCreators.getAllOrders()) },
       getAllWalkersFromDB: () => { dispatch(actionCreators.getAllWalkers()) },
       getFreePetsFromDB: () => { dispatch(actionCreators.getFreePets()) },
+      createNewPet: (name) => { dispatch(actionCreators.createNewPet(name)) },
   }
 }
 
@@ -41,8 +43,10 @@ class PendingOrders extends Component {
     this.state = {
       userName: '',
       showDialog: false,
+      showAddNewPetDialog: false,
       selectedWalker: DEFAULT_VALUE,
       selectedPet: DEFAULT_VALUE,
+      newPetName: '',
     };
   }
 
@@ -91,7 +95,79 @@ class PendingOrders extends Component {
   }
 
   showAddNewPetDialog = () => {
+    this.setState({
+      showAddNewPetDialog: true,
+      newPetName: '',
+    })
+  }
 
+  hideAddNewPetDialog = () => {
+    this.setState({
+      showAddNewPetDialog: false
+    })
+  }
+
+  updatePetName = (name) => {
+    this.setState({
+      newPetName: name
+    })
+  }
+
+  saveNewPet = () => {
+    if (this.state.newPetName.trim() === '') {
+      Utils.showAlert('Pet name can not be empty', null)
+    } else {
+      this.setState({
+        showAddNewPetDialog: false,
+      })
+      this.props.createNewPet(this.state.newPetName.trim())
+    }
+  }
+
+  specificPopup = () => {
+    if (this.state.showAddNewPetDialog) {
+      return <TouchableOpacity onPress={() => 0} activeOpacity={1} style={styles.editablePopup}>
+      <TextInput
+        style={styles.textInput}
+        placeholder='Enter pet name'
+        underlineColorAndroid='transparent'
+        multiline={false}
+        maxLength = {40}
+        selectionColor={'black'}
+        textAlign={'center'}
+        returnKeyType={'done'}
+        onChangeText={(text) => this.updatePetName(text)}/>
+        <Button
+        style={{width: 100}}
+          onPress={() => this.saveNewPet()}
+          title="Save pet"
+          color={Resources.APP_COLOR}/>
+      </TouchableOpacity>
+    } else {
+      return <TouchableOpacity onPress={() => 0} activeOpacity={1} style={styles.popup}>
+        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <View style={styles.dropdownContainer}>
+            <Text style={styles.dropdownTitle}>Walker</Text>
+            <AppPicker
+              selectedWalker={this.state.selectedWalker}
+              walkers={this.props.walkers}
+              selectedWalkerChanged={(itemIndex) => this.selectedWalkerChanged(itemIndex)} />
+          </View>
+
+          <View style={styles.dropdownContainer}>
+            <Text style={styles.dropdownTitle}>Pet</Text>
+            <AppPicker
+              selectedWalker={this.state.selectedPet}
+              walkers={this.props.pets}
+              selectedWalkerChanged={(itemIndex) => this.selectedPetChanged(itemIndex)} />
+              <Button
+                onPress={() => this.showAddNewPetDialog()}
+                title="Add pet"
+                color={Resources.APP_COLOR}/>
+          </View>
+        </View>
+      </TouchableOpacity>
+    }
   }
 
   render() {
@@ -118,30 +194,8 @@ class PendingOrders extends Component {
               activeOpacity={1}
               onPress={() => this.closeDialog()}
               style={{flex:1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(19, 19, 19, 0.6)'}}>
-                <TouchableOpacity onPress={() => 0} activeOpacity={1} style={styles.popup}>
-                  <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-                    <View style={styles.dropdownContainer}>
-                      <Text style={styles.dropdownTitle}>Walker</Text>
-                      <AppPicker
-                        selectedWalker={this.state.selectedWalker}
-                        walkers={this.props.walkers}
-                        selectedWalkerChanged={(itemIndex) => this.selectedWalkerChanged(itemIndex)} />
-                    </View>
-
-                    <View style={styles.dropdownContainer}>
-                      <Text style={styles.dropdownTitle}>Pet</Text>
-                      <AppPicker
-                        selectedWalker={this.state.selectedPet}
-                        walkers={this.props.pets}
-                        selectedWalkerChanged={(itemIndex) => this.selectedPetChanged(itemIndex)} />
-                        <Button
-                          onPress={() => this.showAddNewPetDialog()}
-                          title="Add pet"
-                          color={Resources.APP_COLOR}/>
-                    </View>
-                  </View>
-                </TouchableOpacity>
-              </TouchableOpacity>
+                {this.specificPopup()}
+            </TouchableOpacity>
           </Modal>
       </View>
     )
@@ -157,6 +211,16 @@ const styles = StyleSheet.create({
     backgroundColor:'white',
     borderRadius: 5,
   },
+
+  editablePopup: {
+    height: 250,
+    width: popupWidth,
+    backgroundColor:'white',
+    borderRadius: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
   dropdownContainer: {
     flex: 1,
   },
@@ -166,6 +230,18 @@ const styles = StyleSheet.create({
     color: 'black',
     fontWeight: 'bold',
     textAlign: 'center',
+  },
+  textInput: {
+
+    width: 200,
+    height: 40,
+    borderColor: 'black',
+    borderWidth: 2,
+    borderRadius: 8,
+    color: 'black',
+    margin: 5,
+
+    justifyContent: 'center',
   },
 })
 

@@ -27,7 +27,6 @@ const reducer = (state = initialState, action) => {
         ...state,
         pets: pets,
       }
-
   }
 
   return state;

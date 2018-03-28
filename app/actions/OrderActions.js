@@ -4,6 +4,7 @@ export const types = {
   ALL_ORDERS: 'ALL_ORDERS',
   ALL_WALKERS: 'ALL_WALKERS',
   FREE_PETS: 'FREE_PETS',
+  CREATE_PET: 'CREATE_PET',
 }
 
 export const actionCreators = {
@@ -44,20 +45,33 @@ export const actionCreators = {
   },
 
   getFreePets: () => async(dispatch, getState) => {
-    DatabaseSettings.db().transaction((tx) => {
-      tx.executeSql(
-        'SELECT * FROM pets',
-        [], (tx, results) => {
-        let result = []
-        for(let i=0; i < results.rows.length; i++) {
-          let row = results.rows.item(i);
-          result.push(row);
-        }
-        dispatch({
-          type: types.FREE_PETS,
-          pets: result,
-        })
-      });
-    });
+    getPets(dispatch)
   },
+
+  createNewPet: (name) => async(dispatch, getState) => {
+    DatabaseSettings.db().executeSql(
+          'INSERT INTO pets (name) VALUES (\"' + name + '\")',
+          [], (tx, results) => {
+
+          getPets(dispatch)
+        })
+  },
+}
+
+function getPets(dispatch) {
+  DatabaseSettings.db().transaction((tx) => {
+    tx.executeSql(
+      'SELECT * FROM pets',
+      [], (tx, results) => {
+      let result = []
+      for(let i=0; i < results.rows.length; i++) {
+        let row = results.rows.item(i);
+        result.push(row);
+      }
+      dispatch({
+        type: types.FREE_PETS,
+        pets: result,
+      })
+    });
+  });
 }
