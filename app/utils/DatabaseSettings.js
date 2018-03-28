@@ -49,6 +49,8 @@ const DatabaseSettings = {
     db.executeSql('INSERT INTO walkers (name) VALUES ("Tom Hanks");', []);
     db.executeSql('INSERT INTO walkers (name) VALUES ("Bob Dilan");', []);
     db.executeSql('INSERT INTO walkers (name) VALUES ("Lionel Messi");', []);
+    db.executeSql('INSERT INTO walkers (name) VALUES ("Mikle Tompson");', []);
+    db.executeSql('INSERT INTO walkers (name) VALUES ("Vova Ivanov");', []);
 
     db.executeSql('INSERT INTO orders (walker, pet) VALUES (1, 1);', []);
     db.executeSql('INSERT INTO orders (walker, pet) VALUES (1, 2);', []);

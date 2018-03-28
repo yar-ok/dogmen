@@ -2,6 +2,8 @@ import DatabaseSettings from '../utils/DatabaseSettings'
 
 export const types = {
   ALL_ORDERS: 'ALL_ORDERS',
+  ALL_WALKERS: 'ALL_WALKERS',
+  FREE_PETS: 'FREE_PETS',
 }
 
 export const actionCreators = {
@@ -21,5 +23,41 @@ export const actionCreators = {
         })
       });
     });
-  }
+  },
+
+  getAllWalkers: () => async(dispatch, getState) => {
+    DatabaseSettings.db().transaction((tx) => {
+      tx.executeSql(
+        'SELECT * FROM walkers',
+        [], (tx, results) => {
+        let result = []
+        for(let i=0; i < results.rows.length; i++) {
+          let row = results.rows.item(i);
+          result.push(row);
+        }
+        dispatch({
+          type: types.ALL_WALKERS,
+          walkers: result,
+        })
+      });
+    });
+  },
+
+  getFreePets: () => async(dispatch, getState) => {
+    DatabaseSettings.db().transaction((tx) => {
+      tx.executeSql(
+        'SELECT * FROM pets',
+        [], (tx, results) => {
+        let result = []
+        for(let i=0; i < results.rows.length; i++) {
+          let row = results.rows.item(i);
+          result.push(row);
+        }
+        dispatch({
+          type: types.FREE_PETS,
+          pets: result,
+        })
+      });
+    });
+  },
 }
