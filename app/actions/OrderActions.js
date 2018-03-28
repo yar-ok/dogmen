@@ -1,23 +1,12 @@
-import { Platform } from 'react-native';
+import DatabaseSettings from '../utils/DatabaseSettings'
 
 export const types = {
   ALL_ORDERS: 'ALL_ORDERS',
 }
 
-let SQLite = require('react-native-sqlite-storage')
-let db = SQLite.openDatabase(
-  Platform.OS === 'ios' ?
-    {name : "testDB.db", createFromLocation : 1}
-  : {name: 'database.db', createFromLocation : "~database.db"},
-  this.openCB, this.errorCB);
-
-function  errorCB(err) {
-  alert("SQL Error: " + err);
-}
-
 export const actionCreators = {
   getAllOrders: () => async(dispatch, getState) => {
-    db.transaction((tx) => {
+    DatabaseSettings.db().transaction((tx) => {
       tx.executeSql(
         'SELECT o.order_id, w.name AS walker_name, p.name AS pet_name FROM orders o INNER JOIN walkers w ON o.walker = w.walkers_id INNER JOIN pets p ON o.pet = p.pet_id',
         [], (tx, results) => {

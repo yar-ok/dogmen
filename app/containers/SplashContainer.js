@@ -1,8 +1,19 @@
 import React, { Component } from 'react';
-import { StatusBar, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { Platform, StatusBar, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import Resources from '../utils/Resources'
 import { NavigationActions } from 'react-navigation';
 import Styles from '../utils/App.style'
+
+// let SQLite = require('react-native-sqlite-storage')
+// let db = SQLite.openDatabase(
+//   Platform.OS === 'ios' ?
+//     {name : "testDB.db", createFromLocation : 1}
+//   : {name: 'database.db', createFromLocation : "~database.db"},
+//   this.openCB, this.errorCB);
+//
+// function  errorCB(err) {
+//   alert("SQL Error: " + err);
+// }
 
 class SplashContainer extends Component {
   constructor(props) {
