@@ -133,11 +133,17 @@ class PendingOrders extends Component {
   saveNewOrder = () => {
     let selectedWalker = this.state.selectedWalker
     let selectedPet = this.state.selectedPet
+    let walkersLength = this.props.walkers.length
+    let petsLength = this.props.pets.length
     if (selectedWalker === DEFAULT_VALUE) {
-      selectedWalker = this.props.walkers.length > 0 ? 0 : DEFAULT_VALUE
+      selectedWalker = walkersLength > 0 ? 0 : DEFAULT_VALUE
+    } else if (selectedWalker => walkersLength) {
+      selectedWalker = walkersLength - 1
     }
     if (selectedPet === DEFAULT_VALUE) {
-      selectedPet = this.props.pets.length > 0 ? 0 : DEFAULT_VALUE
+      selectedPet = petsLength > 0 ? 0 : DEFAULT_VALUE
+    } else if (selectedPet => petsLength) {
+      selectedPet = petsLength - 1
     }
 
     if (selectedWalker !== DEFAULT_VALUE && selectedPet!== DEFAULT_VALUE) {
@@ -172,6 +178,7 @@ class PendingOrders extends Component {
           color={Resources.APP_COLOR}/>
       </TouchableOpacity>
     } else {
+      // alert('in popup pets -> ' + this.props.pets.length)
       return <TouchableOpacity onPress={() => 0} activeOpacity={1} style={styles.popup}>
         <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
           <View style={styles.dropdownContainer}>
