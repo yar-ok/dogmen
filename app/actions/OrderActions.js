@@ -44,11 +44,11 @@ export const actionCreators = {
   },
 
   createOrder: (walkerId, petId) => async(dispatch, getState) => {
-    alert('save: walkerId -> ' + walkerId + '  petId -> ' + petId)
     DatabaseSettings.db().executeSql(
           'INSERT INTO orders (walker, pet) VALUES (' + walkerId + ', ' + petId + ')',
           [], (tx, results) => {
           getOrders(dispatch)
+          getPets(dispatch)
         })
   },
 }

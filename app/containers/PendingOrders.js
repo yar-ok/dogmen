@@ -126,11 +126,20 @@ class PendingOrders extends Component {
   }
 
   saveNewOrder = () => {
-    if (this.state.selectedWalker !== DEFAULT_VALUE && this.state.selectedPet!== DEFAULT_VALUE) {
+    let selectedWalker = this.state.selectedWalker
+    let selectedPet = this.state.selectedPet
+    if (selectedWalker === DEFAULT_VALUE) {
+      selectedWalker = this.props.walkers.length > 0 ? 0 : DEFAULT_VALUE
+    }
+    if (selectedPet === DEFAULT_VALUE) {
+      selectedPet = this.props.pets.length > 0 ? 0 : DEFAULT_VALUE
+    }
+
+    if (selectedWalker !== DEFAULT_VALUE && selectedPet!== DEFAULT_VALUE) {
       this.closeDialog()
       this.props.createOrder(
-        this.props.walkers[this.state.selectedWalker.walkers_id],
-        this.props.pets[this.state.selectedPet.pet_id]
+        this.props.walkers[selectedWalker].walkers_id,
+        this.props.pets[selectedPet].pet_id
       )
     } else {
       alert('Select walker and pet')
