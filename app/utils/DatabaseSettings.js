@@ -1,4 +1,5 @@
-import { Platform } from 'react-native';
+import { AsyncStorage, Platform } from 'react-native';
+import Constants from './Constants'
 
 const database_version = '1';
 
@@ -13,6 +14,19 @@ const DatabaseSettings = {
   },
 
   initDatabase() {
+    AsyncStorage.getItem(Constants.DATABASE_VERSION).then((value) => {
+        this.checkVersion(value);
+    }).done();
+  },
+
+  checkVersion(version) {
+    if (version === undefined || version !== database_version) {
+      this.saveNewDatabaseVersion(version)
+      AsyncStorage.setItem(Constants.DATABASE_VERSION, database_version)
+    }
+  },
+
+  saveNewDatabaseVersion(version) {
     let db = this.db()
     db.executeSql('DROP TABLE IF EXISTS orders;');
     db.executeSql('DROP TABLE IF EXISTS pets;');
@@ -66,7 +80,6 @@ const DatabaseSettings = {
   }
 
 }
-
 // function  errorCB(err) {
 //   alert("SQL Error: " + err);
 // }
