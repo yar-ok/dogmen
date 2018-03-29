@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { StatusBar, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { AsyncStorage, StatusBar, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import Resources from '../utils/Resources'
 import { NavigationActions } from 'react-navigation';
 import Styles from '../utils/App.style'
 import DatabaseSettings from '../utils/DatabaseSettings'
+import Constants from '../utils/Constants'
 
 class SplashContainer extends Component {
   constructor(props) {
@@ -17,18 +18,27 @@ class SplashContainer extends Component {
     DatabaseSettings.initDatabase()
   }
 
+  goNextScreen = (token) => {
+    const resetAction = NavigationActions.reset({
+      index: 0,
+      actions: [
+        NavigationActions.navigate({
+          routeName: token !== undefined && token !== '' && token !== null ? 'Dashboard' : 'Login'
+        })
+      ]
+    })
+    this.props.navigation.dispatch(resetAction)
+  }
+
   render() {
     setTimeout (() => {
-      const resetAction = NavigationActions.reset({
-        index: 0,
-        actions: [
-          NavigationActions.navigate({
-            routeName: 'Login'
-          })
-        ]
-      })
-      this.props.navigation.dispatch(resetAction)
-
+      try {
+            AsyncStorage.getItem(Constants.USER_TOKEN).then((value) => {
+                this.goNextScreen(value);
+            }).done();
+          } catch (error) {
+            alert('Error -> ' + error);
+          }
     }, 3000);
     return (
       <View style={Styles.backgroundContainer}>

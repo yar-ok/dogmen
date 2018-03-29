@@ -34,6 +34,14 @@ const reducer = (state = initialState, action) => {
         error: error,
         token: token,
       }
+
+    case types.LOGOUT:
+      return {
+        ...state,
+        loading: loading,
+        error: error,
+        token: token,
+      }
   }
 
   return state;

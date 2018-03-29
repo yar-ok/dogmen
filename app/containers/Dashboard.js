@@ -1,12 +1,29 @@
 import React, { Component } from 'react';
-import { StatusBar, Text, View, TouchableOpacity } from 'react-native';
+import { InteractionManager, AsyncStorage, StatusBar, Text, View, TouchableOpacity } from 'react-native';
 
 import PushNotification from '../utils/PushNotification'
 import Resources from '../utils/Resources'
+import Constants from '../utils/Constants'
 import Styles from '../utils/App.style'
 
 import AppButton from '../components/AppButton'
 import AppHeaderTitle from '../components/AppHeaderTitle'
+import { NavigationActions } from 'react-navigation';
+
+import { connect } from 'react-redux'
+import { actionCreators } from '../actions/LoginActions'
+
+const mapStateToProps = (state) => ({
+  loading: state.loginState.loading,
+  token: state.loginState.token,
+  error: state.loginState.error,
+});
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+      logoutAndExit: () => { dispatch(actionCreators.logout()) }
+  }
+}
 
 class Dashboard extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -31,11 +48,26 @@ class Dashboard extends Component {
   };
 
   componentDidMount () {
-    this.props.navigation.setParams({ handleLogout: this.logout })
+    InteractionManager.runAfterInteractions(() => {
+      this.props.navigation.setParams({ handleLogout: this.logout })
+    })
   }
 
   logout = () => {
-    alert('Back')
+    this.props.logoutAndExit()
+    this.makeLogout()
+  }
+
+  makeLogout = () => {
+    const resetAction = NavigationActions.reset({
+      index: 0,
+      actions: [
+        NavigationActions.navigate({
+          routeName: 'Login'
+        })
+      ]
+    })
+    this.props.navigation.dispatch(resetAction)
   }
 
   showPendingOrders = () => {
@@ -47,6 +79,11 @@ class Dashboard extends Component {
   }
 
   render() {
+    // if (!this.props.error && !this.props.loading && (this.props.token === undefined || this.props.token === null || this.props.token === '')) {
+    //   setTimeout (() => {
+    //     this.makeLogout()
+    //   }, 200)
+    // }
     return(
       <View style={Styles.backgroundContainer}>
         <PushNotification />
@@ -58,4 +95,4 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)

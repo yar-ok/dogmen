@@ -1,7 +1,11 @@
+import { AsyncStorage } from 'react-native';
+import Constants from '../utils/Constants'
+
 export const types = {
   LOGIN_USER: 'LOGIN_USER',
   FORGOT_PASSWORD: 'FORGOT_PASSWORD',
   SIGN_UP: 'SIGN_UP',
+  LOGOUT: 'LOGOUT',
 }
 
 export const actionCreators = {
@@ -14,11 +18,13 @@ export const actionCreators = {
     setTimeout (() => {
       // check for server error
       if (true) {
+        let token = 'j23hDDSjkKLfbj6dsgzdgm56sJPdflgn'
+        saveUserData(token)
         dispatch({
           type: types.LOGIN_USER,
           loading: false,
           error: false,
-          token: 'j23hDDSjkKLfbj6dsgzdgm56sJPdflgn'
+          token: token
         })
       } else {
         //error
@@ -78,11 +84,13 @@ export const actionCreators = {
     setTimeout (() => {
       // check for server error
       if (true) {
+        let token = 'j23hDDSjkKLfbj6dsgzdgm56sJPdflgn'
+        saveUserData(token)
         dispatch({
           type: types.SIGN_UP,
           loading: false,
           error: false,
-          token: 'j23hDDSjkKLfbj6dsgzdgm56sJPdflgn'
+          token: token,
         })
       } else {
         //error
@@ -103,4 +111,41 @@ export const actionCreators = {
       error: false,
     }
   },
+
+  logout: () => {
+    logout()
+    return {
+      type: types.LOGOUT,
+      loading: false,
+      token: '',
+      error: false,
+    }
+  },
+}
+
+function logout() {
+  AsyncStorage.multiSet(
+    [
+      [Constants.USER_TOKEN, ''],
+      [Constants.USER_NAME, ''],
+    ], function(error) {
+          if(error) {
+            alert("error!");
+          }
+      }
+  );
+}
+
+function saveUserData(token) {
+  let name = 'Test Name'
+  AsyncStorage.multiSet(
+    [
+      [Constants.USER_TOKEN, token],
+      [Constants.USER_NAME, name],
+    ], function(error) {
+          if(error) {
+            alert("error!");
+          }
+      }
+  );
 }
