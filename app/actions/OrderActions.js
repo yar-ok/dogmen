@@ -51,6 +51,10 @@ export const actionCreators = {
           getPets(dispatch)
         })
   },
+
+  closeDatabase: () => async(dispatch, getState) => {
+    DatabaseSettings.closeDatabase()
+  },
 }
 
 function getOrders(dispatch) {

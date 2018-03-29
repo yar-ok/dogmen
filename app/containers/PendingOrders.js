@@ -35,6 +35,7 @@ const mapDispatchToProps = (dispatch) => {
       getFreePetsFromDB: () => { dispatch(actionCreators.getFreePets()) },
       createNewPet: (name) => { dispatch(actionCreators.createNewPet(name)) },
       createOrder: (walkerId, petId) => { dispatch(actionCreators.createOrder(walkerId, petId)) },
+      closeDatabase: () => { dispatch(actionCreators.closeDatabase()) },
   }
 }
 
@@ -81,6 +82,10 @@ class PendingOrders extends Component {
     this.props.getAllOrdersFromDB()
     this.props.getAllWalkersFromDB()
     this.props.getFreePetsFromDB()
+  }
+
+  componentWillUnmount() {
+    this.props.closeDatabase()
   }
 
   selectedWalkerChanged = (itemIndex) => {

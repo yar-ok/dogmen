@@ -59,6 +59,10 @@ const DatabaseSettings = {
     db.executeSql('INSERT INTO orders (walker, pet) VALUES (2, 3);', []);
 
     db.close()
+  },
+
+  closeDatabase() {
+    this.db().close()
   }
 
 }
