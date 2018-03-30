@@ -26,66 +26,79 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 class Dashboard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showIosCalendar: false,
+    };
+  }
+
   static navigationOptions = ({ navigation }) => {
     const { params = {} } = navigation.state;
     return {
-      headerTitle: (
-        <AppHeaderTitle title='Dashboard'/>
-      ),
-      headerTintColor: 'white',
-      headerRight: <View/>,
+      headerTitle: <AppHeaderTitle title="Dashboard" />,
+      headerTintColor: "white",
+      headerRight: <View />,
       headerLeft: (
         <TouchableOpacity
-        style={{flexDirection: 'row', alignItems: 'center', paddingLeft: 8}}
-        onPress={ () => params.handleLogout() }>
-          <Text style={{fontSize: 16, color: 'white'}}>Logout</Text>
+          style={{ flexDirection: "row", alignItems: "center", paddingLeft: 8 }}
+          onPress={() => params.handleLogout()}
+        >
+          <Text style={{ fontSize: 16, color: "white" }}>Logout</Text>
         </TouchableOpacity>
       ),
       headerStyle: {
-        backgroundColor: Resources.TOOLBAR_COLOR,
-      },
-    }
+        backgroundColor: Resources.TOOLBAR_COLOR
+      }
+    };
   };
 
-  componentDidMount () {
+  componentDidMount() {
     InteractionManager.runAfterInteractions(() => {
-      this.props.navigation.setParams({ handleLogout: this.logout })
-    })
+      this.props.navigation.setParams({ handleLogout: this.logout });
+    });
   }
 
   logout = () => {
-    this.props.logoutAndExit()
-    this.makeLogout()
-  }
+    this.props.logoutAndExit();
+    this.makeLogout();
+  };
 
   makeLogout = () => {
     const resetAction = NavigationActions.reset({
       index: 0,
       actions: [
         NavigationActions.navigate({
-          routeName: 'Login'
+          routeName: "Login"
         })
       ]
-    })
-    this.props.navigation.dispatch(resetAction)
-  }
+    });
+    this.props.navigation.dispatch(resetAction);
+  };
 
   showPendingOrders = () => {
-    this.props.navigation.navigate('PendingOrders')
-  }
+    this.props.navigation.navigate("PendingOrders");
+  };
 
-  settings = () => {
+  settings = () => {};
 
-  }
+  showCalendar = () => {
+    if(Platform.OS === 'ios') {
+      
+    } else {
+      this.showAndroidCalendar()
+    }
+  };
 
-  async showCalendar() {
-    try {
-      const {action, year, month, day} = await DatePickerAndroid.open({
+  async showAndroidCalendar() {
+   try {
+      const { action, year, month, day } = await DatePickerAndroid.open({
         date: new Date()
       });
-    } catch ({code, message}) {
-      console.warn('Cannot open date picker', message);
+    } catch ({ code, message }) {
+      console.warn("Cannot open date picker", message);
     }
+
   }
 
   render() {
@@ -94,15 +107,21 @@ class Dashboard extends Component {
     //     this.makeLogout()
     //   }, 200)
     // }
-    return(
+    return (
       <View style={Styles.backgroundContainer}>
         <PushNotification />
-        <StatusBar hidden = {false} backgroundColor={Resources.STATUS_BAR_COLOR}/>
-        <AppButton text='Pending orders' onPressed={() => this.showPendingOrders()} />
-        <AppButton text='Calendar' onPressed={() => this.showCalendar()} />
-        <AppButton text='Settings' onPressed={() => this.settings()} />
+        <StatusBar
+          hidden={false}
+          backgroundColor={Resources.STATUS_BAR_COLOR}
+        />
+        <AppButton
+          text="Pending orders"
+          onPressed={() => this.showPendingOrders()}
+        />
+        <AppButton text="Calendar" onPressed={() => this.showCalendar()} />
+        <AppButton text="Settings" onPressed={() => this.settings()} />
       </View>
-    )
+    );
   }
 }
 
