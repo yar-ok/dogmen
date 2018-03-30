@@ -117,11 +117,6 @@ class Dashboard extends Component {
   }
 
   render() {
-    // if (!this.props.error && !this.props.loading && (this.props.token === undefined || this.props.token === null || this.props.token === '')) {
-    //   setTimeout (() => {
-    //     this.makeLogout()
-    //   }, 200)
-    // }
     return (
       <View style={Styles.backgroundContainer}>
         <PushNotification />
