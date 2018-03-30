@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { InteractionManager, AsyncStorage, StatusBar, Text, View, TouchableOpacity } from 'react-native';
+import { Platform, DatePickerAndroid, InteractionManager, AsyncStorage, StatusBar, Text, View, TouchableOpacity } from 'react-native';
 
 import PushNotification from '../utils/PushNotification'
 import Resources from '../utils/Resources'
@@ -78,6 +78,16 @@ class Dashboard extends Component {
 
   }
 
+  async showCalendar() {
+    try {
+      const {action, year, month, day} = await DatePickerAndroid.open({
+        date: new Date()
+      });
+    } catch ({code, message}) {
+      console.warn('Cannot open date picker', message);
+    }
+  }
+
   render() {
     // if (!this.props.error && !this.props.loading && (this.props.token === undefined || this.props.token === null || this.props.token === '')) {
     //   setTimeout (() => {
@@ -89,6 +99,7 @@ class Dashboard extends Component {
         <PushNotification />
         <StatusBar hidden = {false} backgroundColor={Resources.STATUS_BAR_COLOR}/>
         <AppButton text='Pending orders' onPressed={() => this.showPendingOrders()} />
+        <AppButton text='Calendar' onPressed={() => this.showCalendar()} />
         <AppButton text='Settings' onPressed={() => this.settings()} />
       </View>
     )
