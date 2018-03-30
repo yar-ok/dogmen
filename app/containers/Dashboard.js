@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, DatePickerAndroid, InteractionManager, AsyncStorage, StatusBar, Text, View, TouchableOpacity } from 'react-native';
+import { Platform, DatePickerAndroid, DatePickerIOS, Modal, InteractionManager, AsyncStorage, StatusBar, Text, View, TouchableOpacity } from 'react-native';
 
 import PushNotification from '../utils/PushNotification'
 import Resources from '../utils/Resources'
@@ -30,6 +30,7 @@ class Dashboard extends Component {
     super(props);
     this.state = {
       showIosCalendar: false,
+      today: new Date(),
     };
   }
 
@@ -84,10 +85,18 @@ class Dashboard extends Component {
 
   showCalendar = () => {
     if(Platform.OS === 'ios') {
-      
+      this.setState({
+        showIosCalendar: true
+      })
     } else {
       this.showAndroidCalendar()
     }
+  };
+
+  closeIosCalendar = () => {
+    this.setState({
+      showIosCalendar: false
+    })
   };
 
   async showAndroidCalendar() {
@@ -99,6 +108,12 @@ class Dashboard extends Component {
       console.warn("Cannot open date picker", message);
     }
 
+  }
+
+  updateSelectedDate = (newDate) => {
+    this.setState({
+      today: newDate
+    })
   }
 
   render() {
@@ -120,6 +135,22 @@ class Dashboard extends Component {
         />
         <AppButton text="Calendar" onPressed={() => this.showCalendar()} />
         <AppButton text="Settings" onPressed={() => this.settings()} />
+        <Modal
+            transparent={true}
+            visible={this.state.showIosCalendar}
+            animationType={'fade'}
+            onRequestClose={() => this.closeIosCalendar()}>
+            <TouchableOpacity
+            activeOpacity={1}
+            onPress={() => this.closeIosCalendar()}
+            style={{flex:1, justifyContent: 'center', backgroundColor: 'rgba(19, 19, 19, 0.8)'}}>
+              <DatePickerIOS
+                date={this.state.today}
+                onDateChange={this.updateSelectedDate}
+                />
+          </TouchableOpacity>
+        </Modal>
+
       </View>
     );
   }
