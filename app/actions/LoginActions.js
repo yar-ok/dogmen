@@ -1,4 +1,3 @@
-import { AsyncStorage } from 'react-native';
 import Constants from '../utils/Constants'
 
 export const types = {
@@ -21,7 +20,6 @@ export const actionCreators = {
       // check for server error
       if (true) {
         let token = 'j23hDDSjkKLfbj6dsgzdgm56sJPdflgn'
-        saveUserData(token)
         dispatch({
           type: types.LOGIN_USER,
           payload: {
@@ -101,7 +99,6 @@ export const actionCreators = {
       // check for server error
       if (true) {
         let token = 'j23hDDSjkKLfbj6dsgzdgm56sJPdflgn'
-        saveUserData(token)
         dispatch({
           type: types.SIGN_UP,
           payload: {
@@ -135,7 +132,6 @@ export const actionCreators = {
   },
 
   logout: () => {
-    logout()
     return {
       type: types.LOGOUT,
       payload: {
@@ -145,31 +141,4 @@ export const actionCreators = {
       }
     }
   },
-}
-
-function logout() {
-  AsyncStorage.multiSet(
-    [
-      [Constants.USER_TOKEN, ''],
-      [Constants.USER_NAME, ''],
-    ], function(error) {
-          if(error) {
-            alert("error!");
-          }
-      }
-  );
-}
-
-function saveUserData(token) {
-  let name = 'Test Name'
-  AsyncStorage.multiSet(
-    [
-      [Constants.USER_TOKEN, token],
-      [Constants.USER_NAME, name],
-    ], function(error) {
-          if(error) {
-            alert("error!");
-          }
-      }
-  );
 }
