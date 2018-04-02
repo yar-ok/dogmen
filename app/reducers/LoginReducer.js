@@ -1,6 +1,10 @@
 import { types } from '../actions/LoginActions';
 import { REHYDRATE } from "redux-persist";
 
+import storage from "redux-persist/lib/storage";
+import { persistReducer } from "redux-persist";
+import autoMergeLevel2 from "redux-persist/lib/stateReconciler/autoMergeLevel2";
+
 const initialState = {
   payload: {
     loading: false,
@@ -10,13 +14,24 @@ const initialState = {
   }
 }
 
+const persistConfig = {
+  key: "login",
+  storage: storage,
+  stateReconciler: autoMergeLevel2,
+  whitelist: ["token"]
+};
+
 const reducer = (state = initialState, action) => {
   const { type, payload } = action;
   // alert('Login: type -> ' + type)
 
   switch (type) {
     case REHYDRATE:
-      // alert("Token: " + payload.token);
+      if(payload !== undefined) {
+        alert("Reducer token: " + payload.token);
+      } else {
+        alert("Payload token: null yet");
+      }
       return { ...state, persistedState: payload };
 
     case types.LOGIN_USER:
@@ -35,4 +50,4 @@ const reducer = (state = initialState, action) => {
   return state;
 }
 
-export default reducer
+export default persistReducer(persistConfig, reducer);

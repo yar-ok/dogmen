@@ -6,7 +6,7 @@ import Styles from '../utils/App.style'
 import DatabaseSettings from '../utils/DatabaseSettings'
 import Constants from '../utils/Constants'
 
-import { store } from '../config/store'
+import { store, persistor } from '../config/store'
 
 class SplashContainer extends Component {
   constructor(props) {
