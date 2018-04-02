@@ -8,14 +8,12 @@ import { persistCombineReducers } from "redux-persist";
 import autoMergeLevel2 from "redux-persist/lib/stateReconciler/autoMergeLevel2";
 
 import appReducer from "../reducers/AppReducer";
-import LoginReducer from "../reducers/LoginReducer";
-import OrdersReducer from "../reducers/OrdersReducer";
 
 const persistConfig = {
   key: "root",
   storage: storage,
   stateReconciler: autoMergeLevel2,
-  whitelist: ["token"]
+  whitelist: ["token", "database"]
 };
 
 const persistAppReducer = persistReducer(persistConfig, appReducer);
