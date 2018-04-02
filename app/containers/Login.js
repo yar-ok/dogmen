@@ -13,6 +13,8 @@ import Spinner from 'react-native-loading-spinner-overlay'
 
 import { NavigationActions } from 'react-navigation';
 
+import { store } from "../config/store";
+
 const mapStateToProps = (state) => ({
   loading: state.loginState.loading,
   token: state.loginState.token,
@@ -87,7 +89,7 @@ class Login extends Component {
     }
 
     setTimeout (() => {
-        if (!this.props.error && this.props.token !== undefined && this.props.token.trim() !== "") {
+        if (!this.props.error && this.props.token !== undefined && this.props.token !== "") {
           const resetAction = NavigationActions.reset({
             index: 0,
             actions: [

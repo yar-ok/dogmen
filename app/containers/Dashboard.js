@@ -13,6 +13,8 @@ import { NavigationActions } from 'react-navigation';
 import { connect } from 'react-redux'
 import { actionCreators } from '../actions/LoginActions'
 
+import { store } from "../config/store";
+
 const mapStateToProps = (state) => ({
   loading: state.loginState.loading,
   token: state.loginState.token,

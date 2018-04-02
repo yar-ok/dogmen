@@ -12,9 +12,11 @@ export const actionCreators = {
   login: (userName, pass) => async(dispatch, getState) => {
     dispatch({
       type: types.LOGIN_USER,
-      loading: true,
-      error: false,
-    })
+      payload: {
+        loading: true,
+        error: false
+      }
+    });
     setTimeout (() => {
       // check for server error
       if (true) {
@@ -22,17 +24,21 @@ export const actionCreators = {
         saveUserData(token)
         dispatch({
           type: types.LOGIN_USER,
-          loading: false,
-          error: false,
-          token: token
-        })
+          payload: {
+            loading: false,
+            error: false,
+            token: token
+          }
+        });
       } else {
         //error
         dispatch({
           type: types.LOGIN_USER,
-          loading: false,
-          error: true,
-        })
+          payload: {
+            loading: false,
+            error: true
+          }
+        });
       }
     }, 4000)
   },
@@ -40,18 +46,22 @@ export const actionCreators = {
   resetLogin: () => {
     return {
       type: types.LOGIN_USER,
-      loading: false,
-      token: '',
-      error: false,
+      payload: {
+        loading: false,
+        token: '',
+        error: false,
+      }
     }
   },
 
   resetPassword: (email) => async(dispatch, getState) => {
     dispatch({
       type: types.FORGOT_PASSWORD,
-      loading: true,
-      error: false,
-      result: false,
+      payload: {
+        loading: true,
+        error: false,
+        result: false,
+      }
     })
 
     setTimeout (() => {
@@ -59,17 +69,21 @@ export const actionCreators = {
       if (true) {
         dispatch({
           type: types.FORGOT_PASSWORD,
-          loading: false,
-          error: false,
-          result: true,
+          payload: {
+            loading: false,
+            error: false,
+            result: true,
+          }
         })
       } else {
         //error
         dispatch({
           type: types.FORGOT_PASSWORD,
-          loading: false,
-          error: true,
-          result: false,
+          payload: {
+            loading: false,
+            error: true,
+            result: false,
+          }
         })
       }
     }, 3000)
@@ -78,8 +92,10 @@ export const actionCreators = {
   signUp: (name, lastName, email, age) => async(dispatch, getState) => {
     dispatch({
       type: types.SIGN_UP,
-      loading: true,
-      error: false,
+      payload: {
+        loading: true,
+        error: false,
+      }
     })
     setTimeout (() => {
       // check for server error
@@ -88,16 +104,20 @@ export const actionCreators = {
         saveUserData(token)
         dispatch({
           type: types.SIGN_UP,
-          loading: false,
-          error: false,
-          token: token,
+          payload: {
+            loading: false,
+            error: false,
+            token: token,
+          }
         })
       } else {
         //error
         dispatch({
           type: types.SIGN_UP,
-          loading: false,
-          error: true,
+          payload: {
+            loading: false,
+            error: true,
+          }
         })
       }
     }, 4000)
@@ -106,9 +126,11 @@ export const actionCreators = {
   resetSignUp: () => {
     return {
       type: types.SIGN_UP,
-      loading: false,
-      token: '',
-      error: false,
+      payload: {
+        loading: false,
+        token: '',
+        error: false,
+      }
     }
   },
 
@@ -116,9 +138,11 @@ export const actionCreators = {
     logout()
     return {
       type: types.LOGOUT,
-      loading: false,
-      token: '',
-      error: false,
+      payload: {
+        loading: false,
+        token: '',
+        error: false,
+      }
     }
   },
 }

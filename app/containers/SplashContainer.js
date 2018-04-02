@@ -6,6 +6,8 @@ import Styles from '../utils/App.style'
 import DatabaseSettings from '../utils/DatabaseSettings'
 import Constants from '../utils/Constants'
 
+import { store } from '../config/store'
+
 class SplashContainer extends Component {
   constructor(props) {
     super(props);
@@ -32,6 +34,8 @@ class SplashContainer extends Component {
 
   render() {
     setTimeout (() => {
+      const { token } = store.getState();
+      alert('Token -> ' + token)
       try {
             AsyncStorage.getItem(Constants.USER_TOKEN).then((value) => {
                 this.goNextScreen(value);
