@@ -18,28 +18,8 @@ const persistConfig = {
   whitelist: ["token"]
 };
 
-// const persistAppReducer = persistCombineReducers(persistConfig, {
-//   loginState: LoginReducer,
-//   ordersState: OrdersReducer
-// });
-
-// const persistAppReducer = persistCombineReducers(persistConfig, appReducer);
 const persistAppReducer = persistReducer(persistConfig, appReducer);
 
-// const rootReducer = persistCombineReducers(
-//   persistConfig,
-//   {
-//     loginState: LoginReducer,
-//     ordersState: OrdersReducer
-//   }
-// );
-
 export const store = createStore(persistAppReducer, applyMiddleware(thunk));
-
-// export const store = createStore(rootReducer, {}, compose(applyMiddleware(thunk)));
-
-// export const store = compose(
-//   autoRehydrate()
-// )(createStore)(persistAppReducer);
 
 export const persistor = persistStore(store);

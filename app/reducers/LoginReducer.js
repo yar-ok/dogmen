@@ -23,15 +23,9 @@ const persistConfig = {
 
 const reducer = (state = initialState, action) => {
   const { type, payload } = action;
-  // alert('Login: type -> ' + type)
 
   switch (type) {
     case REHYDRATE:
-      if(payload !== undefined) {
-        alert("Reducer token: " + payload.token);
-      } else {
-        alert("Payload token: null yet");
-      }
       return { ...state, persistedState: payload };
 
     case types.LOGIN_USER:

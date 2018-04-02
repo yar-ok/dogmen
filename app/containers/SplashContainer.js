@@ -35,7 +35,6 @@ class SplashContainer extends Component {
   render() {
     setTimeout (() => {
       const { token } = store.getState().loginState;
-      alert('Token -> ' + token)
       try {
             AsyncStorage.getItem(Constants.USER_TOKEN).then((value) => {
                 this.goNextScreen(value);
@@ -43,7 +42,7 @@ class SplashContainer extends Component {
           } catch (error) {
             alert('Error -> ' + error);
           }
-    }, 10000);
+    }, 3000);
     return (
       <View style={Styles.backgroundContainer}>
         <StatusBar hidden = {true}/>
