@@ -101,15 +101,18 @@ class SwipeItemsScreen extends Component {
 
   render() {
     return <View>
-        <SwipeListView useFlatList keyExtractor={item => item.email} data={this.props.users} renderItem={(data, rowMap) => <UserItem {...data} />} renderHiddenItem={(data, rowMap) => <View style={styles.rowBack}>
+        <SwipeListView useFlatList keyExtractor={item => item.email} data={this.props.users} renderItem={({ item }) => <UserItem {...item} />} renderHiddenItem={(data, rowMap) => <View style={styles.rowBack}>
               <Text>Left</Text>
-              <Text>Right</Text>
-            </View>} leftOpenValue={75} rightOpenValue={-75} />
+              <TouchableOpacity style={[styles.backRightBtn, styles.backRightBtnLeft]}>
+                <Text style={styles.backTextWhite}>Close</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={[styles.backRightBtn, styles.backRightBtnRight]}>
+                <Text style={styles.backTextWhite}>Delete</Text>
+              </TouchableOpacity>
+            </View>} leftOpenValue={75} rightOpenValue={-150} stopLeftSwipe={160} stopRightSwipe={-220} ItemSeparatorComponent={this.renderSeparator} ListFooterComponent={this.renderFooter} onEndReachedThreshold={0.5} onEndReached={this.handleLoadMore} />
       </View>;
   }
 }
-
-// <FlatList data={this.props.users} numColumns={1} keyExtractor={item => item.email} renderItem={({ item }) => <UserItem {...item} />} ItemSeparatorComponent={this.renderSeparator} ListFooterComponent={this.renderFooter} onEndReachedThreshold={0.5} onEndReached={this.handleLoadMore} />;
 
 const styles = StyleSheet.create({
   rowFront: {
@@ -127,6 +130,25 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     paddingLeft: 15
+  },
+  backTextWhite: {
+    color: "#FFF"
+  },
+  backRightBtn: {
+    alignItems: "center",
+    bottom: 0,
+    justifyContent: "center",
+    position: "absolute",
+    top: 0,
+    width: 75
+  },
+  backRightBtnLeft: {
+    backgroundColor: "blue",
+    right: 75
+  },
+  backRightBtnRight: {
+    backgroundColor: "red",
+    right: 0
   }
 });
 

@@ -7,7 +7,7 @@ import {
   TouchableOpacity
 } from "react-native";
 
-const UserItem = props => (
+const UserItem = (props) => (
   <View style={styles.container}>
     <View
       style={{ backgroundColor: "white", padding: 12, flexDirection: "row" }}>
