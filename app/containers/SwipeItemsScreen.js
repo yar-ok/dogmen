@@ -31,17 +31,32 @@ class SwipeItemsScreen extends Component {
   componentDidMount() {
     this.props.getAllUsers();
   }
+
+  renderSeparator = () => {
+    return (
+      <View
+        style={{
+          height: 1,
+          width: "86%",
+          backgroundColor: "#CED0CE",
+          marginLeft: "14%"
+        }}
+      />
+    );
+  };
   
   render() {
     return (
       <View>
-        <FlatList 
-        data={this.props.users} 
-        numColumns={1} 
-        keyExtractor={item => item.email} 
-        renderItem={({ item }) => <UserItem {...item} />} />
+        <FlatList
+          data={this.props.users}
+          numColumns={1}
+          keyExtractor={item => item.email}
+          renderItem={({ item }) => <UserItem {...item} />}
+          ItemSeparatorComponent={this.renderSeparator}
+        />
       </View>
-    )
+    );
   }
 }
 

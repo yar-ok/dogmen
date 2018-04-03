@@ -9,8 +9,13 @@ import {
 
 const UserItem = props => (
   <View style={styles.container}>
-    <View style={{ backgroundColor: "white", padding: 12 }}>
+    <View
+      style={{ backgroundColor: "white", padding: 12, flexDirection: "row" }}>
       <Image source={{ uri: props.picture.thumbnail }} style={styles.photo} />
+      <View>
+        <Text>{`${props.name.first} ${props.name.last}`}</Text>
+        <Text>{props.email}</Text>
+      </View>
     </View>
   </View>
 );
@@ -20,9 +25,9 @@ const styles = StyleSheet.create({
     flex: 1
   },
   photo: {
-    height: 60,
-    width: 60,
-    borderRadius: 30,
+    height: 40,
+    width: 40,
+    borderRadius: 20,
     marginRight: 10
   },
 });
