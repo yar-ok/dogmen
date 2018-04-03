@@ -85,7 +85,7 @@ class SwipeItemsScreen extends Component {
         <FlatList data={this.props.users} numColumns={1} keyExtractor={item => item.email} renderItem={({ item }) => <UserItem {...item} />}
         ItemSeparatorComponent={this.renderSeparator}
         ListFooterComponent={this.renderFooter}
-        onEndReachedThreshold={0} onEndReached={this.handleLoadMore} />
+        onEndReachedThreshold={0.5} onEndReached={this.handleLoadMore} />
       </View>;
   }
 }
