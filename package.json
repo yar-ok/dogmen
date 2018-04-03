@@ -15,6 +15,7 @@
     "react-native-keyboard-manager": "^4.0.13-7",
     "react-native-loading-spinner-overlay": "^0.5.2",
     "react-native-sqlite-storage": "^3.3.4",
+    "react-native-swipe-list-view": "^1.0.7",
     "react-navigation": "^1.5.8",
     "react-navigation-redux-helpers": "^1.0.3",
     "react-redux": "^5.0.7",

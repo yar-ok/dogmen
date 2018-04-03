@@ -9,6 +9,8 @@ import {
   ActivityIndicator
 } from "react-native";
 
+import { SwipeListView } from "react-native-swipe-list-view";
+
 import UserItem from '../components/UserItem'
 import AppHeaderTitle from "../components/AppHeaderTitle";
 import Resources from "../utils/Resources";
@@ -98,21 +100,34 @@ class SwipeItemsScreen extends Component {
   };
 
   render() {
-    return (
-      <View>
-        <FlatList
-          data={this.props.users}
-          numColumns={1}
-          keyExtractor={item => item.email}
-          renderItem={({ item }) => <UserItem {...item} />}
-          ItemSeparatorComponent={this.renderSeparator}
-          ListFooterComponent={this.renderFooter}
-          onEndReachedThreshold={0.5}
-          onEndReached={this.handleLoadMore}
-        />
-      </View>
-    );
+    return <View>
+        <SwipeListView useFlatList keyExtractor={item => item.email} data={this.props.users} renderItem={(data, rowMap) => <UserItem {...data} />} renderHiddenItem={(data, rowMap) => <View style={styles.rowBack}>
+              <Text>Left</Text>
+              <Text>Right</Text>
+            </View>} leftOpenValue={75} rightOpenValue={-75} />
+      </View>;
   }
 }
+
+// <FlatList data={this.props.users} numColumns={1} keyExtractor={item => item.email} renderItem={({ item }) => <UserItem {...item} />} ItemSeparatorComponent={this.renderSeparator} ListFooterComponent={this.renderFooter} onEndReachedThreshold={0.5} onEndReached={this.handleLoadMore} />;
+
+const styles = StyleSheet.create({
+  rowFront: {
+    alignItems: "center",
+    backgroundColor: "#CCC",
+    borderBottomColor: "black",
+    borderBottomWidth: 1,
+    justifyContent: "center",
+    height: 50
+  },
+  rowBack: {
+    alignItems: "center",
+    backgroundColor: "#DDD",
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingLeft: 15
+  }
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(SwipeItemsScreen)
