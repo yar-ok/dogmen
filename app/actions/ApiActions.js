@@ -6,16 +6,18 @@ export const actionCreators = {
         dispatch({
             type: types.GET_USERS,
             payload: {
+              result: users,
                 loading: true,
                 error: false
             }
         });
 
 //------------------
-        if (page > 1) {
-          return
-        }
+        // if (page > 1) {
+        //   return
+        // }
         //------------------
+        setTimeout (() => {
        fetch(url)
             .then(res => res.json())
             .then(res => {
@@ -37,5 +39,6 @@ export const actionCreators = {
                 }
               });
             });;
+          }, 2000);
     }
 }
