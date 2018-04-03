@@ -5,7 +5,8 @@ import {
   Text,
   View,
   TouchableOpacity,
-  Dimensions
+  Dimensions,
+  ActivityIndicator
 } from "react-native";
 
 import UserItem from '../components/UserItem'
@@ -21,15 +22,22 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    getAllUsers: () => {
-      dispatch(actionCreators.getAllUsers());
+    getAllUsers: (page) => {
+      dispatch(actionCreators.getAllUsers(page));
     }
   };
 };
 
 class SwipeItemsScreen extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      page: 1,
+    }
+  }
+
   componentDidMount() {
-    this.props.getAllUsers();
+    this.props.getAllUsers(this.state.page);
   }
 
   renderSeparator = () => {
@@ -44,19 +52,47 @@ class SwipeItemsScreen extends Component {
       />
     );
   };
-  
-  render() {
+
+  renderFooter = () => {
+    if (!this.props.loading) return null;
+
     return (
-      <View>
-        <FlatList
-          data={this.props.users}
-          numColumns={1}
-          keyExtractor={item => item.email}
-          renderItem={({ item }) => <UserItem {...item} />}
-          ItemSeparatorComponent={this.renderSeparator}
-        />
+      <View
+        style={{
+          paddingVertical: 20,
+          borderTopWidth: 1,
+          borderColor: "#CED0CE"
+        }}
+      >
+        <ActivityIndicator animating size="large" />
       </View>
     );
+  };
+
+  handleLoadMore = () => {
+    this.setState(
+      {
+        page: this.state.page + 1
+      },
+      () => {
+        alert('Page -> ' + this.state.page)
+        // this.testing()
+        this.props.getAllUsers(this.state.page);
+      }
+    );
+  };
+
+  testing = () => {
+    let oldPage = this.state.page
+    this.setState({ page: oldPage });
+  }
+
+  render() {
+    return <View>
+        <FlatList data={this.props.users} numColumns={1} keyExtractor={item => item.email} renderItem={({ item }) => <UserItem {...item} />} 
+        ItemSeparatorComponent={this.renderSeparator} ListFooterComponent={this.renderFooter} 
+        onEndThreonEndReachedThreshold={0} onEndReached={this.handleLoadMore} />
+      </View>;
   }
 }
 
