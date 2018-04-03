@@ -1,7 +1,7 @@
 export const types = { GET_USERS: "GET_USERS" };
 
 export const actionCreators = {
-    getAllUsers: (page) => async(dispatch, getState) => {
+    getAllUsers: (page, users) => async(dispatch, getState) => {
         let url = `https://randomuser.me/api/?seed=${1}&page=${page}&results=20`;
         dispatch({
             type: types.GET_USERS,
@@ -11,19 +11,18 @@ export const actionCreators = {
             }
         });
 
-        if (getState.users !== undefined) {
-            alert("Size -> " + getState.users.length);
+//------------------
+        if (page > 1) {
+          return
         }
-         fetch(url)
+        //------------------
+       fetch(url)
             .then(res => res.json())
             .then(res => {
               dispatch({
                 type: types.GET_USERS,
                 payload: {
-                  result:
-                    page === 1
-                      ? res.results
-                      : [...getState.users, res.results],
+                  result: [...users, ...res.results],
                   loading: false,
                   error: res.error || null
                 }

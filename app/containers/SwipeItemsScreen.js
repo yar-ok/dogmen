@@ -22,8 +22,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    getAllUsers: (page) => {
-      dispatch(actionCreators.getAllUsers(page));
+    getAllUsers: (page, users) => {
+      dispatch(actionCreators.getAllUsers(page, users));
     }
   };
 };
@@ -37,7 +37,7 @@ class SwipeItemsScreen extends Component {
   }
 
   componentDidMount() {
-    this.props.getAllUsers(this.state.page);
+    this.props.getAllUsers(this.state.page, this.props.users === undefined ? [] : this.props.users);
   }
 
   renderSeparator = () => {
@@ -75,23 +75,17 @@ class SwipeItemsScreen extends Component {
         page: this.state.page + 1
       },
       () => {
-        alert('Page -> ' + this.state.page)
-        // this.testing()
-        this.props.getAllUsers(this.state.page);
+        this.props.getAllUsers(this.state.page, this.props.users);
       }
     );
   };
 
-  testing = () => {
-    let oldPage = this.state.page
-    this.setState({ page: oldPage });
-  }
-
   render() {
     return <View>
-        <FlatList data={this.props.users} numColumns={1} keyExtractor={item => item.email} renderItem={({ item }) => <UserItem {...item} />} 
-        ItemSeparatorComponent={this.renderSeparator} ListFooterComponent={this.renderFooter} 
-        onEndThreonEndReachedThreshold={0} onEndReached={this.handleLoadMore} />
+        <FlatList data={this.props.users} numColumns={1} keyExtractor={item => item.email} renderItem={({ item }) => <UserItem {...item} />}
+        ItemSeparatorComponent={this.renderSeparator}
+        ListFooterComponent={this.renderFooter}
+        onEndReachedThreshold={0} onEndReached={this.handleLoadMore} />
       </View>;
   }
 }
