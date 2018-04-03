@@ -10,6 +10,8 @@ import {
 } from "react-native";
 
 import UserItem from '../components/UserItem'
+import AppHeaderTitle from "../components/AppHeaderTitle";
+import Resources from "../utils/Resources";
 
 import { connect } from "react-redux";
 import { actionCreators } from "../actions/ApiActions";
@@ -32,12 +34,27 @@ class SwipeItemsScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      page: 1,
-    }
+      page: 1
+    };
   }
 
+  static navigationOptions = ({ navigation }) => {
+    const { params = {} } = navigation.state;
+    return {
+      headerTitle: <AppHeaderTitle title="Swipeable list" />,
+      headerTintColor: "white",
+      headerRight: <View />,
+      headerStyle: {
+        backgroundColor: Resources.TOOLBAR_COLOR
+      }
+    };
+  };
+
   componentDidMount() {
-    this.props.getAllUsers(this.state.page, this.props.users === undefined ? [] : this.props.users);
+    this.props.getAllUsers(
+      this.state.page,
+      this.props.users === undefined ? [] : this.props.users
+    );
   }
 
   renderSeparator = () => {
@@ -81,12 +98,20 @@ class SwipeItemsScreen extends Component {
   };
 
   render() {
-    return <View>
-        <FlatList data={this.props.users} numColumns={1} keyExtractor={item => item.email} renderItem={({ item }) => <UserItem {...item} />}
-        ItemSeparatorComponent={this.renderSeparator}
-        ListFooterComponent={this.renderFooter}
-        onEndReachedThreshold={0.5} onEndReached={this.handleLoadMore} />
-      </View>;
+    return (
+      <View>
+        <FlatList
+          data={this.props.users}
+          numColumns={1}
+          keyExtractor={item => item.email}
+          renderItem={({ item }) => <UserItem {...item} />}
+          ItemSeparatorComponent={this.renderSeparator}
+          ListFooterComponent={this.renderFooter}
+          onEndReachedThreshold={0.5}
+          onEndReached={this.handleLoadMore}
+        />
+      </View>
+    );
   }
 }
 
