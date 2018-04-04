@@ -13,12 +13,13 @@
 #import <React/RCTRootView.h>
 #import "RNFIRMessaging.h"
 @import Firebase;
+@import GoogleMaps;
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-
+  [GMSServices provideAPIKey:@"AIzaSyCAWoBmA3lNMQ8pV5YOhAJxCb3B3_ldJLI"];
   [FIRApp configure];
   [[UNUserNotificationCenter currentNotificationCenter] setDelegate:self];
   NSURL *jsCodeLocation;
