@@ -6,6 +6,7 @@ import SignUp from '../containers/SignUp'
 import Welcome from '../containers/Welcome'
 import PendingOrders from '../containers/PendingOrders'
 import SwipeItemsScreen from "../containers/SwipeItemsScreen";
+import MapScreen from "../containers/MapScreen";
 
 import Camera from '../containers/ios/CameraScreen'
 
@@ -27,7 +28,8 @@ const Stack = {
   Welcome: { screen: Welcome },
   Camera: { screen: Camera },
   PendingOrders: { screen: PendingOrders },
-  SwipeItems: { screen: SwipeItemsScreen }
+  SwipeItems: { screen: SwipeItemsScreen },
+  Map: { screen: MapScreen }
 };
 
 export default Stack

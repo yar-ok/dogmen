@@ -2,6 +2,7 @@ package com.dogmen;
 
 import android.app.Application;
 
+import com.airbnb.android.react.maps.MapsPackage;
 import com.dogmen.modules.managers.ReactModulePackage;
 import com.facebook.react.ReactApplication;
 import com.evollu.react.fcm.FIRMessagingPackage;
@@ -31,7 +32,8 @@ public class MainApplication extends Application implements ReactApplication {
           new MainReactPackage(),
               new ReactModulePackage(),
                 new FIRMessagingPackage(),
-                  new SQLitePluginPackage()
+                  new SQLitePluginPackage(),
+                    new MapsPackage()
       );
     }
 

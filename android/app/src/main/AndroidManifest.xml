@@ -12,6 +12,10 @@
         android:theme="@style/AppTheme">
 
         <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyASWkBaohhWYYp2AgAcpHba4odyu7SfWn4"/>
+
+        <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@mipmap/ic_launcher" />
 

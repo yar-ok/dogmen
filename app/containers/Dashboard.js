@@ -121,20 +121,52 @@ class Dashboard extends Component {
     });
   };
 
+  goToMapScreen = () => {
+    this.props.navigation.navigate("Map");
+  };
+
   render() {
-    return <View style={Styles.backgroundContainer}>
+    return (
+      <View style={Styles.backgroundContainer}>
         <PushNotification />
-        <StatusBar hidden={false} backgroundColor={Resources.STATUS_BAR_COLOR} />
-        <AppButton text="Pending orders" onPressed={() => this.showPendingOrders()} />
+        <StatusBar
+          hidden={false}
+          backgroundColor={Resources.STATUS_BAR_COLOR}
+        />
+        <AppButton
+          text="Pending orders"
+          onPressed={() => this.showPendingOrders()}
+        />
         <AppButton text="Calendar" onPressed={() => this.showCalendar()} />
-        <AppButton text="Horizontal swipe items" onPressed={() => this.goToHorizontalSwipeItems()} />
+        <AppButton
+          text="Horizontal swipe items"
+          onPressed={() => this.goToHorizontalSwipeItems()}
+        />
+        <AppButton text="Map" onPressed={() => this.goToMapScreen()} />
         <AppButton text="Settings" onPressed={() => this.settings()} />
-        <Modal transparent={true} visible={this.state.showIosCalendar} animationType={"fade"} onRequestClose={() => this.closeIosCalendar()}>
-          <TouchableOpacity activeOpacity={1} onPress={() => this.closeIosCalendar()} style={{ flex: 1, justifyContent: "center", backgroundColor: "rgba(19, 19, 19, 0.8)" }}>
-            <DatePickerIOS date={this.state.today} onDateChange={this.updateSelectedDate} />
+        <Modal
+          transparent={true}
+          visible={this.state.showIosCalendar}
+          animationType={"fade"}
+          onRequestClose={() => this.closeIosCalendar()}
+        >
+          <TouchableOpacity
+            activeOpacity={1}
+            onPress={() => this.closeIosCalendar()}
+            style={{
+              flex: 1,
+              justifyContent: "center",
+              backgroundColor: "rgba(19, 19, 19, 0.8)"
+            }}
+          >
+            <DatePickerIOS
+              date={this.state.today}
+              onDateChange={this.updateSelectedDate}
+            />
           </TouchableOpacity>
         </Modal>
-      </View>;
+      </View>
+    );
   }
 }
 
