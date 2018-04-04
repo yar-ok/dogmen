@@ -25,14 +25,11 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => {
-  return {
-    getAllUsers: (page, users) => {
-      dispatch(actionCreators.getAllUsers(page, users))
-    },
-    updateUsersStore: (users) => {
-      dispatch(actionCreators.updateUsersStore(users))
-    }
-  };
+  return { getAllUsers: (page, users) => {
+      dispatch(actionCreators.getAllUsers(page, users));
+    }, updateUsersStore: (rowData, rowMap, users) => {
+      dispatch(actionCreators.updateUsersStore(rowData, rowMap, users));
+    } };
 };
 
 class SwipeItemsScreen extends Component {
@@ -104,10 +101,7 @@ class SwipeItemsScreen extends Component {
 
   deleteRow(rowData, rowMap) {
   	this.closeRow(rowData, rowMap);
-  	const newData = [...this.props.users];
-  	const prevIndex = this.props.users.findIndex(item => item.email === rowData.item.email);
-  	newData.splice(prevIndex, 1);
-  	this.props.updateUsersStore(newData);
+  	this.props.updateUsersStore(rowData, rowMap, this.props.users);
   }
 
   closeRow(rowData, rowMap) {
