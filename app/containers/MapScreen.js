@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Animated } from "react-native";
 
 import AppHeaderTitle from "../components/AppHeaderTitle";
 import Resources from "../utils/Resources";
@@ -96,9 +96,9 @@ class MapScreen extends Component {
                 >
                     {this.state.markers.map((marker, index) => {
                         return <MapView.Marker key={index} coordinate={marker.coordinate}>
-                            <View style={[styles.markerWrap]}>
+                            <Animated.View style={[styles.markerWrap]}>
                               <View style={styles.marker} />
-                            </View>
+                            </Animated.View>
                           </MapView.Marker>;
                     })}
                 </MapView>
