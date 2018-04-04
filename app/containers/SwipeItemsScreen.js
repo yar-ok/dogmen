@@ -99,11 +99,19 @@ class SwipeItemsScreen extends Component {
     );
   };
 
+  closeRow(rowData, rowMap) {
+    // if (rowMap[rowKey]) {
+    //   rowMap[rowKey].closeRow();
+    // }
+    // rowMap[rowData.item.key].closeRow();
+    alert("rowKey -> " + rowKey + "   ");
+  }
+
   render() {
     return <View>
-        <SwipeListView useFlatList keyExtractor={item => item.email} data={this.props.users} renderItem={({ item }) => <UserItem {...item} />} renderHiddenItem={(data, rowMap) => <View style={styles.rowBack}>
+        <SwipeListView useFlatList keyExtractor={item => item.email} data={this.props.users} renderItem={({ item }) => <UserItem {...item} />} renderHiddenItem={(rowData, rowMap) => <View style={styles.rowBack}>
               <Text>Left</Text>
-              <TouchableOpacity style={[styles.backRightBtn, styles.backRightBtnLeft]}>
+              <TouchableOpacity style={[styles.backRightBtn, styles.backRightBtnLeft]} onPress={() => this.closeRow(rowData, rowMap)}>
                 <Text style={styles.backTextWhite}>Close</Text>
               </TouchableOpacity>
               <TouchableOpacity style={[styles.backRightBtn, styles.backRightBtnRight]}>
