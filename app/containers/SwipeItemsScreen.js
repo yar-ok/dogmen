@@ -27,7 +27,10 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => {
   return {
     getAllUsers: (page, users) => {
-      dispatch(actionCreators.getAllUsers(page, users));
+      dispatch(actionCreators.getAllUsers(page, users))
+    },
+    updateUsersStore: (users) => {
+      dispatch(actionCreators.updateUsersStore(users))
     }
   };
 };
@@ -99,22 +102,27 @@ class SwipeItemsScreen extends Component {
     );
   };
 
+  deleteRow(rowData, rowMap) {
+  	this.closeRow(rowData, rowMap);
+  	const newData = [...this.props.users];
+  	const prevIndex = this.props.users.findIndex(item => item.email === rowData.item.email);
+  	newData.splice(prevIndex, 1);
+  	this.props.updateUsersStore(newData);
+  }
+
   closeRow(rowData, rowMap) {
-    // if (rowMap[rowKey]) {
-    //   rowMap[rowKey].closeRow();
-    // }
-    // rowMap[rowData.item.key].closeRow();
-    alert("rowKey -> " + rowKey + "   ");
+    rowMap[rowData.item.email].closeRow();
   }
 
   render() {
     return <View>
-        <SwipeListView useFlatList keyExtractor={item => item.email} data={this.props.users} renderItem={({ item }) => <UserItem {...item} />} renderHiddenItem={(rowData, rowMap) => <View style={styles.rowBack}>
+        <SwipeListView useFlatList keyExtractor={item => item.email} data={this.props.users} renderItem={({ item }) => <UserItem {...item} />}
+        renderHiddenItem={(rowData, rowMap) => <View style={styles.rowBack}>
               <Text>Left</Text>
               <TouchableOpacity style={[styles.backRightBtn, styles.backRightBtnLeft]} onPress={() => this.closeRow(rowData, rowMap)}>
                 <Text style={styles.backTextWhite}>Close</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={[styles.backRightBtn, styles.backRightBtnRight]}>
+              <TouchableOpacity style={[styles.backRightBtn, styles.backRightBtnRight]} onPress={() => this.deleteRow(rowData, rowMap)}>
                 <Text style={styles.backTextWhite}>Delete</Text>
               </TouchableOpacity>
             </View>} leftOpenValue={75} rightOpenValue={-150} stopLeftSwipe={160} stopRightSwipe={-220} ItemSeparatorComponent={this.renderSeparator} ListFooterComponent={this.renderFooter} onEndReachedThreshold={0.5} onEndReached={this.handleLoadMore} />

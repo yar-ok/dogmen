@@ -33,6 +33,17 @@ export const actionCreators = {
                   error: true
                 }
               });
-            });;
+            });
+    },
+
+    updateUsersStore: (users) => {
+      return{
+        type: types.GET_USERS,
+        payload: {
+          result: users,
+          loading: false,
+          error: null
+        }
+      };
     }
 }
