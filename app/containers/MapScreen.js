@@ -35,6 +35,12 @@ class MapScreen extends Component {
                         latitude: 49.420246, 
                         longitude: 32.058142,           
                     },
+                },
+                {
+                    coordinate: {
+                        latitude: 49.430009, 
+                        longitude: 32.084544
+                    }
                 }
             ],
             myLocation: {
@@ -86,9 +92,16 @@ class MapScreen extends Component {
                     longitude: this.state.myLocation.longitude, 
                     latitudeDelta: this.state.myLocation.latitudeDelta, 
                     longitudeDelta: this.state.myLocation.longitudeDelta 
-                }} 
-                
-                />
+                }}
+                >
+                    {this.state.markers.map((marker, index) => {
+                        return <MapView.Marker key={index} coordinate={marker.coordinate}>
+                            <View style={[styles.markerWrap]}>
+                              <View style={styles.marker} />
+                            </View>
+                          </MapView.Marker>;
+                    })}
+                </MapView>
             </View>
         )
     }
@@ -98,8 +111,24 @@ const styles = StyleSheet.create({
   container: {
     height: "100%",
     width: "100%"
-  }
+  },
+
+  markerWrap: {
+    alignItems: "center",
+    justifyContent: "center",
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+    backgroundColor: "rgba(130,4,150, 0.3)",
+    borderWidth: 1,
+    borderColor: "rgba(130,4,150, 0.5)"
+  },
+  marker: {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: "rgba(130,4,150, 0.9)"
+  },
 });
-                // region={{ latitude: this.state.latitude, longitude: this.state.longitude, latitudeDelta: this.state.latitudeDelta, longitudeDelta: this.state.longitudeDelta }}
 
 export default MapScreen
