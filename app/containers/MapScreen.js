@@ -18,6 +18,7 @@ class MapScreen extends Component {
                         longitude: 32.085894,
                     },
                     dogName: 'Jessy',
+                    customerName: 'Anna Mary',
                     customerImg: 'https://randomuser.me/api/portraits/thumb/women/82.jpg'
                 },
                 {
@@ -26,6 +27,7 @@ class MapScreen extends Component {
                         longitude: 32.092245,
                     },
                     dogName: 'Tom',
+                    customerName: 'Jessica',
                     customerImg: 'https://randomuser.me/api/portraits/thumb/women/37.jpg'
                 },
                 {
@@ -34,6 +36,7 @@ class MapScreen extends Component {
                         longitude: 32.068127,
                     },
                     dogName: 'Fox',
+                    customerName: 'Michael Black',
                     customerImg: 'https://randomuser.me/api/portraits/thumb/men/37.jpg'
                 },
                 {
@@ -42,6 +45,7 @@ class MapScreen extends Component {
                         longitude: 32.058142,
                     },
                     dogName: 'Tompson',
+                    customerName: 'Diana',
                     customerImg: 'https://randomuser.me/api/portraits/thumb/women/15.jpg'
                 },
                 {
@@ -50,6 +54,7 @@ class MapScreen extends Component {
                         longitude: 32.084544,
                     },
                     dogName: 'Tyson',
+                    customerName: 'Bob Dilan',
                     customerImg: 'https://randomuser.me/api/portraits/thumb/men/30.jpg'
                 }
             ],
@@ -112,7 +117,12 @@ class MapScreen extends Component {
                             <MapView.Callout tooltip={false}>
                                 <View style={{ flexDirection: 'row', width: 200 }}>
                                     <Image source={{ uri: marker.customerImg }} style={{ height: 70, width: 70, borderRadius: 1, marginRight: 6, alignSelf: 'center' }}/>
-                                    <Text style={{flex: 1, flexWrap: 'wrap'}}>This text should be one-liner</Text>
+                                    <View>
+                                        <Text style={styles.title}>Pet:</Text>
+                                        <Text style={styles.name}>{marker.dogName}</Text>
+                                        <Text style={styles.title}>Customer:</Text>
+                                        <Text style={styles.name}>{marker.customerName}</Text>
+                                    </View>
                                 </View>
                             </MapView.Callout>
                           </MapView.Marker>;
@@ -144,6 +154,18 @@ const styles = StyleSheet.create({
     height: 8,
     borderRadius: 4,
     backgroundColor: "rgba(130,4,150, 0.9)"
+  },
+  title: {
+      flex: 1,
+      flexWrap: 'wrap', 
+      fontSize: 14, 
+      color: 'grey'
+  },
+  name: {
+    flex: 1, 
+    flexWrap: 'wrap', 
+    fontSize: 15, 
+    color: 'black'
   },
 });
 
