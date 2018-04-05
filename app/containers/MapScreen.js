@@ -16,45 +16,45 @@ class MapScreen extends Component {
                     coordinate: {
                         latitude: 49.437710,
                         longitude: 32.085894,
-                        dogName: 'Jessy',
-                        customerImg: 'https://randomuser.me/api/portraits/thumb/women/82.jpg'
                     },
+                    dogName: 'Jessy',
+                    customerImg: 'https://randomuser.me/api/portraits/thumb/women/82.jpg'
                 },
                 {
                     coordinate: {
                         latitude: 49.445641,
-                        longitude: 32.092245,           
-                        dogName: 'Tom',
-                        customerImg: 'https://randomuser.me/api/portraits/thumb/women/37.jpg'
+                        longitude: 32.092245,
                     },
+                    dogName: 'Tom',
+                    customerImg: 'https://randomuser.me/api/portraits/thumb/women/37.jpg'
                 },
                 {
                     coordinate: {
-                        latitude: 49.449239, 
-                        longitude: 32.068127,           
-                        dogName: 'Fox',
-                        customerImg: 'https://randomuser.me/api/portraits/thumb/men/37.jpg'
+                        latitude: 49.449239,
+                        longitude: 32.068127,
                     },
+                    dogName: 'Fox',
+                    customerImg: 'https://randomuser.me/api/portraits/thumb/men/37.jpg'
                 },
                 {
                     coordinate: {
-                        latitude: 49.420246, 
-                        longitude: 32.058142,           
-                        dogName: 'Tompson',
-                        customerImg: 'https://randomuser.me/api/portraits/thumb/women/15.jpg'
+                        latitude: 49.420246,
+                        longitude: 32.058142,
                     },
+                    dogName: 'Tompson',
+                    customerImg: 'https://randomuser.me/api/portraits/thumb/women/15.jpg'
                 },
                 {
                     coordinate: {
-                        latitude: 49.430009, 
+                        latitude: 49.430009,
                         longitude: 32.084544,
-                        dogName: 'Tyson',
-                        customerImg: 'https://randomuser.me/api/portraits/thumb/men/30.jpg'
-                    }
+                    },
+                    dogName: 'Tyson',
+                    customerImg: 'https://randomuser.me/api/portraits/thumb/men/30.jpg'
                 }
             ],
             myLocation: {
-                latitude: 49.408073, 
+                latitude: 49.408073,
                 longitude: 32.044204,
                 latitudeDelta: 0.04864195044303443,
                 longitudeDelta: 0.040142817690068
@@ -83,7 +83,7 @@ class MapScreen extends Component {
     //                     longitude: position.coords.longitude,
     //                     latitudeDelta: 0.04864195044303443,
     //                     longitudeDelta: 0.040142817690068
-    //                 } 
+    //                 }
     //             });
     //         },
     //         (error) => alert('Location error -> ' + error.message),
@@ -94,14 +94,14 @@ class MapScreen extends Component {
     render() {
         return(
             <View>
-                <MapView style={ styles.container } 
+                <MapView style={ styles.container }
                 showsUserLocation={true}
                 region={this.state.myLocation}
-                initialRegion={{ 
-                    latitude: this.state.myLocation.latitude, 
-                    longitude: this.state.myLocation.longitude, 
-                    latitudeDelta: this.state.myLocation.latitudeDelta, 
-                    longitudeDelta: this.state.myLocation.longitudeDelta 
+                initialRegion={{
+                    latitude: this.state.myLocation.latitude,
+                    longitude: this.state.myLocation.longitude,
+                    latitudeDelta: this.state.myLocation.latitudeDelta,
+                    longitudeDelta: this.state.myLocation.longitudeDelta
                 }}
                 >
                     {this.state.markers.map((marker, index) => {
@@ -109,10 +109,10 @@ class MapScreen extends Component {
                             <Animated.View style={[styles.markerWrap]}>
                               <View style={styles.marker} />
                             </Animated.View>
-                            <MapView.Callout tooltip={false} style={{ flex: -1, position: 'absolute', width:200, height: 100}}>
-                                <View style={{ flexDirection: 'row', height: 100 }}>
-                                    <Image source={{ uri: 'https://randomuser.me/api/portraits/thumb/women/15.jpg' }} style={{ height: 70, width: 70, borderRadius: 6, marginRight: 6, alignSelf: 'center' }}/>
-                                    <Text style={{ flex: 1, alignSelf: 'center' }}>This text should be one-liner</Text>
+                            <MapView.Callout tooltip={false}>
+                                <View style={{ flexDirection: 'row', width: 200 }}>
+                                    <Image source={{ uri: marker.customerImg }} style={{ height: 70, width: 70, borderRadius: 1, marginRight: 6, alignSelf: 'center' }}/>
+                                    <Text style={{flex: 1, flexWrap: 'wrap'}}>This text should be one-liner</Text>
                                 </View>
                             </MapView.Callout>
                           </MapView.Marker>;
