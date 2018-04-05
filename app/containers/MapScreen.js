@@ -67,7 +67,7 @@ class MapScreen extends Component {
                 }
             ],
             myLocation: {
-                latitude: 49.439862, 
+                latitude: 49.439862,
                 longitude: 32.067456,
                 latitudeDelta: 0.04864195044303443,
                 longitudeDelta: 0.040142817690068
@@ -89,22 +89,22 @@ class MapScreen extends Component {
         };
     };
 
-    // componentDidMount() {
-    //     navigator.geolocation.getCurrentPosition(
-    //         (position) => {
-    //             this.setState({
-    //                 myLocation: {
-    //                     latitude: position.coords.latitude,
-    //                     longitude: position.coords.longitude,
-    //                     latitudeDelta: 0.04864195044303443,
-    //                     longitudeDelta: 0.040142817690068
-    //                 }
-    //             });
-    //         },
-    //         (error) => alert('Location error -> ' + error.message),
-    //         { enableHighAccuracy: false, timeout: 200000, maximumAge: 1000 },
-    //     );
-    // }
+    componentDidMount() {
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                this.setState({
+                    myLocation: {
+                        latitude: position.coords.latitude,
+                        longitude: position.coords.longitude,
+                        latitudeDelta: 0.04864195044303443,
+                        longitudeDelta: 0.040142817690068
+                    }
+                });
+            },
+            (error) => alert('Location error -> ' + error.message),
+            { enableHighAccuracy: false, timeout: 200000, maximumAge: 1000 },
+        );
+    }
 
     setDirection(coordinates) {
         this.setState({
@@ -119,12 +119,12 @@ class MapScreen extends Component {
 
     getDirection() {
         if(this.state.destination !== null) {
-            return <MapViewDirections 
-            origin={this.state.myLocation} 
-            destination={this.state.destination} 
+            return <MapViewDirections
+            origin={this.state.myLocation}
+            destination={this.state.destination}
             strokeWidth={3}
             strokeColor={Resources.TOOLBAR_COLOR}
-            apikey='AIzaSyASWkBaohhWYYp2AgAcpHba4odyu7SfWn4' 
+            apikey='AIzaSyASWkBaohhWYYp2AgAcpHba4odyu7SfWn4'
             onReady={(result) => {
                 this.setState({
                     distance: result.distance,
