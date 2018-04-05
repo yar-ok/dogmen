@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { StyleSheet, View, Animated } from "react-native";
+import { StyleSheet, View, Text, Dimensions, Animated, Image } from "react-native";
 
 import AppHeaderTitle from "../components/AppHeaderTitle";
 import Resources from "../utils/Resources";
@@ -16,30 +16,40 @@ class MapScreen extends Component {
                     coordinate: {
                         latitude: 49.437710,
                         longitude: 32.085894,
+                        dogName: 'Jessy',
+                        customerImg: 'https://randomuser.me/api/portraits/thumb/women/82.jpg'
                     },
                 },
                 {
                     coordinate: {
                         latitude: 49.445641,
                         longitude: 32.092245,           
+                        dogName: 'Tom',
+                        customerImg: 'https://randomuser.me/api/portraits/thumb/women/37.jpg'
                     },
                 },
                 {
                     coordinate: {
                         latitude: 49.449239, 
                         longitude: 32.068127,           
+                        dogName: 'Fox',
+                        customerImg: 'https://randomuser.me/api/portraits/thumb/men/37.jpg'
                     },
                 },
                 {
                     coordinate: {
                         latitude: 49.420246, 
                         longitude: 32.058142,           
+                        dogName: 'Tompson',
+                        customerImg: 'https://randomuser.me/api/portraits/thumb/women/15.jpg'
                     },
                 },
                 {
                     coordinate: {
                         latitude: 49.430009, 
-                        longitude: 32.084544
+                        longitude: 32.084544,
+                        dogName: 'Tyson',
+                        customerImg: 'https://randomuser.me/api/portraits/thumb/men/30.jpg'
                     }
                 }
             ],
@@ -64,22 +74,22 @@ class MapScreen extends Component {
         };
     };
 
-    componentDidMount() {
-        navigator.geolocation.getCurrentPosition(
-            (position) => {
-                this.setState({
-                    myLocation: {
-                        latitude: position.coords.latitude,
-                        longitude: position.coords.longitude,
-                        latitudeDelta: 0.04864195044303443,
-                        longitudeDelta: 0.040142817690068
-                    } 
-                });
-            },
-            (error) => alert('Location error -> ' + error.message),
-            { enableHighAccuracy: false, timeout: 200000, maximumAge: 1000 },
-        );
-    }
+    // componentDidMount() {
+    //     navigator.geolocation.getCurrentPosition(
+    //         (position) => {
+    //             this.setState({
+    //                 myLocation: {
+    //                     latitude: position.coords.latitude,
+    //                     longitude: position.coords.longitude,
+    //                     latitudeDelta: 0.04864195044303443,
+    //                     longitudeDelta: 0.040142817690068
+    //                 } 
+    //             });
+    //         },
+    //         (error) => alert('Location error -> ' + error.message),
+    //         { enableHighAccuracy: false, timeout: 200000, maximumAge: 1000 },
+    //     );
+    // }
 
     render() {
         return(
@@ -99,6 +109,12 @@ class MapScreen extends Component {
                             <Animated.View style={[styles.markerWrap]}>
                               <View style={styles.marker} />
                             </Animated.View>
+                            <MapView.Callout tooltip={false} style={{ flex: -1, position: 'absolute', width:200, height: 100}}>
+                                <View style={{ flexDirection: 'row', height: 100 }}>
+                                    <Image source={{ uri: 'https://randomuser.me/api/portraits/thumb/women/15.jpg' }} style={{ height: 70, width: 70, borderRadius: 6, marginRight: 6, alignSelf: 'center' }}/>
+                                    <Text style={{ flex: 1, alignSelf: 'center' }}>This text should be one-liner</Text>
+                                </View>
+                            </MapView.Callout>
                           </MapView.Marker>;
                     })}
                 </MapView>
