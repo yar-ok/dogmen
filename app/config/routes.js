@@ -7,6 +7,7 @@ import Welcome from '../containers/Welcome'
 import PendingOrders from '../containers/PendingOrders'
 import SwipeItemsScreen from "../containers/SwipeItemsScreen";
 import MapScreen from "../containers/MapScreen";
+import AddLocation from "../containers/AddLocation";
 
 import Camera from '../containers/ios/CameraScreen'
 
@@ -29,7 +30,8 @@ const Stack = {
   Camera: { screen: Camera },
   PendingOrders: { screen: PendingOrders },
   SwipeItems: { screen: SwipeItemsScreen },
-  Map: { screen: MapScreen }
+  Map: { screen: MapScreen },
+  AddLocation: { screen: AddLocation }
 };
 
 export default Stack

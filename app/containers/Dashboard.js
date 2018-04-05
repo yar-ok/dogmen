@@ -125,6 +125,10 @@ class Dashboard extends Component {
     this.props.navigation.navigate("Map");
   };
 
+  goToAddLocationScreen = () => {
+    this.props.navigation.navigate("AddLocation");
+  };
+
   render() {
     return (
       <View style={Styles.backgroundContainer}>
@@ -143,6 +147,7 @@ class Dashboard extends Component {
           onPressed={() => this.goToHorizontalSwipeItems()}
         />
         <AppButton text="Map" onPressed={() => this.goToMapScreen()} />
+        <AppButton text="Add location" onPressed={() => this.goToAddLocationScreen()} />
         <AppButton text="Settings" onPressed={() => this.settings()} />
         <Modal
           transparent={true}
