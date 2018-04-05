@@ -6,6 +6,9 @@ import AppHeaderTitle from "../components/AppHeaderTitle";
 import Resources from "../utils/Resources";
 
 import MapView from "react-native-maps";
+import MapViewDirections from "react-native-maps-directions";
+
+const WRONG_VALUE = -1;
 
 class MapScreen extends Component {
     constructor(props) {
@@ -64,11 +67,13 @@ class MapScreen extends Component {
                 }
             ],
             myLocation: {
-                latitude: 49.408073,
-                longitude: 32.044204,
+                latitude: 49.439862, 
+                longitude: 32.067456,
                 latitudeDelta: 0.04864195044303443,
                 longitudeDelta: 0.040142817690068
-            }
+            },
+
+            destination: null,
         }
     }
 
@@ -84,21 +89,52 @@ class MapScreen extends Component {
         };
     };
 
-    componentDidMount() {
-        navigator.geolocation.getCurrentPosition(
-            (position) => {
+    // componentDidMount() {
+    //     navigator.geolocation.getCurrentPosition(
+    //         (position) => {
+    //             this.setState({
+    //                 myLocation: {
+    //                     latitude: position.coords.latitude,
+    //                     longitude: position.coords.longitude,
+    //                     latitudeDelta: 0.04864195044303443,
+    //                     longitudeDelta: 0.040142817690068
+    //                 }
+    //             });
+    //         },
+    //         (error) => alert('Location error -> ' + error.message),
+    //         { enableHighAccuracy: false, timeout: 200000, maximumAge: 1000 },
+    //     );
+    // }
+
+    setDirection(coordinates) {
+        this.setState({
+          destination: {
+            latitude: coordinates.latitude,
+            longitude: coordinates.longitude
+          },
+          distance: WRONG_VALUE,
+          duration: WRONG_VALUE
+        });
+    }
+
+    getDirection() {
+        if(this.state.destination !== null) {
+            return <MapViewDirections 
+            origin={this.state.myLocation} 
+            destination={this.state.destination} 
+            strokeWidth={3}
+            strokeColor={Resources.TOOLBAR_COLOR}
+            apikey='AIzaSyASWkBaohhWYYp2AgAcpHba4odyu7SfWn4' 
+            onReady={(result) => {
                 this.setState({
-                    myLocation: {
-                        latitude: position.coords.latitude,
-                        longitude: position.coords.longitude,
-                        latitudeDelta: 0.04864195044303443,
-                        longitudeDelta: 0.040142817690068
-                    }
-                });
-            },
-            (error) => alert('Location error -> ' + error.message),
-            { enableHighAccuracy: false, timeout: 200000, maximumAge: 1000 },
-        );
+                    distance: result.distance,
+                    duration: result.duration
+                })
+            }}
+            />
+        } else {
+            return null
+        }
     }
 
     render() {
@@ -115,29 +151,65 @@ class MapScreen extends Component {
                 }}
                 >
                     {this.state.markers.map((marker, index) => {
-                        return <MapView.Marker key={index} coordinate={marker.coordinate}>
+                        return <MapView.Marker key={index} coordinate={marker.coordinate} onPress={() => this.setDirection(marker.coordinate)}>
                             <Animated.View style={[styles.markerWrap]}>
                               <View style={styles.marker} />
                             </Animated.View>
                             <MapView.Callout tooltip={false}>
-                                <View style={{ width: 200 }}>
-                                  <View style={{ flexDirection: 'row' }}>
-                                      <Image source={{ uri: marker.customerImg }} style={{ height: 70, width: 70, borderRadius: 1, marginRight: 6, alignSelf: 'center' }}/>
-                                      <View style={{ justifyContent: "center" }}>
-                                          <Text style={styles.title}>Pet:</Text>
-                                          <Text style={styles.name}>{marker.dogName}</Text>
-                                          <Text style={styles.title}>Customer:</Text>
-                                          <Text style={styles.name}>{marker.customerName}</Text>
-                                      </View>
-                                  </View>
-                                  <View style={{ flexDirection: 'row', marginTop: 4 }}>
-                                    <Text style={styles.title}>Time:</Text>
-                                    <Text style={styles.name}>{marker.time}</Text>
+                              <View style={{ width: 200 }}>
+                                <View style={{ flexDirection: "row" }}>
+                                  <Image source={{ uri: marker.customerImg }} style={{ height: 70, width: 70, borderRadius: 1, marginRight: 6, alignSelf: "center" }} />
+                                  <View style={{ justifyContent: "center" }}>
+                                    <Text
+                                      style={
+                                        styles.title
+                                      }
+                                    >
+                                      Pet:
+                                    </Text>
+                                    <Text
+                                      style={
+                                        styles.name
+                                      }
+                                    >
+                                      {marker.dogName}
+                                    </Text>
+                                    <Text
+                                      style={
+                                        styles.title
+                                      }
+                                    >
+                                      Customer:
+                                    </Text>
+                                    <Text
+                                      style={
+                                        styles.name
+                                      }
+                                    >
+                                      {
+                                        marker.customerName
+                                      }
+                                    </Text>
                                   </View>
                                 </View>
+                                <View style={{ flexDirection: "row", marginTop: 4 }}>
+                                  <Text
+                                    style={styles.title}
+                                  >
+                                    Time:
+                                  </Text>
+                                  <Text
+                                    style={styles.name}
+                                  >
+                                    {marker.time}
+                                  </Text>
+                                </View>
+                              </View>
                             </MapView.Callout>
                           </MapView.Marker>;
                     })}
+
+                    { this.getDirection() }
                 </MapView>
             </View>
         )
