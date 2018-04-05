@@ -19,7 +19,8 @@ class MapScreen extends Component {
                     },
                     dogName: 'Jessy',
                     customerName: 'Anna Mary',
-                    customerImg: 'https://randomuser.me/api/portraits/thumb/women/82.jpg'
+                    customerImg: 'https://randomuser.me/api/portraits/thumb/women/82.jpg',
+                    time: '11.00'
                 },
                 {
                     coordinate: {
@@ -28,7 +29,8 @@ class MapScreen extends Component {
                     },
                     dogName: 'Tom',
                     customerName: 'Jessica',
-                    customerImg: 'https://randomuser.me/api/portraits/thumb/women/37.jpg'
+                    customerImg: 'https://randomuser.me/api/portraits/thumb/women/37.jpg',
+                    time: '12.00'
                 },
                 {
                     coordinate: {
@@ -37,7 +39,8 @@ class MapScreen extends Component {
                     },
                     dogName: 'Fox',
                     customerName: 'Michael Black',
-                    customerImg: 'https://randomuser.me/api/portraits/thumb/men/37.jpg'
+                    customerImg: 'https://randomuser.me/api/portraits/thumb/men/37.jpg',
+                    time: '13.00'
                 },
                 {
                     coordinate: {
@@ -46,7 +49,8 @@ class MapScreen extends Component {
                     },
                     dogName: 'Tompson',
                     customerName: 'Diana',
-                    customerImg: 'https://randomuser.me/api/portraits/thumb/women/15.jpg'
+                    customerImg: 'https://randomuser.me/api/portraits/thumb/women/15.jpg',
+                    time: '14.00'
                 },
                 {
                     coordinate: {
@@ -55,7 +59,8 @@ class MapScreen extends Component {
                     },
                     dogName: 'Tyson',
                     customerName: 'Bob Dilan',
-                    customerImg: 'https://randomuser.me/api/portraits/thumb/men/30.jpg'
+                    customerImg: 'https://randomuser.me/api/portraits/thumb/men/30.jpg',
+                    time: '15.00'
                 }
             ],
             myLocation: {
@@ -79,22 +84,22 @@ class MapScreen extends Component {
         };
     };
 
-    // componentDidMount() {
-    //     navigator.geolocation.getCurrentPosition(
-    //         (position) => {
-    //             this.setState({
-    //                 myLocation: {
-    //                     latitude: position.coords.latitude,
-    //                     longitude: position.coords.longitude,
-    //                     latitudeDelta: 0.04864195044303443,
-    //                     longitudeDelta: 0.040142817690068
-    //                 }
-    //             });
-    //         },
-    //         (error) => alert('Location error -> ' + error.message),
-    //         { enableHighAccuracy: false, timeout: 200000, maximumAge: 1000 },
-    //     );
-    // }
+    componentDidMount() {
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                this.setState({
+                    myLocation: {
+                        latitude: position.coords.latitude,
+                        longitude: position.coords.longitude,
+                        latitudeDelta: 0.04864195044303443,
+                        longitudeDelta: 0.040142817690068
+                    }
+                });
+            },
+            (error) => alert('Location error -> ' + error.message),
+            { enableHighAccuracy: false, timeout: 200000, maximumAge: 1000 },
+        );
+    }
 
     render() {
         return(
@@ -115,14 +120,20 @@ class MapScreen extends Component {
                               <View style={styles.marker} />
                             </Animated.View>
                             <MapView.Callout tooltip={false}>
-                                <View style={{ flexDirection: 'row', width: 200 }}>
-                                    <Image source={{ uri: marker.customerImg }} style={{ height: 70, width: 70, borderRadius: 1, marginRight: 6, alignSelf: 'center' }}/>
-                                    <View>
-                                        <Text style={styles.title}>Pet:</Text>
-                                        <Text style={styles.name}>{marker.dogName}</Text>
-                                        <Text style={styles.title}>Customer:</Text>
-                                        <Text style={styles.name}>{marker.customerName}</Text>
-                                    </View>
+                                <View style={{ width: 200 }}>
+                                  <View style={{ flexDirection: 'row' }}>
+                                      <Image source={{ uri: marker.customerImg }} style={{ height: 70, width: 70, borderRadius: 1, marginRight: 6, alignSelf: 'center' }}/>
+                                      <View style={{ justifyContent: "center" }}>
+                                          <Text style={styles.title}>Pet:</Text>
+                                          <Text style={styles.name}>{marker.dogName}</Text>
+                                          <Text style={styles.title}>Customer:</Text>
+                                          <Text style={styles.name}>{marker.customerName}</Text>
+                                      </View>
+                                  </View>
+                                  <View style={{ flexDirection: 'row', marginTop: 4 }}>
+                                    <Text style={styles.title}>Time:</Text>
+                                    <Text style={styles.name}>{marker.time}</Text>
+                                  </View>
                                 </View>
                             </MapView.Callout>
                           </MapView.Marker>;
@@ -157,14 +168,14 @@ const styles = StyleSheet.create({
   },
   title: {
       flex: 1,
-      flexWrap: 'wrap', 
-      fontSize: 14, 
+      flexWrap: 'wrap',
+      fontSize: 14,
       color: 'grey'
   },
   name: {
-    flex: 1, 
-    flexWrap: 'wrap', 
-    fontSize: 15, 
+    flex: 1,
+    flexWrap: 'wrap',
+    fontSize: 15,
     color: 'black'
   },
 });
