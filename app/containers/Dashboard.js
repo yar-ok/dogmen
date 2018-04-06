@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, DatePickerAndroid, DatePickerIOS, Modal, InteractionManager, AsyncStorage, StatusBar, Text, View, TouchableOpacity } from 'react-native';
+import { Platform, Alert, DatePickerAndroid, DatePickerIOS, Modal, InteractionManager, AsyncStorage, StatusBar, Text, View, TouchableOpacity } from 'react-native';
 
 import PushNotification from '../utils/PushNotification'
 import Resources from '../utils/Resources'
@@ -58,8 +58,20 @@ class Dashboard extends Component {
 
   componentDidMount() {
     InteractionManager.runAfterInteractions(() => {
-      this.props.navigation.setParams({ handleLogout: this.logout });
+      this.props.navigation.setParams({ handleLogout: this.askLogoutConfirm });
     });
+  }
+
+  askLogoutConfirm = () => {
+    Alert.alert(
+      'Dogmen',
+      'Do you want to exit?',
+      [
+        { text: 'No', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
+        { text: 'Yes', onPress: () => this.logout() },
+      ],
+      { cancelable: true }
+    )
   }
 
   logout = () => {
