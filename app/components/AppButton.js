@@ -25,9 +25,10 @@ const styles = StyleSheet.create({
     width: 100,
     marginTop: 10,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   buttonText: {
     color: 'white',
+    textAlign: 'center'
   },
 })
