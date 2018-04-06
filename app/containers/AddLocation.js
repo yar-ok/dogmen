@@ -19,6 +19,10 @@ const workPlace = {
 };
 
 class AddLocation extends Component {
+    saveCoordinatesAndExit(coordinates) {
+      
+    }
+
     render() {
         return(
         <GooglePlacesAutocomplete
@@ -30,11 +34,11 @@ class AddLocation extends Component {
         query={{
             // available options: https://developers.google.com/places/web-service/autocomplete
             key: 'AIzaSyA90xwRzF8BSN11MOEH8FrnF6hU3vEkNJY',
-            language: 'en', 
+            language: 'en',
         }}
         onPress={(data, details = null) => {
-            console.log(data, details);
-            alert("uuu -> " + data);
+            coordinates = { latitude: details.geometry.location.lat, longitude: details.geometry.location.lng }
+            this.saveCoordinatesAndExit(coordinates)
         }}
         styles={{
             textInputContainer: {
