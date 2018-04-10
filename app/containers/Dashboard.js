@@ -64,15 +64,19 @@ class Dashboard extends Component {
 
   askLogoutConfirm = () => {
     Alert.alert(
-      'Dogmen',
-      'Do you want to exit?',
+      "Dogmen",
+      "Do you want to exit?",
       [
-        { text: 'No', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
-        { text: 'Yes', onPress: () => this.logout() },
+        {
+          text: "No",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel"
+        },
+        { text: "Yes", onPress: () => this.logout() }
       ],
       { cancelable: true }
-    )
-  }
+    );
+  };
 
   logout = () => {
     this.props.logoutAndExit();
@@ -141,6 +145,10 @@ class Dashboard extends Component {
     this.props.navigation.navigate("AddLocation");
   };
 
+  goChatScreen = () => {
+    this.props.navigation.navigate("Chat");
+  }
+
   render() {
     return (
       <View style={Styles.backgroundContainer}>
@@ -159,7 +167,11 @@ class Dashboard extends Component {
           onPressed={() => this.goToHorizontalSwipeItems()}
         />
         <AppButton text="Map" onPressed={() => this.goToMapScreen()} />
-        <AppButton text="Add location" onPressed={() => this.goToAddLocationScreen()} />
+        <AppButton
+          text="Add location"
+          onPressed={() => this.goToAddLocationScreen()}
+        />
+        <AppButton text="Chat screen" onPressed={() => this.goChatScreen()} />
         <AppButton text="Settings" onPressed={() => this.settings()} />
         <Modal
           transparent={true}

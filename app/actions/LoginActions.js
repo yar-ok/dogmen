@@ -1,4 +1,3 @@
-import Constants from '../utils/Constants'
 
 export const types = {
   LOGIN_USER: 'LOGIN_USER',
