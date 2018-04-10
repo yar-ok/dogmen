@@ -20,6 +20,7 @@ export const actionCreators = {
                 message: 'Hello',
                 user: {
                     name: 'Kelly',
+                    avatar: 'https://randomuser.me/api/portraits/thumb/women/63.jpg',
                     isMe: false,
                 }
             },
@@ -27,7 +28,8 @@ export const actionCreators = {
                 id: '2',
                 message: 'Hi!!!',
                 user: {
-                    name: 'Alex',
+                    name: 'Bob(me)',
+                    avatar: 'https://randomuser.me/api/portraits/thumb/men/54.jpg',
                     isMe: true,
                 }
             },
@@ -36,6 +38,7 @@ export const actionCreators = {
                 message: 'How are you?',
                 user: {
                     name: 'Kelly',
+                    avatar: 'https://randomuser.me/api/portraits/thumb/women/63.jpg',
                     isMe: false,
                 }
             },
@@ -44,6 +47,7 @@ export const actionCreators = {
                 message: 'I want to tell you something)))',
                 user: {
                     name: 'Kelly',
+                    avatar: 'https://randomuser.me/api/portraits/thumb/women/63.jpg',
                     isMe: false,
                 }
             }

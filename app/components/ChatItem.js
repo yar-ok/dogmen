@@ -13,7 +13,7 @@ import RightBubble from './BubbleRight'
 
 const ChatItem = props => (
   <View style={styles.container}>
-    {props.user.isMe ? <LeftBubble /> : <RightBubble />}
+    {props.user.isMe ? <LeftBubble {...props}/> : <RightBubble {...props}/>}
   </View>
 );
 
