@@ -16,6 +16,24 @@ export const actionCreators = {
       if (true) {
         let messages = [
             {
+                id: '7',
+                message: 'I think',
+                user: {
+                    name: 'Bob(me)',
+                    avatar: 'https://randomuser.me/api/portraits/thumb/men/54.jpg',
+                    isMe: true,
+                }
+            },
+           {
+                id: '6',
+                message: 'No problem!',
+                user: {
+                    name: 'Bob(me)',
+                    avatar: 'https://randomuser.me/api/portraits/thumb/men/54.jpg',
+                    isMe: true,
+                }
+            },
+            {
                 id: '5',
                 message: 'Yes!!!',
                 user: {
@@ -24,6 +42,7 @@ export const actionCreators = {
                     isMe: true,
                 }
             },
+
             {
                 id: '4',
                 message: 'I want to tell you something)))',
@@ -33,7 +52,8 @@ export const actionCreators = {
                     isMe: false,
                 }
             },
-            {
+            
+          {
                 id: '3',
                 message: 'How are you?',
                 user: {
@@ -42,7 +62,8 @@ export const actionCreators = {
                     isMe: false,
                 }
             },
-           {
+            
+            {
                 id: '2',
                 message: 'Hi!!!',
                 user: {
@@ -61,16 +82,7 @@ export const actionCreators = {
                     isMe: false,
                 }
             },
-            {
-                id: '6',
-                message: 'No problem!',
-                user: {
-                    name: 'Bob(me)',
-                    avatar: 'https://randomuser.me/api/portraits/thumb/men/54.jpg',
-                    isMe: true,
-                }
-            },
-         ]
+           ]
         dispatch({
           type: types.ALL_CHAT_MESSAGES,
           payload: {
@@ -95,21 +107,41 @@ export const actionCreators = {
 
 function handleMassages(messages) {
     let length = messages.length
-    for(let i = length - 1; i >= 0; i--) {
-        let isLastUserMessage = false
-        let message = messages[i]
-    
-        if(i === length - 1) {
-            isLastUserMessage = true;
-        } else if(i === 0) {
-            let nextMessage = messages[i + 1]
-            isLastUserMessage = nextMessage.user.isMe !== message.user.isMe;
-        } else {
-            let nextMessage = messages[i + 1];
-            isLastUserMessage = nextMessage.user.isMe !== message.user.isMe;
-        }
+    for (let i = 0; i < length; i++) {
+      let isLastUserMessage = false;
+      let message = messages[i];
 
-        message.isLastUserMessage = isLastUserMessage;
+      if(length === 1) {
+        isLastUserMessage = true;
+      } if (i === length - 1) {
+        isLastUserMessage = true;
+      } else {
+        let nextMessage = messages[i + 1];
+        isLastUserMessage = nextMessage.user.isMe !== message.user.isMe;
+      }
+
+      message.isLastUserMessage = isLastUserMessage;
     }
     return messages;
 };
+
+// function handleMassages(messages) {
+//     let length = messages.length
+//     for(let i = length - 1; i >= 0; i--) {
+//         let isLastUserMessage = false
+//         let message = messages[i]
+    
+//         if(i === length - 1) {
+//             isLastUserMessage = true;
+//         } else if(i === 0) {
+//             let nextMessage = messages[i + 1]
+//             isLastUserMessage = nextMessage.user.isMe !== message.user.isMe;
+//         } else {
+//             let nextMessage = messages[i + 1];
+//             isLastUserMessage = nextMessage.user.isMe !== message.user.isMe;
+//         }
+
+//         message.isLastUserMessage = isLastUserMessage;
+//     }
+//     return messages;
+// };

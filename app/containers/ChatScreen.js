@@ -34,10 +34,10 @@ class ChatComponent extends Component {
 
     render() {
         return(
-            <View style={{ flex: 1 }}>
+            <View style={styles.container}>
                 <FlatList
-                style={styles.container}
                 data={this.props.messages}
+                inverted={true}
                 numColumns={1}
                 keyExtractor={item => item.id}
                 renderItem={({item}) => <ChatItem {...item}/>}
@@ -50,7 +50,11 @@ class ChatComponent extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: "flex-end"
   },
-})
+  list: {
+    flex: 1
+  }
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChatComponent)

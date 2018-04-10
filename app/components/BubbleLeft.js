@@ -3,12 +3,20 @@ import { StyleSheet, View, Text, Image } from "react-native";
 
 const BubbleLeft = props => (
   <View style={styles.container}>
-    <Image source={{ uri: props.user.avatar }} style={styles.avatar} />
+    {getAvatarView(props)}
     <View style={styles.bubble}>
-      <Text>{props.user.name}</Text>
+      <Text>{props.message}</Text>
     </View>
   </View>
 );
+
+function getAvatarView(props) {
+  if (props.isLastUserMessage) {
+    return <Image source={{ uri: props.user.avatar }} style={styles.avatar} />;
+  } else {
+    return <View style={styles.avatar} />;
+  }
+}
 
 const styles = StyleSheet.create({
   mainContainer: {
@@ -17,7 +25,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "row",
-    alignItems: "flex-end",
   },
   bubble: {
     backgroundColor: "green",

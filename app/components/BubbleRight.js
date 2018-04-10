@@ -4,7 +4,7 @@ import { StyleSheet, View , Text, Image } from "react-native";
 const BubbleRight = props => (
   <View style={styles.container}>
     <View style={styles.bubble}>
-      <Text>{props.user.name}</Text>
+      <Text>{props.message}</Text>
     </View>
     { getAvatarView(props) }
   </View>
@@ -25,7 +25,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "flex-end",
-    alignItems: "flex-end",
     flexDirection: "row"
   },
   bubble: {
