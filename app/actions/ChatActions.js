@@ -16,29 +16,38 @@ export const actionCreators = {
       if (true) {
         let messages = [
             {
-                id: '2',
+                id: '1',
                 message: 'Hello',
                 user: {
                     name: 'Kelly',
                     isMe: false,
                 }
             },
-            // {
-            //     id: '1',
-            //     message: 'Hi!!!',
-            //     user: {
-            //         name: 'Alex',
-            //         isMe: true,
-            //     }
-            // },
-            // {
-            //     id: '2',
-            //     message: 'How are you?',
-            //     user: {
-            //         name: 'Kelly',
-            //         isMe: false,
-            //     }
-            // }
+            {
+                id: '2',
+                message: 'Hi!!!',
+                user: {
+                    name: 'Alex',
+                    isMe: true,
+                }
+            },
+            {
+                id: '3',
+                message: 'How are you?',
+                user: {
+                    name: 'Kelly',
+                    isMe: false,
+                }
+            },
+            {
+                id: '4',
+                message: 'I want to tell you something)))',
+                user: {
+                    name: 'Kelly',
+                    isMe: false,
+                }
+            }
+
         ]
         dispatch({
           type: types.ALL_CHAT_MESSAGES,

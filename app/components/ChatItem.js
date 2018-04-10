@@ -8,26 +8,19 @@ import {
   ImageBackground
 } from "react-native";
 
+import LeftBubble from './BubbleLeft'
+import RightBubble from './BubbleRight'
+
 const ChatItem = props => (
   <View style={styles.container}>
-    <ImageBackground source={require("../images/bubble_out_8.9.png")} style={styles.backgroundContainer}>
-      <Text>{props.user.name}</Text>
-    </ImageBackground>
+    {props.user.isMe ? <LeftBubble /> : <RightBubble />}
   </View>
 );
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
-  },
-
-  backgroundContainer: {
     flex: 1,
-    width: null,
-    height: null,
-    padding: 10,
-    minHeight: 50,
-  }
+  },
 });
 
 export default ChatItem;
