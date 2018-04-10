@@ -101,7 +101,32 @@ export const actionCreators = {
           }
         });
       }
-    }, 1000)
+    }, 2000)
+  },
+
+  sendNewMessage: (message) => async(dispatch, getState) => {
+    let { result, messages, payload } = getState()
+    result.push({
+      id: "18",
+      message: "Testing-----",
+      user: {
+        name: "Bob(me)",
+        avatar: "https://randomuser.me/api/portraits/thumb/men/54.jpg",
+        isMe: true
+      }
+    });
+    setTimeout (() => {
+      if (true) {
+         dispatch({
+           type: types.ALL_CHAT_MESSAGES,
+           payload: {
+             loading: false,
+             error: false,
+             result: handleMassages(result)
+           }
+         });
+      }
+    }, 500)
   },
 }
 
