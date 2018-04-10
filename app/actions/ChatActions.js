@@ -16,21 +16,21 @@ export const actionCreators = {
       if (true) {
         let messages = [
             {
-                id: '1',
-                message: 'Hello',
-                user: {
-                    name: 'Kelly',
-                    avatar: 'https://randomuser.me/api/portraits/thumb/women/63.jpg',
-                    isMe: false,
-                }
-            },
-            {
-                id: '2',
-                message: 'Hi!!!',
+                id: '5',
+                message: 'Yes!!!',
                 user: {
                     name: 'Bob(me)',
                     avatar: 'https://randomuser.me/api/portraits/thumb/men/54.jpg',
                     isMe: true,
+                }
+            },
+            {
+                id: '4',
+                message: 'I want to tell you something)))',
+                user: {
+                    name: 'Kelly',
+                    avatar: 'https://randomuser.me/api/portraits/thumb/women/63.jpg',
+                    isMe: false,
                 }
             },
             {
@@ -42,23 +42,41 @@ export const actionCreators = {
                     isMe: false,
                 }
             },
+           {
+                id: '2',
+                message: 'Hi!!!',
+                user: {
+                    name: 'Bob(me)',
+                    avatar: 'https://randomuser.me/api/portraits/thumb/men/54.jpg',
+                    isMe: true,
+                }
+            },
+
             {
-                id: '4',
-                message: 'I want to tell you something)))',
+                id: '1',
+                message: 'Hello',
                 user: {
                     name: 'Kelly',
                     avatar: 'https://randomuser.me/api/portraits/thumb/women/63.jpg',
                     isMe: false,
                 }
-            }
-
-        ]
+            },
+            {
+                id: '6',
+                message: 'No problem!',
+                user: {
+                    name: 'Bob(me)',
+                    avatar: 'https://randomuser.me/api/portraits/thumb/men/54.jpg',
+                    isMe: true,
+                }
+            },
+         ]
         dispatch({
           type: types.ALL_CHAT_MESSAGES,
           payload: {
             loading: false,
             error: false,
-            result: messages
+            result: handleMassages(messages)
           }
         });
       } else {
@@ -71,6 +89,27 @@ export const actionCreators = {
           }
         });
       }
-    }, 2000)
-  }
+    }, 1000)
+  },
 }
+
+function handleMassages(messages) {
+    let length = messages.length
+    for(let i = length - 1; i >= 0; i--) {
+        let isLastUserMessage = false
+        let message = messages[i]
+    
+        if(i === length - 1) {
+            isLastUserMessage = true;
+        } else if(i === 0) {
+            let nextMessage = messages[i + 1]
+            isLastUserMessage = nextMessage.user.isMe !== message.user.isMe;
+        } else {
+            let nextMessage = messages[i + 1];
+            isLastUserMessage = nextMessage.user.isMe !== message.user.isMe;
+        }
+
+        message.isLastUserMessage = isLastUserMessage;
+    }
+    return messages;
+};

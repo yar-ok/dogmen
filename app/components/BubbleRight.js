@@ -6,9 +6,17 @@ const BubbleRight = props => (
     <View style={styles.bubble}>
       <Text>{props.user.name}</Text>
     </View>
-    <Image source={{ uri: props.user.avatar }} style={styles.avatar} />
+    { getAvatarView(props) }
   </View>
 );
+
+function getAvatarView(props) {
+    if(props.isLastUserMessage) {
+        return <Image source={{ uri: props.user.avatar }} style={styles.avatar} />;
+    } else {
+        return <View style={styles.avatar} />
+    }
+}
 
 const styles = StyleSheet.create({
   mainContainer: {
