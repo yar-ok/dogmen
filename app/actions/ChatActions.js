@@ -104,17 +104,16 @@ export const actionCreators = {
     }, 2000)
   },
 
-  sendNewMessage: (message) => async(dispatch, getState) => {
-    let { result, messages, payload } = getState()
-    result.push({
+  sendNewMessage: (message, messages) => async(dispatch, getState) => {
+    const messageTest = {
       id: "18",
-      message: "Testing-----",
+      message: message,
       user: {
         name: "Bob(me)",
         avatar: "https://randomuser.me/api/portraits/thumb/men/54.jpg",
         isMe: true
       }
-    });
+    };
     setTimeout (() => {
       if (true) {
          dispatch({
@@ -122,11 +121,11 @@ export const actionCreators = {
            payload: {
              loading: false,
              error: false,
-             result: handleMassages(result)
+             result: handleMassages([messageTest, ...messages])
            }
          });
       }
-    }, 500)
+    }, 200)
   },
 }
 
@@ -149,24 +148,3 @@ function handleMassages(messages) {
     }
     return messages;
 };
-
-// function handleMassages(messages) {
-//     let length = messages.length
-//     for(let i = length - 1; i >= 0; i--) {
-//         let isLastUserMessage = false
-//         let message = messages[i]
-    
-//         if(i === length - 1) {
-//             isLastUserMessage = true;
-//         } else if(i === 0) {
-//             let nextMessage = messages[i + 1]
-//             isLastUserMessage = nextMessage.user.isMe !== message.user.isMe;
-//         } else {
-//             let nextMessage = messages[i + 1];
-//             isLastUserMessage = nextMessage.user.isMe !== message.user.isMe;
-//         }
-
-//         message.isLastUserMessage = isLastUserMessage;
-//     }
-//     return messages;
-// };
