@@ -43,6 +43,9 @@ const mapDispatchToProps = dispatch => {
     },
     deleteAllMessages: () => {
       dispatch(actionCreators.deleteAllMessages())
+    },
+    selectMessage: (messageId, messages) => {
+      dispatch(actionCreators.selectMessage(messageId, messages))
     }
   };
 };
@@ -125,7 +128,7 @@ class ChatComponent extends Component {
   };
 
   messageSelected(messageId) {
-    
+    this.props.selectMessage(messageId, this.props.messages)
   }
  
   render() {

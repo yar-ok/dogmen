@@ -146,8 +146,21 @@ export const actionCreators = {
            result: []
          }
        });
-   }, 1000);
-       
+   }, 1000);       
+  },
+
+  selectMessage: (messageId, messages) => {
+        let updatedMessages = messages.map(
+          mes => (mes.id === messageId) ? {...mes, isSelected: !mes.isSelected} : mes
+        )
+       return {
+         type: types.ALL_CHAT_MESSAGES,
+         payload: {
+           loading: false,
+           error: false,
+           result: [...updatedMessages]
+         }
+       };
   }
 }
 
