@@ -61,7 +61,7 @@ class ChatComponent extends Component {
           <MenuTrigger style={{ padding: 16 }}>
             <Image source={require('../images/ic_more.png')} />
           </MenuTrigger>
-          <MenuOptions>
+          <MenuOptions optionsContainerStyle={{ marginTop: 40 }}>
             <MenuOption onSelect={() => alert(`Save`)} text='Save' />
             <MenuOption onSelect={() => alert(`Delete`)} >
               <Text style={{color: 'red'}}>Delete</Text>
