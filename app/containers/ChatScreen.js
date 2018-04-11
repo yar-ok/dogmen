@@ -51,7 +51,7 @@ class ChatComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      message: ""
+      message: "",
     };
   }
 
@@ -124,6 +124,10 @@ class ChatComponent extends Component {
     }
   };
 
+  messageSelected(messageId) {
+    
+  }
+ 
   render() {
     return (
       <View style={styles.container}>
@@ -132,7 +136,7 @@ class ChatComponent extends Component {
           inverted={true}
           numColumns={1}
           keyExtractor={item => item.id}
-          renderItem={({ item }) => <ChatItem {...item} />}
+          renderItem={({ item }) => <ChatItem {...item} messageSelected = {(messageId) => this.messageSelected(messageId)} />}
         />
         <View style={styles.sendContainer}>
           <TextInput

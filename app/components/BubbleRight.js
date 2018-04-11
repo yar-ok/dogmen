@@ -1,14 +1,30 @@
 import React, { Component } from "react";
-import { StyleSheet, View , Text, Image } from "react-native";
+import { StyleSheet, View , Text, Image, TouchableOpacity } from "react-native";
+import Resources from "../utils/Resources";
 
 const BubbleRight = props => (
   <View style={styles.container}>
-    <View style={styles.bubble}>
+    {getSelectedView(props)}
+    <TouchableOpacity
+      onLongPress={e => props.messageSelected(props.id)}
+      activeOpacity={1}
+      style={styles.bubble}
+    >
       <Text>{props.message}</Text>
-    </View>
-    { getAvatarView(props) }
+    </TouchableOpacity>
+    {getAvatarView(props)}
   </View>
 );
+
+function getSelectedView(message) {
+  if (message.isSelected) {
+    return <View style={styles.selected}>
+        <Image source={require("../images/ic_done.png")} style={{ resizeMode: "center" }} />
+      </View>;
+  } else {
+    return null;
+  }
+}
 
 function getAvatarView(props) {
     if(props.isLastUserMessage) {
@@ -39,6 +55,17 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     marginRight: 10,
     marginLeft: 10
+  },
+  selected: {
+    alignItems: "center",
+    justifyContent: "center",
+    height: 20,
+    width: 20,
+    borderRadius: 10,
+    marginRight: 6,
+    marginLeft: 6,
+    marginTop: 6,
+    backgroundColor: Resources.APP_COLOR
   }
 });
 
