@@ -106,7 +106,7 @@ export const actionCreators = {
 
   sendNewMessage: (message, messages) => async(dispatch, getState) => {
     const messageTest = {
-      id: "18",
+      id: (Math.floor(Math.random() * 100) + 1).toString() ,
       message: message,
       user: {
         name: "Bob(me)",
