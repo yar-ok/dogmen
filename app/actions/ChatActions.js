@@ -127,6 +127,28 @@ export const actionCreators = {
       }
     }, 200)
   },
+
+  deleteAllMessages: () => async(dispatch, getState) => {
+       dispatch({
+         type: types.ALL_CHAT_MESSAGES,
+         payload: {
+           loading: true,
+           error: false
+         }
+       });
+
+   setTimeout(() => {
+       dispatch({
+         type: types.ALL_CHAT_MESSAGES,
+         payload: {
+           loading: false,
+           error: false,
+           result: []
+         }
+       });
+   }, 1000);
+       
+  }
 }
 
 function handleMassages(messages) {

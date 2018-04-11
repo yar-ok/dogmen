@@ -7,7 +7,8 @@ import {
   TextInput,
   Text,
   TouchableOpacity,
-  Image
+  Image,
+  InteractionManager
 } from "react-native";
 
 import {
@@ -38,7 +39,10 @@ const mapDispatchToProps = dispatch => {
       dispatch(actionCreators.getAllChatMessages());
     },
     sendNewMessage: (message, messages) => {
-        dispatch(actionCreators.sendNewMessage(message, messages));
+      dispatch(actionCreators.sendNewMessage(message, messages));
+    },
+    deleteAllMessages: () => {
+      dispatch(actionCreators.deleteAllMessages())
     }
   };
 };
@@ -63,8 +67,8 @@ class ChatComponent extends Component {
           </MenuTrigger>
           <MenuOptions optionsContainerStyle={{ marginTop: 40 }}>
             <MenuOption onSelect={() => alert(`Save`)} text='Save' />
-            <MenuOption onSelect={() => alert(`Delete`)} >
-              <Text style={{color: 'red'}}>Delete</Text>
+            <MenuOption onSelect={() => params.deleteAllMessages()} >
+              <Text style={{color: 'red'}}>Delete all</Text>
             </MenuOption>
             <MenuOption onSelect={() => alert(`Not called`)} disabled={true} text='Disabled' />
           </MenuOptions>
@@ -75,8 +79,17 @@ class ChatComponent extends Component {
     };
   };
 
+  deleteAllMessages = () => {
+    this.props.deleteAllMessages()
+  }
+
   componentDidMount() {
     this.props.getAllMessages();
+    InteractionManager.runAfterInteractions(() => {
+      this.props.navigation.setParams({
+        deleteAllMessages: this.deleteAllMessages
+      });
+    });
   }
 
   renderLoading = () => {
