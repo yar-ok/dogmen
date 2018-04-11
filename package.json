@@ -17,6 +17,7 @@
     "react-native-loading-spinner-overlay": "^0.5.2",
     "react-native-maps": "^0.21.0",
     "react-native-maps-directions": "^1.6.0",
+    "react-native-popup-menu": "^0.12.4",
     "react-native-sqlite-storage": "^3.3.4",
     "react-native-swipe-list-view": "^1.0.7",
     "react-navigation": "^1.5.8",

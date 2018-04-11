@@ -6,8 +6,18 @@ import {
   View,
   TextInput,
   Text,
-  TouchableOpacity
+  TouchableOpacity,
+  Image
 } from "react-native";
+
+import {
+  Menu,
+  MenuProvider,
+  MenuOptions,
+  MenuOption,
+  MenuTrigger
+} from "react-native-popup-menu";
+
 import ChatItem from '../components/ChatItem'
 
 import AppHeaderTitle from "../components/AppHeaderTitle";
@@ -46,7 +56,19 @@ class ChatComponent extends Component {
     return {
       headerTitle: <AppHeaderTitle title="Chat" />,
       headerTintColor: "white",
-      headerRight: <View />,
+      headerRight: 
+        <Menu>
+          <MenuTrigger style={{ padding: 16 }}>
+            <Image source={require('../images/ic_more.png')} />
+          </MenuTrigger>
+          <MenuOptions>
+            <MenuOption onSelect={() => alert(`Save`)} text='Save' />
+            <MenuOption onSelect={() => alert(`Delete`)} >
+              <Text style={{color: 'red'}}>Delete</Text>
+            </MenuOption>
+            <MenuOption onSelect={() => alert(`Not called`)} disabled={true} text='Disabled' />
+          </MenuOptions>
+        </Menu>,
       headerStyle: {
         backgroundColor: Resources.TOOLBAR_COLOR
       }
