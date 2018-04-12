@@ -42,10 +42,13 @@ const mapDispatchToProps = dispatch => {
       dispatch(actionCreators.sendNewMessage(message, messages));
     },
     deleteAllMessages: () => {
-      dispatch(actionCreators.deleteAllMessages())
+      dispatch(actionCreators.deleteAllMesthis.props.messagessages())
     },
     selectMessage: (messageId, messages) => {
       dispatch(actionCreators.selectMessage(messageId, messages))
+    },
+    deleteSelectedMessages: (messages) => {
+      dispatch(actionCreators.deleteSelectedMessages(messages))
     }
   };
 };
@@ -54,54 +57,82 @@ class ChatComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      message: "",
+      message: ""
     };
   }
 
   static navigationOptions = ({ navigation }) => {
     const { params = {} } = navigation.state;
-    return {
-      headerTitle: <AppHeaderTitle title="Chat" />,
-      headerTintColor: "white",
-      headerRight: 
-        <Menu>
-          <MenuTrigger style={{ padding: 16 }}>
-            <Image source={require('../images/ic_more.png')} />
+    return { headerTitle: <AppHeaderTitle title="Chat" />, headerTintColor: "white", headerRight: <Menu>
+          <MenuTrigger style={{ padding: 16 }} onPress={() => params.updateNavigationParams()}>
+            <Image source={require("../images/ic_more.png")} />
           </MenuTrigger>
           <MenuOptions optionsContainerStyle={{ marginTop: 40 }}>
-            <MenuOption onSelect={() => alert(`Save`)} text='Save' />
-            <MenuOption onSelect={() => params.deleteAllMessages()} >
-              <Text style={{color: 'red'}}>Delete all</Text>
+            <MenuOption onSelect={() => alert(`Save`)} text="Save" />
+            <MenuOption onSelect={() => params.deleteAllMessages()}>
+              <Text style={{ color: "red" }}>Delete all</Text>
             </MenuOption>
-            <MenuOption onSelect={() => alert(`Not called`)} disabled={true} text='Disabled' />
+            <MenuOption onSelect={() => params.deleteSelectedMessages()} disabled={params.checkSelected} text="Delete selected" />
           </MenuOptions>
-        </Menu>,
-      headerStyle: {
-        backgroundColor: Resources.TOOLBAR_COLOR
-      }
-    };
+        </Menu>, headerStyle: { backgroundColor: Resources.TOOLBAR_COLOR } };
   };
 
   deleteAllMessages = () => {
-    this.props.deleteAllMessages()
-  }
+    this.props.deleteAllMessages();
+  };
+
+  deleteSelectedMessages = () => {
+    this.props.deleteSelectedMessages(this.props.messages);
+  };
 
   componentDidMount() {
     this.props.getAllMessages();
     InteractionManager.runAfterInteractions(() => {
-      this.props.navigation.setParams({
-        deleteAllMessages: this.deleteAllMessages
-      });
+      this.setNavigationParams();
     });
   }
+
+  setNavigationParams = () => {
+    this.props.navigation.setParams({
+      deleteAllMessages: this.deleteAllMessages,
+      deleteSelectedMessages: this.deleteSelectedMessages,
+      updateNavigationParams: this.setNavigationParams,
+      checkSelected: !this.isSelectedMessages()
+    });
+  };
+
+  isSelectedMessages = () => {
+    if (this.props.messages === undefined) {
+      return false;
+    }
+
+    return this.getSelectedMessages().length > 0;
+  };
+
+  getSelectedMessages = () => {
+    if (this.props.messages === undefined) {
+      return [];
+    }
+
+    let selectedMessages = [];
+    for (let mes of this.props.messages) {
+      if (mes.isSelected) {
+        selectedMessages.push(mes);
+      }
+    }
+
+    return selectedMessages;
+  };
 
   renderLoading = () => {
     if (!this.props.loading) return null;
     return (
       <View
         style={{
-          position: 'absolute',
-          left: 0, right: 0, alignItems: 'center',
+          position: "absolute",
+          left: 0,
+          right: 0,
+          alignItems: "center",
           paddingVertical: 20,
           borderTopWidth: 1,
           borderColor: "#CED0CE"
@@ -128,9 +159,9 @@ class ChatComponent extends Component {
   };
 
   messageSelected(messageId) {
-    this.props.selectMessage(messageId, this.props.messages)
+    this.props.selectMessage(messageId, this.props.messages);
   }
- 
+
   render() {
     return (
       <View style={styles.container}>
@@ -139,7 +170,12 @@ class ChatComponent extends Component {
           inverted={true}
           numColumns={1}
           keyExtractor={item => item.id}
-          renderItem={({ item }) => <ChatItem {...item} messageSelected = {(messageId) => this.messageSelected(messageId)} />}
+          renderItem={({ item }) => (
+            <ChatItem
+              {...item}
+              messageSelected={messageId => this.messageSelected(messageId)}
+            />
+          )}
         />
         <View style={styles.sendContainer}>
           <TextInput
@@ -159,7 +195,7 @@ class ChatComponent extends Component {
             <Text style={styles.sendBtn}>Send</Text>
           </TouchableOpacity>
         </View>
-        { this.renderLoading() }
+        {this.renderLoading()}
       </View>
     );
   }

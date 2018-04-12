@@ -161,6 +161,23 @@ export const actionCreators = {
            result: [...updatedMessages]
          }
        };
+  },
+
+  deleteSelectedMessages: (messages) => async(dispatch, getState) => {
+    let clearedArray = []
+    for(let mes of messages) {
+      if(!mes.isSelected) {
+        clearedArray.push(mes)
+      }
+    }
+    dispatch({
+      type: types.ALL_CHAT_MESSAGES,
+      payload: {
+        loading: false,
+        error: false,
+        result: handleMassages(clearedArray)
+      }
+    });
   }
 }
 
