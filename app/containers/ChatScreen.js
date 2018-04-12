@@ -68,10 +68,10 @@ class ChatComponent extends Component {
             <Image source={require("../images/ic_more.png")} />
           </MenuTrigger>
           <MenuOptions optionsContainerStyle={{ marginTop: 40 }}>
-            <MenuOption onSelect={() => alert(`Save`)} text="Save" />
-            <MenuOption onSelect={() => params.deleteAllMessages()}>
-              <Text style={{ color: "red" }}>Delete all</Text>
+            <MenuOption onSelect={() => alert(`Save`)}>
+              <Text style={{ color: "red" }}>Save</Text>
             </MenuOption>
+            <MenuOption onSelect={() => params.deleteAllMessages()} disabled={params.messagesEmpty} text="Delete all"/>
             <MenuOption onSelect={() => params.deleteSelectedMessages()} disabled={params.checkSelected} text="Delete selected" />
           </MenuOptions>
         </Menu>, headerStyle: { backgroundColor: Resources.TOOLBAR_COLOR } };
@@ -97,7 +97,8 @@ class ChatComponent extends Component {
       deleteAllMessages: this.deleteAllMessages,
       deleteSelectedMessages: this.deleteSelectedMessages,
       updateNavigationParams: this.setNavigationParams,
-      checkSelected: !this.isSelectedMessages()
+      checkSelected: !this.isSelectedMessages(),
+      messagesEmpty: this.isMessagesEmpty()
     });
   };
 
@@ -108,6 +109,14 @@ class ChatComponent extends Component {
 
     return this.getSelectedMessages().length > 0;
   };
+
+  isMessagesEmpty= () => {
+    if (this.props.messages === undefined) {
+      return true
+    }
+
+    return this.props.messages.length === 0
+  }
 
   getSelectedMessages = () => {
     if (this.props.messages === undefined) {
