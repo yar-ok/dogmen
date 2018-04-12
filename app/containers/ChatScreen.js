@@ -69,7 +69,7 @@ class ChatComponent extends Component {
           </MenuTrigger>
           <MenuOptions optionsContainerStyle={{ marginTop: 40 }}>
             <MenuOption onSelect={() => alert(`Save`)}>
-              <Text style={{ color: "red" }}>Save</Text>
+              <Text style={{ color: "red" }}>Save </Text>
             </MenuOption>
             <MenuOption onSelect={() => params.deleteAllMessages()} disabled={params.messagesEmpty} text="Delete all"/>
             <MenuOption onSelect={() => params.deleteSelectedMessages()} disabled={params.checkSelected} text="Delete selected" />
