@@ -42,7 +42,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(actionCreators.sendNewMessage(message, messages));
     },
     deleteAllMessages: () => {
-      dispatch(actionCreators.deleteAllMesthis.props.messagessages())
+      dispatch(actionCreators.deleteAllMessages())
     },
     selectMessage: (messageId, messages) => {
       dispatch(actionCreators.selectMessage(messageId, messages))
