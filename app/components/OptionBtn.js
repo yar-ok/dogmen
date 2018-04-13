@@ -20,14 +20,18 @@ class OptionBtn extends Component {
     getImageByType() {
         switch(this.props.type) {
             case Camera:
-                return <Image style={styles.image} source={require('../images/ic_camera.png')} />
+                return <Image style={styles.image} tintColor={this.getTintColor()} source={require('../images/ic_camera.png')} />
             case Gallery:
-                return <Image style={styles.image} source={require('../images/ic_gallery.png')} />
+                return <Image style={styles.image} tintColor={this.getTintColor()} source={require("../images/ic_gallery.png")} />;
             case Contacts:
-            return <Image style={styles.image} source={require('../images/ic_contacts.png')} />
+                return <Image style={styles.image} tintColor={this.getTintColor()} source={require("../images/ic_contacts.png")} />;
         }
 
         return null
+    }
+
+    getTintColor() {
+        return this.state.isSelected ? "white" : "grey";
     }
 
     pressed() {
