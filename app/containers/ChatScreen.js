@@ -83,9 +83,9 @@ class ChatComponent extends Component {
         </Menu>, headerStyle: { backgroundColor: Resources.TOOLBAR_COLOR } };
   };
 
-  showOption(option) {
+  showOption(option, isSelected) {
     this.setState({
-      currentOption: option
+      currentOption: isSelected ? option : WRONG_VALUE
     })
   }
 
@@ -227,9 +227,9 @@ class ChatComponent extends Component {
             </TouchableOpacity>
           </View>
           <View style={ styles.optionsLayout }>
-            <OptionBtn type={Gallery} onPress={() => this.showOption(Gallery)}/>
-            <OptionBtn type={Camera} onPress={() => alert('Camera')}/>
-            <OptionBtn type={Contacts} onPress={() => alert('Contacts')}/>
+            <OptionBtn type={Gallery} onPress={(isSelected) => this.showOption(Gallery, isSelected)}/>
+            <OptionBtn type={Camera} onPress={(isSelected) => alert('Camera')}/>
+            <OptionBtn type={Contacts} onPress={(isSelected) => alert('Contacts')}/>
           </View>
 
           { this.getBottomListView() }

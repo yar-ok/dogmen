@@ -35,10 +35,11 @@ class OptionBtn extends Component {
     }
 
     pressed() {
+        let isSelected = !this.state.isSelected
         this.setState({
-            isSelected: !this.state.isSelected
+            isSelected: isSelected
         })
-        this.props.onPress()
+        this.props.onPress(isSelected)
     }
 
     render() {
