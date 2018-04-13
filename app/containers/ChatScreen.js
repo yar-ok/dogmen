@@ -23,6 +23,8 @@ import ChatItem from '../components/ChatItem'
 
 import AppHeaderTitle from "../components/AppHeaderTitle";
 import Resources from "../utils/Resources";
+import OptionBtn from "../components/OptionBtn"
+import { Camera, Gallery, Contacts } from "../utils/Constants";
 
 import { connect } from "react-redux";
 import { actionCreators } from "../actions/ChatActions";
@@ -186,23 +188,30 @@ class ChatComponent extends Component {
             />
           )}
         />
-        <View style={styles.sendContainer}>
-          <TextInput
-            style={styles.textInput}
-            placeholder={"Enter your message..."}
-            underlineColorAndroid="transparent"
-            multiline={true}
-            numberOfLines={1}
-            value={this.state.message}
-            selectionColor={"white"}
-            onChangeText={text => this.updateMessage(text)}
-          />
-          <TouchableOpacity
-            style={styles.sendBtnContainer}
-            onPress={() => this.sendMessage()}
-          >
-            <Text style={styles.sendBtn}>Send</Text>
-          </TouchableOpacity>
+        <View style={ styles.bottomLayout }>
+          <View style={styles.sendContainer}>
+            <TextInput
+              style={styles.textInput}
+              placeholder={"Enter your message..."}
+              underlineColorAndroid="transparent"
+              multiline={true}
+              numberOfLines={1}
+              value={this.state.message}
+              selectionColor={"white"}
+              onChangeText={text => this.updateMessage(text)}
+            />
+            <TouchableOpacity
+              style={styles.sendBtnContainer}
+              onPress={() => this.sendMessage()}
+            >
+              <Text style={styles.sendBtn}>Send</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={ styles.optionsLayout }>
+            <OptionBtn type={Gallery}/>
+            <OptionBtn type={Camera}/>
+            <OptionBtn type={Contacts}/>
+          </View>
         </View>
         {this.renderLoading()}
       </View>
@@ -212,16 +221,14 @@ class ChatComponent extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   },
   list: {
     flex: 1
   },
   sendContainer: {
     flexDirection: "row",
-    justifyContent: "space-between",
-    backgroundColor: Resources.APP_COLOR,
-    marginTop: 4
+    justifyContent: "space-between"
   },
   textInput: {
     flex: 0.8,
@@ -245,6 +252,16 @@ const styles = StyleSheet.create({
   sendBtn: {
     color: "white",
     fontSize: 18
+  },
+  bottomLayout: {
+    backgroundColor: Resources.APP_COLOR,
+    marginTop: 4
+  },
+  optionsLayout: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    marginTop: 4,
+    marginBottom: 6
   }
 });
 
