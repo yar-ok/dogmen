@@ -1,5 +1,13 @@
 import React, { Component } from "react";
-import { StyleSheet, CameraRoll, View, PermissionsAndroid } from "react-native";
+import {
+  StyleSheet,
+  CameraRoll,
+  View,
+  PermissionsAndroid,
+  FlatList
+} from "react-native";
+
+import GalleryItem from "./GalleryItem"
 
 class GalleryComponent extends Component {
     constructor(props) {
@@ -38,7 +46,15 @@ class GalleryComponent extends Component {
 
     render() {
         return(
-            <View style={{ height: 150, backgroundColor: "red" }} />
+            <View style={{ height: this.state.photos.length > 0 ? 200 : 0 }}>
+                <FlatList
+                    style={{ flex: 1 }}
+                    data={this.state.photos}
+                    numColumns={3}
+                    keyExtractor={item => item.node.image.uri}
+                    renderItem={({item}) => <GalleryItem {...item}/>}
+                />
+            </View>
         )
     }
 }
