@@ -8,7 +8,8 @@ import {
   Text,
   TouchableOpacity,
   Image,
-  InteractionManager
+  InteractionManager,
+  CameraRoll
 } from "react-native";
 
 import {
@@ -25,9 +26,11 @@ import AppHeaderTitle from "../components/AppHeaderTitle";
 import Resources from "../utils/Resources";
 import OptionBtn from "../components/OptionBtn"
 import { Camera, Gallery, Contacts } from "../utils/Constants";
-
+import GalleryComponent from "../components/GalleryComponent"
 import { connect } from "react-redux";
 import { actionCreators } from "../actions/ChatActions";
+
+const WRONG_VALUE = 0;
 
 const mapStateToProps = state => ({
   loading: state.chatState.loading,
@@ -59,7 +62,8 @@ class ChatComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      message: ""
+      message: "",
+      currentOption: WRONG_VALUE
     };
   }
 
@@ -78,6 +82,12 @@ class ChatComponent extends Component {
           </MenuOptions>
         </Menu>, headerStyle: { backgroundColor: Resources.TOOLBAR_COLOR } };
   };
+
+  showOption(option) {
+    this.setState({
+      currentOption: option
+    })
+  }
 
   deleteAllMessages = () => {
     this.props.deleteAllMessages();
@@ -173,6 +183,15 @@ class ChatComponent extends Component {
     this.props.selectMessage(messageId, this.props.messages);
   }
 
+  getBottomListView() {
+    switch(this.state.currentOption) {
+      case Gallery:
+        return <GalleryComponent/>;
+    }
+
+    return null
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -208,10 +227,12 @@ class ChatComponent extends Component {
             </TouchableOpacity>
           </View>
           <View style={ styles.optionsLayout }>
-            <OptionBtn type={Gallery}/>
-            <OptionBtn type={Camera}/>
-            <OptionBtn type={Contacts}/>
+            <OptionBtn type={Gallery} onPress={() => this.showOption(Gallery)}/>
+            <OptionBtn type={Camera} onPress={() => alert('Camera')}/>
+            <OptionBtn type={Contacts} onPress={() => alert('Contacts')}/>
           </View>
+
+          { this.getBottomListView() }
         </View>
         {this.renderLoading()}
       </View>
