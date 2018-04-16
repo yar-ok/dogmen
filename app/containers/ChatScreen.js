@@ -211,12 +211,12 @@ class ChatComponent extends Component {
     if (Platform.OS === 'android') {
       AndroidImagePicker.startCamera(
         {},
-        (uri) => { 
-          alert(uri) 
+        (uri) => {
+          alert(uri)
           this.resetOption()
         },
-        (error) => { 
-          console.log(error) 
+        (error) => {
+          console.log(error)
           this.resetOption();
         }
       )

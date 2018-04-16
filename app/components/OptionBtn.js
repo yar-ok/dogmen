@@ -28,11 +28,11 @@ class OptionBtn extends Component {
     getImageByType() {
         switch(this.props.type) {
             case Camera:
-                return <Image style={styles.image} tintColor={this.getTintColor()} source={require('../images/ic_camera.png')} />
-            case Gallery:                
-                return <Image style={styles.image} tintColor={this.getTintColor()} source={require("../images/ic_gallery.png")} />;
+                return <Image style={this.state.isSelected ? styles.imageSelected : styles.imageDefault} source={require('../images/ic_camera.png')} />
+            case Gallery:
+                return <Image style={this.state.isSelected ? styles.imageSelected : styles.imageDefault} source={require("../images/ic_gallery.png")} />;
             case Contacts:
-                return <Image style={styles.image} tintColor={this.getTintColor()} source={require("../images/ic_contacts.png")} />;
+                return <Image style={this.state.isSelected ? styles.imageSelected : styles.imageDefault} source={require("../images/ic_contacts.png")} />;
         }
 
         return null
@@ -50,7 +50,7 @@ class OptionBtn extends Component {
         this.props.onPress(isSelected)
     }
 
-    render() {        
+    render() {
         return(
             <TouchableOpacity style={{ padding: 4 }} onPress={() => this.pressed()}>
                  { this.getImageByType() }
@@ -62,8 +62,14 @@ class OptionBtn extends Component {
 export default OptionBtn
 
 const styles = StyleSheet.create({
-    image: {
+    imageDefault: {
         width: 30,
-        height: 30
-    }
+        height: 30,
+        tintColor: 'grey'
+    },
+    imageSelected: {
+        width: 30,
+        height: 30,
+        tintColor: 'white'
+    },
 })
