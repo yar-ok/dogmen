@@ -38,10 +38,6 @@ class OptionBtn extends Component {
         return null
     }
 
-    getTintColor() {
-        return this.state.isSelected ? "white" : "grey";
-    }
-
     pressed() {
         let isSelected = !this.state.isSelected
         this.setState({
