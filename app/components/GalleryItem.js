@@ -3,7 +3,8 @@ import {
   StyleSheet,
   View,
   Image,
-  Dimensions
+  Dimensions,
+  TouchableOpacity
 } from "react-native";
 
 const { width, height } = Dimensions.get("window");
@@ -11,11 +12,14 @@ const SCREEN_WIDTH = width;
 const PRODUCT_ITEM_MARGIN = 8;
 const NUM_COLUMNS = 3;
 
-const GalleryItem = (props) => (
-        <View style={styles.container}>
-            <Image source={{ uri: props.node.image.uri }} style={ styles.photo }/>
-          </View>
-)
+const GalleryItem = props => (
+  <TouchableOpacity
+    style={styles.container}
+    onPress={() => props.onSelected !== undefined ? props.onSelected(props.node.image.uri) : 0}
+  >
+    <Image source={{ uri: props.node.image.uri }} style={styles.photo} />
+  </TouchableOpacity>
+);
 export default GalleryItem
 
 const itemWidth =

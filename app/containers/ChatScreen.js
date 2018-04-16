@@ -186,7 +186,7 @@ class ChatComponent extends Component {
   getBottomListView() {
     switch(this.state.currentOption) {
       case Gallery:
-        return <GalleryComponent/>;
+        return <GalleryComponent onSelected={(uri) => this.onGalleryItemClicked(uri)}/>;
       case Camera:
         // alert("Camera");
         break;
@@ -196,6 +196,13 @@ class ChatComponent extends Component {
     }
 
     return null
+  }
+
+  onGalleryItemClicked(uri) {
+    alert('URI: ' + uri)
+    this.setState({
+      currentOption: WRONG_VALUE
+    })
   }
 
   render() {

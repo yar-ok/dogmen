@@ -52,7 +52,7 @@ class GalleryComponent extends Component {
                     data={this.state.photos}
                     numColumns={3}
                     keyExtractor={item => item.node.image.uri}
-                    renderItem={({item}) => <GalleryItem {...item}/>}
+                    renderItem={({item}) => <GalleryItem {...item} onSelected={this.props.onSelected}/>}
                 />
             </View>
         )
