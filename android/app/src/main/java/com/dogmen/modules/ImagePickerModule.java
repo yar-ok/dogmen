@@ -8,9 +8,12 @@ import android.content.pm.ResolveInfo;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v4.content.FileProvider;
 import android.util.Log;
 
+import com.dogmen.BuildConfig;
 import com.dogmen.MainApplication;
 import com.dogmen.R;
 import com.dogmen.utils.ContextMenuBuilder;
@@ -23,6 +26,8 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +37,8 @@ public class ImagePickerModule extends ReactContextBaseJavaModule {
 
     private Callback pickerSuccessCallback;
     private Callback pickerCancelCallback;
+
+    private Uri imageUri;
 
 
     private final ActivityEventListener mActivityEventListener = new BaseActivityEventListener() {
@@ -43,11 +50,16 @@ public class ImagePickerModule extends ReactContextBaseJavaModule {
                 } else if (resultCode == Activity.RESULT_OK) {
                     Uri uri = intent.getData();
 
-                    if (uri == null) {
+                    if (uri == null && imageUri == null) {
                         pickerCancelCallback.invoke("No image data found");
                     } else {
                         try {
-                            String realPath = getRealPathFromURI(uri);
+                            String realPath;
+                            if (imageUri != null) {
+                                realPath = imageUri.getPath();
+                            } else {
+                                realPath = getRealPathFromURI(uri);
+                            }
                             pickerSuccessCallback.invoke(realPath);
                         } catch (Exception e) {
                             pickerCancelCallback.invoke("Exception: No image data found");
@@ -78,19 +90,27 @@ public class ImagePickerModule extends ReactContextBaseJavaModule {
         }
         pickerSuccessCallback = successCallback;
         pickerCancelCallback = cancelCallback;
+        imageUri = null;
 
         Intent camIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
-        List<ResolveInfo> listCam = currentActivity.getPackageManager().queryIntentActivities(camIntent, 0);
+        try {
+            File file = new File(currentActivity.getExternalCacheDir(), "CROP_SHOT.jpg");
+            imageUri = FileProvider.getUriForFile(currentActivity,
+                    BuildConfig.APPLICATION_ID + ".provider",
+                    file);
 
-        Intent cameraIntent = null;
-        for (ResolveInfo res : listCam) {
-            final Intent finalIntent = new Intent(camIntent);
-            finalIntent.setComponent(new ComponentName(res.activityInfo.packageName, res.activityInfo.name));
-            cameraIntent = finalIntent;
+            if (imageUri != null) {
+                camIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+            }
+
+            if (camIntent.resolveActivity(currentActivity.getPackageManager()) != null) {
+                currentActivity.startActivityForResult(camIntent, CAMERA_CAPTURE);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-        currentActivity.startActivityForResult(cameraIntent, CAMERA_CAPTURE);
     }
 
     @ReactMethod
@@ -104,6 +124,7 @@ public class ImagePickerModule extends ReactContextBaseJavaModule {
 
         pickerSuccessCallback = successCallback;
         pickerCancelCallback = cancelCallback;
+        imageUri = null;
 
         try {
             final Intent galleryIntent = new Intent(Intent.ACTION_PICK);
