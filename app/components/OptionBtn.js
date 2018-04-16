@@ -17,11 +17,19 @@ class OptionBtn extends Component {
         }
     }
 
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.isNeedUnselect) {
+            this.setState({
+                isSelected: false
+            })
+        }
+    }
+
     getImageByType() {
         switch(this.props.type) {
             case Camera:
                 return <Image style={styles.image} tintColor={this.getTintColor()} source={require('../images/ic_camera.png')} />
-            case Gallery:
+            case Gallery:                
                 return <Image style={styles.image} tintColor={this.getTintColor()} source={require("../images/ic_gallery.png")} />;
             case Contacts:
                 return <Image style={styles.image} tintColor={this.getTintColor()} source={require("../images/ic_contacts.png")} />;
@@ -42,7 +50,7 @@ class OptionBtn extends Component {
         this.props.onPress(isSelected)
     }
 
-    render() {
+    render() {        
         return(
             <TouchableOpacity style={{ padding: 4 }} onPress={() => this.pressed()}>
                  { this.getImageByType() }

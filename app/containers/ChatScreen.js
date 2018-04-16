@@ -187,6 +187,12 @@ class ChatComponent extends Component {
     switch(this.state.currentOption) {
       case Gallery:
         return <GalleryComponent/>;
+      case Camera:
+        // alert("Camera");
+        break;
+      case Contacts:
+        // alert("Contacts");
+        break;
     }
 
     return null
@@ -227,9 +233,9 @@ class ChatComponent extends Component {
             </TouchableOpacity>
           </View>
           <View style={ styles.optionsLayout }>
-            <OptionBtn type={Gallery} onPress={(isSelected) => this.showOption(Gallery, isSelected)}/>
-            <OptionBtn type={Camera} onPress={(isSelected) => alert('Camera')}/>
-            <OptionBtn type={Contacts} onPress={(isSelected) => alert('Contacts')}/>
+            <OptionBtn type={Gallery} onPress={(isSelected) => this.showOption(Gallery, isSelected)} isNeedUnselect={this.state.currentOption != Gallery}/>
+            <OptionBtn type={Camera} onPress={(isSelected) => this.showOption(Camera, isSelected)} isNeedUnselect={this.state.currentOption != Camera}/>
+            <OptionBtn type={Contacts} onPress={(isSelected) => this.showOption(Contacts, isSelected)} isNeedUnselect={this.state.currentOption != Contacts}/>
           </View>
 
           { this.getBottomListView() }
