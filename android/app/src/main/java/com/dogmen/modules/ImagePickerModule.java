@@ -69,6 +69,31 @@ public class ImagePickerModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
+    public void startCamera(ReadableMap config, Callback successCallback, Callback cancelCallback) {
+        final Activity currentActivity = getCurrentActivity();
+
+        if (currentActivity == null) {
+            cancelCallback.invoke("Activity doesn't exist");
+            return;
+        }
+        pickerSuccessCallback = successCallback;
+        pickerCancelCallback = cancelCallback;
+
+        Intent camIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+        List<ResolveInfo> listCam = currentActivity.getPackageManager().queryIntentActivities(camIntent, 0);
+
+        Intent cameraIntent = null;
+        for (ResolveInfo res : listCam) {
+            final Intent finalIntent = new Intent(camIntent);
+            finalIntent.setComponent(new ComponentName(res.activityInfo.packageName, res.activityInfo.name));
+            cameraIntent = finalIntent;
+        }
+
+        currentActivity.startActivityForResult(cameraIntent, CAMERA_CAPTURE);
+    }
+
+    @ReactMethod
     public void pickImage(ReadableMap config, Callback successCallback, Callback cancelCallback) {
         final Activity currentActivity = getCurrentActivity();
 

@@ -9,8 +9,11 @@ import {
   TouchableOpacity,
   Image,
   InteractionManager,
-  CameraRoll
+  CameraRoll,
+  Platform
 } from "react-native";
+
+import AndroidImagePicker from "../modules/AndroidImagePicker";
 
 import {
   Menu,
@@ -189,6 +192,7 @@ class ChatComponent extends Component {
         return <GalleryComponent onSelected={(uri) => this.onGalleryItemClicked(uri)}/>;
       case Camera:
         // alert("Camera");
+        this.showCamera()
         break;
       case Contacts:
         // alert("Contacts");
@@ -200,9 +204,29 @@ class ChatComponent extends Component {
 
   onGalleryItemClicked(uri) {
     alert('URI: ' + uri)
+    this.resetOption()
+  }
+
+  showCamera() {
+    if (Platform.OS === 'android') {
+      AndroidImagePicker.startCamera(
+        {},
+        (uri) => { 
+          alert(uri) 
+          this.resetOption()
+        },
+        (error) => { 
+          console.log(error) 
+          this.resetOption();
+        }
+      )
+    }
+  }
+
+  resetOption() {
     this.setState({
       currentOption: WRONG_VALUE
-    })
+    });
   }
 
   render() {
