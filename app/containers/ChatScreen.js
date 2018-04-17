@@ -341,7 +341,12 @@ const styles = StyleSheet.create({
     marginTop: 12,
     marginBottom: 12,
     paddingBottom: 0,
-    paddingTop: 0
+    paddingTop: 0,
+    ...Platform.select({
+      ios: {
+        minHeight: 30,
+      },
+    })
   },
   sendBtnContainer: {
     flex: 0.2,
