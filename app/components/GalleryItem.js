@@ -14,7 +14,6 @@ const NUM_COLUMNS = 3;
 
 const GalleryItem = props => (
   <TouchableOpacity
-    style={styles.container}
     onPress={() => props.onSelected !== undefined ? props.onSelected(props.node.image.uri) : 0}
   >
     <Image source={{ uri: props.node.image.uri }} style={styles.photo} />
@@ -26,11 +25,6 @@ const itemWidth =
   (SCREEN_WIDTH - NUM_COLUMNS * 2 * PRODUCT_ITEM_MARGIN) / NUM_COLUMNS;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: "row",
-    alignItems: "center"
-  },
   photo: {
     height: itemWidth,
     width: itemWidth,
