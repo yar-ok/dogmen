@@ -189,7 +189,9 @@ class ChatComponent extends Component {
   getBottomListView() {
     switch(this.state.currentOption) {
       case Gallery:
-        return <GalleryComponent onSelected={(uri) => this.onGalleryItemClicked(uri)}/>;
+        return <GalleryComponent
+        onSelected={(uri) => this.onGalleryItemClicked(uri)}
+        onError={() => this.resetOption()}/>;
       case Camera:
         // alert("Camera");
         this.showCamera()

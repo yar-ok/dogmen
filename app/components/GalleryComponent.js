@@ -4,9 +4,11 @@ import {
   CameraRoll,
   View,
   PermissionsAndroid,
-  FlatList
+  FlatList,
+  Platform
 } from "react-native";
 
+import Permissions from 'react-native-permissions'
 import GalleryItem from "./GalleryItem"
 
 class GalleryComponent extends Component {
@@ -18,7 +20,28 @@ class GalleryComponent extends Component {
     }
 
     componentDidMount() {
+      this.checkPermission()
+    }
+
+    checkPermission() {
+      if (Platform.OS === 'android') {
         this.requestCameraPermission()
+      } else {
+        Permissions.check('photo').then(response => {
+           if (response === 'undetermined' || response === 'denied') {
+             Permissions.request('photo').then(response => {
+                if (response === 'allow' || response === 'authorized') {
+                  this.getPhotos()
+                } else {
+                  alert('Permission denied')
+                  this.props.onError()
+                }
+              })
+           } else {
+             this.getPhotos()
+           }
+        })
+      }
     }
 
     async requestCameraPermission() {
