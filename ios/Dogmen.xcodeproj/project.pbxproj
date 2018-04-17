@@ -44,6 +44,7 @@
 		8B049FB2206400970047EE51 /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B049FB1206400970047EE51 /* IQKeyboardManager.bundle */; };
 		8B52C54D206540160017DD3A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B52C54C206540160017DD3A /* GoogleService-Info.plist */; };
 		8B52C5A820654BE30017DD3A /* libRNFIRMessaging.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B52C54B20653B820017DD3A /* libRNFIRMessaging.a */; };
+		8B70661F20861F0B00B38A92 /* libRCTContacts.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7065FB20861E9E00B38A92 /* libRCTContacts.a */; };
 		8BEFA886206A79560030FB11 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BEFA85C206A79550030FB11 /* libsqlite3.0.tbd */; };
 		8BEFA890206A8EB60030FB11 /* www in Resources */ = {isa = PBXBuildFile; fileRef = 8BEFA88F206A8EB60030FB11 /* www */; };
 		92672C34BA3A6E8D66115771 /* libPods-Dogmen-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C4C2548FC04C868E682D993C /* libPods-Dogmen-tvOS.a */; };
@@ -346,6 +347,13 @@
 			remoteGlobalIDString = E23D7B471ACEFE2A00C59171;
 			remoteInfo = SQLite;
 		};
+		8B7065FA20861E9E00B38A92 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8B7065F020861E9E00B38A92 /* RCTContacts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1441618E1BD0A79300FA4F59;
+			remoteInfo = RCTContacts;
+		};
 		ADBDB9261DFEBF0700ED6528 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */;
@@ -396,6 +404,7 @@
 		8B049F3B2063C40F0047EE51 /* RCTCameraRoll.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTCameraRoll.xcodeproj; path = "../node_modules/react-native/Libraries/CameraRoll/RCTCameraRoll.xcodeproj"; sourceTree = "<group>"; };
 		8B049FB1206400970047EE51 /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
 		8B52C54C206540160017DD3A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8B7065F020861E9E00B38A92 /* RCTContacts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTContacts.xcodeproj; path = "../node_modules/react-native-contacts/ios/RCTContacts.xcodeproj"; sourceTree = "<group>"; };
 		8BEFA85C206A79550030FB11 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		8BEFA88F206A8EB60030FB11 /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; name = www; path = Dogmen/www; sourceTree = "<group>"; };
 		9934A81E300417C71BCD18BD /* Pods-Dogmen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dogmen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dogmen/Pods-Dogmen.debug.xcconfig"; sourceTree = "<group>"; };
@@ -421,6 +430,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B70661F20861F0B00B38A92 /* libRCTContacts.a in Frameworks */,
 				8BEFA886206A79560030FB11 /* libsqlite3.0.tbd in Frameworks */,
 				8B52C5A820654BE30017DD3A /* libRNFIRMessaging.a in Frameworks */,
 				8B049F762063C4280047EE51 /* libRCTCameraRoll.a in Frameworks */,
@@ -622,6 +632,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				8B7065F020861E9E00B38A92 /* RCTContacts.xcodeproj */,
 				8B049F3B2063C40F0047EE51 /* RCTCameraRoll.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
@@ -726,6 +737,14 @@
 			isa = PBXGroup;
 			children = (
 				8B6CE643206A78CF000A62C6 /* libSQLite.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8B7065F120861E9E00B38A92 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8B7065FB20861E9E00B38A92 /* libRCTContacts.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -892,6 +911,10 @@
 				{
 					ProductGroup = 8B049F3C2063C40F0047EE51 /* Products */;
 					ProjectRef = 8B049F3B2063C40F0047EE51 /* RCTCameraRoll.xcodeproj */;
+				},
+				{
+					ProductGroup = 8B7065F120861E9E00B38A92 /* Products */;
+					ProjectRef = 8B7065F020861E9E00B38A92 /* RCTContacts.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302B61ABCB90400DB3ED1 /* Products */;
@@ -1231,6 +1254,13 @@
 			fileType = archive.ar;
 			path = libSQLite.a;
 			remoteRef = 8B6CE642206A78CF000A62C6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8B7065FB20861E9E00B38A92 /* libRCTContacts.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTContacts.a;
+			remoteRef = 8B7065FA20861E9E00B38A92 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */ = {

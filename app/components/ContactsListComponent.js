@@ -8,6 +8,8 @@ import {
 import ContactItem from './ContactItem'
 import Permissions from "react-native-permissions";
 
+import Contacts from 'react-native-contacts';
+
 class ContactsListComponent extends Component {
   constructor(props) {
     super(props);
@@ -25,14 +27,17 @@ class ContactsListComponent extends Component {
   }
 
   showContacts() {
-    var Contacts = require("react-native-contacts");
+    // var Contacts = require("react-native-contacts");
 
     Contacts.getAll((err, contacts) => {
       if (err === "denied") {
         // error
         this.resetOption();
         alert("denied");
-      } else {
+      } else if (contacts === undefined) {
+        this.resetOption();
+        alert("No contacts");
+      } {
         this.setState({
             contacts: this.handleContactsList(contacts)
         })
@@ -61,10 +66,13 @@ class ContactsListComponent extends Component {
     let handled = []
     for(let contact of contacts) {
         for(let number of contact.phoneNumbers) {
-            contact.number = number.number;
-            handled.push(contact)
+          let contactForUpdate = Object.assign({}, contact);;
+          console.log(number.number)
+            contactForUpdate.number = number.number;
+            handled.push(contactForUpdate)
         }
     }
+
     return handled
   }
 
@@ -75,7 +83,7 @@ class ContactsListComponent extends Component {
           style={{ flex: 1 }}
           data={this.state.contacts}
           numColumns={1}
-          keyExtractor={item => item.recordID}
+          keyExtractor={item => item.recordID + item.number}
           renderItem={({ item }) => <ContactItem {...item} onSelected={this.props.onSelected}/>}
         />
       </View>
