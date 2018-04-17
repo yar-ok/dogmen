@@ -30,6 +30,7 @@ import Resources from "../utils/Resources";
 import OptionBtn from "../components/OptionBtn"
 import { Camera, Gallery, Contacts } from "../utils/Constants";
 import GalleryComponent from "../components/GalleryComponent"
+import ContactsListComponent from '../components/ContactsListComponent'
 import { connect } from "react-redux";
 import { actionCreators } from "../actions/ChatActions";
 
@@ -72,24 +73,42 @@ class ChatComponent extends Component {
 
   static navigationOptions = ({ navigation }) => {
     const { params = {} } = navigation.state;
-    return { headerTitle: <AppHeaderTitle title="Chat" />, headerTintColor: "white", headerRight: <Menu>
-          <MenuTrigger style={{ padding: 16 }} onPress={() => params.updateNavigationParams()}>
+    return {
+      headerTitle: <AppHeaderTitle title="Chat" />,
+      headerTintColor: "white",
+      headerRight: (
+        <Menu>
+          <MenuTrigger
+            style={{ padding: 16 }}
+            onPress={() => params.updateNavigationParams()}
+          >
             <Image source={require("../images/ic_more.png")} />
           </MenuTrigger>
           <MenuOptions optionsContainerStyle={{ marginTop: 40 }}>
             <MenuOption onSelect={() => alert(`Save`)}>
               <Text style={{ color: "red" }}>Save </Text>
             </MenuOption>
-            <MenuOption onSelect={() => params.deleteAllMessages()} disabled={params.messagesEmpty} text="Delete all"/>
-            <MenuOption onSelect={() => params.deleteSelectedMessages()} disabled={params.checkSelected} text="Delete selected" />
+            <MenuOption
+              onSelect={() => params.deleteAllMessages()}
+              disabled={params.messagesEmpty}
+              text="Delete all"
+            />
+            <MenuOption
+              onSelect={() => params.deleteSelectedMessages()}
+              disabled={params.checkSelected}
+              text="Delete selected"
+            />
           </MenuOptions>
-        </Menu>, headerStyle: { backgroundColor: Resources.TOOLBAR_COLOR } };
+        </Menu>
+      ),
+      headerStyle: { backgroundColor: Resources.TOOLBAR_COLOR }
+    };
   };
 
   showOption(option, isSelected) {
     this.setState({
       currentOption: isSelected ? option : WRONG_VALUE
-    })
+    });
   }
 
   deleteAllMessages = () => {
@@ -125,13 +144,13 @@ class ChatComponent extends Component {
     return this.getSelectedMessages().length > 0;
   };
 
-  isMessagesEmpty= () => {
+  isMessagesEmpty = () => {
     if (this.props.messages === undefined) {
-      return true
+      return true;
     }
 
-    return this.props.messages.length === 0
-  }
+    return this.props.messages.length === 0;
+  };
 
   getSelectedMessages = () => {
     if (this.props.messages === undefined) {
@@ -187,41 +206,49 @@ class ChatComponent extends Component {
   }
 
   getBottomListView() {
-    switch(this.state.currentOption) {
+    switch (this.state.currentOption) {
       case Gallery:
-        return <GalleryComponent
-        onSelected={(uri) => this.onGalleryItemClicked(uri)}
-        onError={() => this.resetOption()}/>;
+        return (
+          <GalleryComponent
+            onSelected={uri => this.onGalleryItemClicked(uri)}
+            onError={() => this.resetOption()}
+          />
+        );
       case Camera:
-        // alert("Camera");
-        this.showCamera()
+        this.showCamera();
         break;
       case Contacts:
-        // alert("Contacts");
+         return (
+          <ContactsListComponent onSelected={(contact) => this.contactSelected(contact)} onError={() => this.resetOption()} />
+         )
         break;
     }
 
-    return null
+    return null;
   }
 
-  onGalleryItemClicked(uri) {
-    alert('URI: ' + uri)
+  contactSelected(contact) {
     this.resetOption()
   }
 
+  onGalleryItemClicked(uri) {
+    alert("URI: " + uri);
+    this.resetOption();
+  }
+
   showCamera() {
-    if (Platform.OS === 'android') {
+    if (Platform.OS === "android") {
       AndroidImagePicker.startCamera(
         {},
-        (uri) => {
-          alert(uri)
-          this.resetOption()
+        uri => {
+          alert(uri);
+          this.resetOption();
         },
-        (error) => {
-          console.log(error)
+        error => {
+          console.log(error);
           this.resetOption();
         }
-      )
+      );
     }
   }
 
@@ -246,7 +273,7 @@ class ChatComponent extends Component {
             />
           )}
         />
-        <View style={ styles.bottomLayout }>
+        <View style={styles.bottomLayout}>
           <View style={styles.sendContainer}>
             <TextInput
               style={styles.textInput}
@@ -265,13 +292,25 @@ class ChatComponent extends Component {
               <Text style={styles.sendBtn}>Send</Text>
             </TouchableOpacity>
           </View>
-          <View style={ styles.optionsLayout }>
-            <OptionBtn type={Gallery} onPress={(isSelected) => this.showOption(Gallery, isSelected)} isNeedUnselect={this.state.currentOption != Gallery}/>
-            <OptionBtn type={Camera} onPress={(isSelected) => this.showOption(Camera, isSelected)} isNeedUnselect={this.state.currentOption != Camera}/>
-            <OptionBtn type={Contacts} onPress={(isSelected) => this.showOption(Contacts, isSelected)} isNeedUnselect={this.state.currentOption != Contacts}/>
+          <View style={styles.optionsLayout}>
+            <OptionBtn
+              type={Gallery}
+              onPress={isSelected => this.showOption(Gallery, isSelected)}
+              isNeedUnselect={this.state.currentOption != Gallery}
+            />
+            <OptionBtn
+              type={Camera}
+              onPress={isSelected => this.showOption(Camera, isSelected)}
+              isNeedUnselect={this.state.currentOption != Camera}
+            />
+            <OptionBtn
+              type={Contacts}
+              onPress={isSelected => this.showOption(Contacts, isSelected)}
+              isNeedUnselect={this.state.currentOption != Contacts}
+            />
           </View>
 
-          { this.getBottomListView() }
+          {this.getBottomListView()}
         </View>
         {this.renderLoading()}
       </View>
