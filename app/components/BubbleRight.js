@@ -5,13 +5,16 @@ import Resources from "../utils/Resources";
 const BubbleRight = props => (
   <View style={styles.container}>
     {getSelectedView(props)}
-    <TouchableOpacity
-      onLongPress={e => props.messageSelected(props.id)}
-      activeOpacity={1}
-      style={styles.bubble}
-    >
-      <Text>{props.message}</Text>
-    </TouchableOpacity>
+    <View>
+      <View style={styles.talkBubbleTriangle} />
+      <TouchableOpacity
+        onLongPress={e => props.messageSelected(props.id)}
+        activeOpacity={1}
+        style={styles.bubble}
+      >
+        <Text>{props.message}</Text>
+      </TouchableOpacity>
+    </View>
     {getAvatarView(props)}
   </View>
 );
@@ -66,6 +69,19 @@ const styles = StyleSheet.create({
     marginLeft: 6,
     marginTop: 6,
     backgroundColor: Resources.APP_COLOR
+  },
+  talkBubbleTriangle: {
+    position: "absolute",
+    right: -10,
+    top: 14,
+    width: 0,
+    height: 0,
+    borderTopColor: "transparent",
+    borderTopWidth: 7,
+    borderLeftWidth: 10,
+    borderLeftColor: "red",
+    borderBottomWidth: 7,
+    borderBottomColor: "transparent"
   }
 });
 
