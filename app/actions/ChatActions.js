@@ -21,7 +21,6 @@ export const actionCreators = {
         const messages = snapshot.val() || [];
         let newMessages = []
         Object.values(messages).forEach(msg => newMessages.push(msg));
-        console.log('ok')
         dispatch({
                 type: types.ALL_CHAT_MESSAGES,
                 payload: {
@@ -131,8 +130,9 @@ export const actionCreators = {
   },
 
   sendNewMessage: (message, messages) => async(dispatch, getState) => {
+    const randomId = (Math.floor(Math.random() * 100) + 1).toString();
     const messageTest = {
-      id: (Math.floor(Math.random() * 100) + 1).toString() ,
+      id: randomId ,
       message: message,
       user: {
         name: "Bob(me)",
@@ -140,18 +140,24 @@ export const actionCreators = {
         isMe: true
       }
     };
-    setTimeout (() => {
-      if (true) {
-         dispatch({
+    
+
+        const newMsgRef = firebase
+          .database()
+          .ref("messages")
+          .push();
+        messageTest.id = newMsgRef.key;
+        // alert("randomId -> " + randomId + "    idNew -> " + messageTest.id);
+        newMsgRef.set(messageTest); 
+
+        dispatch({
            type: types.ALL_CHAT_MESSAGES,
            payload: {
              loading: false,
              error: false,
              result: handleMassages([messageTest, ...messages])
            }
-         });
-      }
-    }, 200)
+         });    
   },
 
   deleteAllMessages: () => async(dispatch, getState) => {
