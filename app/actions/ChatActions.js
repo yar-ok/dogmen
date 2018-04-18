@@ -13,15 +13,25 @@ export const actionCreators = {
         error: false
       }
     });
-    
+
 
     firebase.database()
       .ref('messages')
       .on('value', (snapshot) => {
         const messages = snapshot.val() || [];
-        alert("size -> " + snapshot);
+        let newMessages = []
+        Object.values(messages).forEach(msg => newMessages.push(msg));
+        console.log('ok')
+        dispatch({
+                type: types.ALL_CHAT_MESSAGES,
+                payload: {
+                  loading: false,
+                  error: false,
+                  result: handleMassages(newMessages)
+                }
+        })
       } )
-    
+
     // fetch(url)
     //   .then(res => res.json())
     //   .then(res => alert('OK'))
@@ -68,7 +78,7 @@ export const actionCreators = {
     //                 isMe: false,
     //             }
     //         },
-            
+
     //       {
     //             id: '3',
     //             message: 'How are you?',
@@ -78,7 +88,7 @@ export const actionCreators = {
     //                 isMe: false,
     //             }
     //         },
-            
+
     //         {
     //             id: '2',
     //             message: 'Hi!!!',
@@ -162,7 +172,7 @@ export const actionCreators = {
            result: []
          }
        });
-   }, 1000);       
+   }, 1000);
   },
 
   selectMessage: (messageId, messages) => {
