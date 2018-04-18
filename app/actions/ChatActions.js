@@ -1,3 +1,5 @@
+import firebase from '../config/firebase'
+
 export const types = {
     ALL_CHAT_MESSAGES: 'ALL_CHAT_MESSAGES'
 }
@@ -11,13 +13,20 @@ export const actionCreators = {
         error: false
       }
     });
-    let url = "https://dogmen-5b44f.firebaseio.com/messages";
+    
+
+    firebase.database()
+      .ref('messages')
+      .on('value', (snapshot) => {
+        const messages = snapshot.val() || [];
+        alert("size -> " + snapshot);
+      } )
     
     // fetch(url)
     //   .then(res => res.json())
     //   .then(res => alert('OK'))
 
-    
+
     // setTimeout (() => {
     //   // check for server error
     //   if (true) {
