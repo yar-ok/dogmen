@@ -15,8 +15,8 @@ const BubbleLeft = props => (
         style={styles.bubble}
       >
         <View>
-          <Text style={{ color: 'white' }}>{props.message}</Text>
-          <SentTime sent_time={props.sent_time} />
+          <Text style={{ color: "white" }}>{props.message}</Text>
+          <SentTime sent_time={props.sentTime} />
         </View>
       </TouchableOpacity>
     </View>
