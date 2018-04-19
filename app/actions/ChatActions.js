@@ -174,25 +174,9 @@ function getValidatedData(startDate) {
     let elapsedSeconds = Math.floor(different / secondsInMilli);
 
     let result = 0;
-    if (elapsedDays > 23) {
+    if (elapsedHours > 0) {
       let date = new Date(startDate);
       result = moment(date).format("DD MMMM YYYY hh:mm");
-    } else if (elapsedDays > 0) {
-      result =
-        elapsedDays +
-        " days " +
-        elapsedHours +
-        " h " +
-        elapsedMinutes +
-        " min ago";
-    } else if (elapsedHours > 0) {
-      result =
-        elapsedHours +
-        " h " +
-        elapsedMinutes +
-        " min " +
-        elapsedSeconds +
-        " sec ago";
     } else if (elapsedMinutes > 0) {
       result = elapsedMinutes + " min " + elapsedSeconds + " sec ago";
     } else if (elapsedSeconds === 0) {
@@ -200,7 +184,6 @@ function getValidatedData(startDate) {
     } else {
       result = elapsedSeconds + " sec ago";
     }
-
     return result;
   }
   return "----";
