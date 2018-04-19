@@ -65,6 +65,9 @@ const mapDispatchToProps = dispatch => {
 class ChatComponent extends Component {
   constructor(props) {
     super(props);
+    console.ignoredYellowBox = [
+      'Setting a timer'
+    ];
     this.state = {
       message: "",
       currentOption: WRONG_VALUE
