@@ -141,6 +141,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-device-info')
     compile project(':react-native-contacts')
     implementation project(':react-native-maps')
     compile project(':react-native-fcm')

@@ -5,6 +5,7 @@ import android.app.Application;
 import com.airbnb.android.react.maps.MapsPackage;
 import com.dogmen.modules.managers.ReactModulePackage;
 import com.facebook.react.ReactApplication;
+import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.rt2zz.reactnativecontacts.ReactNativeContacts;
 import com.evollu.react.fcm.FIRMessagingPackage;
 import com.facebook.react.ReactNativeHost;
@@ -31,6 +32,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNDeviceInfo(),
             new ReactNativeContacts(),
               new ReactModulePackage(),
                 new FIRMessagingPackage(),

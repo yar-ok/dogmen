@@ -1,5 +1,8 @@
 import firebase from '../config/firebase'
 import moment from "moment";
+import DeviceInfo from "react-native-device-info";
+
+const DEVICE_ID = DeviceInfo.getUniqueID()
 
 export const types = {
     ALL_CHAT_MESSAGES: 'ALL_CHAT_MESSAGES'
@@ -37,12 +40,12 @@ export const actionCreators = {
     const randomId = (Math.floor(Math.random() * 100) + 1).toString();
     const messageTest = {
       id: randomId ,
+      device_id: DEVICE_ID,
       message: message,
       sent_time: (new Date).getTime(),
       user: {
-        name: "Bob(me)",
+        name: "Bob",
         avatar: "https://randomuser.me/api/portraits/thumb/men/54.jpg",
-        isMe: true
       }
     };
     
@@ -52,7 +55,6 @@ export const actionCreators = {
           .ref("messages")
           .push();
         messageTest.id = newMsgRef.key;
-        // alert("randomId -> " + randomId + "    idNew -> " + messageTest.id);
         newMsgRef.set(messageTest); 
 
         dispatch({
@@ -121,6 +123,13 @@ function handleMassages(messages) {
     for (let i = 0; i < length; i++) {
       let isLastUserMessage = false;
       let message = messages[i];
+      message.user.isMe = message.device_id === DEVICE_ID
+      // for testing
+      if(!message.user.isMe) {
+        message.user.avatar = "https://randomuser.me/api/portraits/thumb/women/63.jpg"
+        message.user.name = "Kelly"
+      }
+      //------------
 
       if(length === 1) {
         isLastUserMessage = true;
@@ -128,6 +137,13 @@ function handleMassages(messages) {
         isLastUserMessage = true;
       } else {
         let nextMessage = messages[i + 1];
+        nextMessage.user.isMe = nextMessage.device_id === DEVICE_ID;
+        // for testing
+        if (!nextMessage.user.isMe) {
+          nextMessage.user.avatar = "https://randomuser.me/api/portraits/thumb/women/63.jpg";
+          nextMessage.user.name = "Kelly";
+        }
+        //------------
         isLastUserMessage = nextMessage.user.isMe !== message.user.isMe;
       }
 
