@@ -134,6 +134,7 @@ export const actionCreators = {
     const messageTest = {
       id: randomId ,
       message: message,
+      sent_time: (new Date).getTime(),
       user: {
         name: "Bob(me)",
         avatar: "https://randomuser.me/api/portraits/thumb/men/54.jpg",
@@ -214,6 +215,10 @@ export const actionCreators = {
 }
 
 function handleMassages(messages) {
+    messages.sort((a, b) => {
+      return parseInt(b.sent_time) - parseInt(a.sent_time);
+    })
+
     let length = messages.length
     for (let i = 0; i < length; i++) {
       let isLastUserMessage = false;

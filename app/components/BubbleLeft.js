@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
 import Resources from "../utils/Resources";
 
+import SentTime from './MessageSentTime'
+
 const BubbleLeft = props => (
   <View style={styles.container}>
     {getAvatarView(props)}
@@ -12,7 +14,10 @@ const BubbleLeft = props => (
         activeOpacity={1}
         style={styles.bubble}
       >
-        <Text>{props.message}</Text>
+        <View>
+          <Text style={{ color: 'white' }}>{props.message}</Text>
+          <SentTime sent_time={props.sent_time} />
+        </View>
       </TouchableOpacity>
     </View>
     {getSelectedView(props)}
