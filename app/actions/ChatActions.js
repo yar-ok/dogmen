@@ -65,15 +65,18 @@ export const actionCreators = {
          });    
   },
 
-  deleteAllMessages: () => async(dispatch, getState) => {
-       dispatch({
-         type: types.ALL_CHAT_MESSAGES,
-         payload: {
-           loading: true,
-           error: false
-         }
-       });
+  deleteAllMessages: (messages) => async(dispatch, getState) => {
+    dispatch({
+      type: types.ALL_CHAT_MESSAGES,
+      payload: {
+        loading: true,
+        error: false
+      }
+    });
 
+    for(let mes of messages) {
+      firebase.database().ref('messages').child(mes.id).remove()
+    }
    setTimeout(() => {
        dispatch({
          type: types.ALL_CHAT_MESSAGES,
@@ -101,20 +104,11 @@ export const actionCreators = {
   },
 
   deleteSelectedMessages: (messages) => async(dispatch, getState) => {
-    let clearedArray = []
     for(let mes of messages) {
-      if(!mes.isSelected) {
-        clearedArray.push(mes)
+      if(mes.isSelected) {
+        firebase.database().ref('messages').child(mes.id).remove()
       }
     }
-    dispatch({
-      type: types.ALL_CHAT_MESSAGES,
-      payload: {
-        loading: false,
-        error: false,
-        result: handleMassages(clearedArray)
-      }
-    });
   }
 }
 

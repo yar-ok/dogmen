@@ -50,8 +50,8 @@ const mapDispatchToProps = dispatch => {
     sendNewMessage: (message, messages) => {
       dispatch(actionCreators.sendNewMessage(message, messages));
     },
-    deleteAllMessages: () => {
-      dispatch(actionCreators.deleteAllMessages())
+    deleteAllMessages: (messages) => {
+      dispatch(actionCreators.deleteAllMessages(messages))
     },
     selectMessage: (messageId, messages) => {
       dispatch(actionCreators.selectMessage(messageId, messages))
@@ -115,7 +115,7 @@ class ChatComponent extends Component {
   }
 
   deleteAllMessages = () => {
-    this.props.deleteAllMessages();
+    this.props.deleteAllMessages(this.props.messages);
   };
 
   deleteSelectedMessages = () => {
