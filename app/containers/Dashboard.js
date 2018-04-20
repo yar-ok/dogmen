@@ -6,7 +6,7 @@ import Resources from '../utils/Resources'
 import Constants from '../utils/Constants'
 import Styles from '../utils/App.style'
 
-import AppButton from '../components/AppButton'
+import ScalingButton from "../components/ScalingButton";
 import AppHeaderTitle from '../components/AppHeaderTitle'
 import { NavigationActions } from 'react-navigation';
 
@@ -150,52 +150,22 @@ class Dashboard extends Component {
   }
 
   render() {
-    return (
-      <View style={Styles.backgroundContainer}>
+    return <View style={Styles.backgroundContainer}>
         <PushNotification />
-        <StatusBar
-          hidden={false}
-          backgroundColor={Resources.STATUS_BAR_COLOR}
-        />
-        <AppButton
-          text="Pending orders"
-          onPressed={() => this.showPendingOrders()}
-        />
-        <AppButton text="Calendar" onPressed={() => this.showCalendar()} />
-        <AppButton
-          text="Horizontal swipe items"
-          onPressed={() => this.goToHorizontalSwipeItems()}
-        />
-        <AppButton text="Map" onPressed={() => this.goToMapScreen()} />
-        <AppButton
-          text="Add location"
-          onPressed={() => this.goToAddLocationScreen()}
-        />
-        <AppButton text="Chat screen" onPressed={() => this.goChatScreen()} />
-        <AppButton text="Settings" onPressed={() => this.settings()} />
-        <Modal
-          transparent={true}
-          visible={this.state.showIosCalendar}
-          animationType={"fade"}
-          onRequestClose={() => this.closeIosCalendar()}
-        >
-          <TouchableOpacity
-            activeOpacity={1}
-            onPress={() => this.closeIosCalendar()}
-            style={{
-              flex: 1,
-              justifyContent: "center",
-              backgroundColor: "rgba(19, 19, 19, 0.8)"
-            }}
-          >
-            <DatePickerIOS
-              date={this.state.today}
-              onDateChange={this.updateSelectedDate}
-            />
+        <StatusBar hidden={false} backgroundColor={Resources.STATUS_BAR_COLOR} />
+        <ScalingButton text="Pending orders" onPressed={() => this.showPendingOrders()} />
+        <ScalingButton text="Calendar" onPressed={() => this.showCalendar()} />
+        <ScalingButton text="Horizontal swipe items" onPressed={() => this.goToHorizontalSwipeItems()} />
+        <ScalingButton text="Map" onPressed={() => this.goToMapScreen()} />
+        <ScalingButton text="Add location" onPressed={() => this.goToAddLocationScreen()} />
+        <ScalingButton text="Chat screen" onPressed={() => this.goChatScreen()} />
+        <ScalingButton text="Settings" onPressed={() => this.settings()} />
+        <Modal transparent={true} visible={this.state.showIosCalendar} animationType={"fade"} onRequestClose={() => this.closeIosCalendar()}>
+          <TouchableOpacity activeOpacity={1} onPress={() => this.closeIosCalendar()} style={{ flex: 1, justifyContent: "center", backgroundColor: "rgba(19, 19, 19, 0.8)" }}>
+            <DatePickerIOS date={this.state.today} onDateChange={this.updateSelectedDate} />
           </TouchableOpacity>
         </Modal>
-      </View>
-    );
+      </View>;
   }
 }
 
