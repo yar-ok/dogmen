@@ -15,11 +15,13 @@ import Resources from "../utils/Resources";
 const ScalingButton = props => {
   let scaleValue = new Animated.Value(0);
 
+  const DURATION = 300
+
   function scale() {
     scaleValue.setValue(0);
     Animated.timing(scaleValue, {
       toValue: 1,
-      duration: 300,
+      duration: DURATION,
       easing: Easing.easeOutBack
     }).start();
   }
@@ -36,6 +38,15 @@ const ScalingButton = props => {
     outputRange: [1, 1.3, 1]
   });
 
+  function makeAnimation() {
+      if(props.position !== undefined) {
+          setTimeout(() => {
+            scale();
+          }, DURATION * props.position);
+      }
+      return null
+  }
+
   return (
     <TouchableWithoutFeedback onPress={props.onPressed}>
       <Animated.View
@@ -47,7 +58,8 @@ const ScalingButton = props => {
           }
         ]}
       >
-        {getContent()}
+        { getContent() }
+        { makeAnimation() }
       </Animated.View>
     </TouchableWithoutFeedback>
   );

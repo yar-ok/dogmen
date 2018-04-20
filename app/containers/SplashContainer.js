@@ -67,10 +67,6 @@ class SplashContainer extends Component {
   }
 
   render() {  
-    // setTimeout (() => {
-      // const { token } = store.getState().loginState;
-      // this.goNextScreen(token);
-    // }, 4000);
     return (
       <View style={Styles.backgroundContainer}>
         <StatusBar hidden = {true}/>
