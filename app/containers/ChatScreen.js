@@ -11,7 +11,8 @@ import {
   InteractionManager,
   CameraRoll,
   Platform,
-  BackHandler
+  BackHandler,
+  Keyboard
 } from "react-native";
 
 import AndroidImagePicker from "../modules/AndroidImagePicker";
@@ -110,6 +111,7 @@ class ChatContainer extends Component {
   };
 
   showOption(option, isSelected) {
+    Keyboard.dismiss()
     this.setState({
       currentOption: isSelected ? option : WRONG_VALUE
     });
@@ -130,10 +132,16 @@ class ChatContainer extends Component {
     });
 
     this.backEventListener = BackHandler.addEventListener("hardwareBackPress", this.backPressed);
+    this.keyboardDidShowListener = Keyboard.addListener("keyboardDidShow", this.keyboardDidShow);
   }
 
   componentWillUnmount () {
     this.backEventListener.remove();
+    this.keyboardDidShowListener.remove();
+  }
+
+  keyboardDidShow = () => {
+    this.resetOption();
   }
 
   backPressed = () => {
