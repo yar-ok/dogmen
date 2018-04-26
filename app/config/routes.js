@@ -9,6 +9,7 @@ import SwipeItemsScreen from "../containers/SwipeItemsScreen";
 import MapScreen from "../containers/MapScreen";
 import AddLocation from "../containers/AddLocation";
 import ChatScreen from "../containers/ChatScreen";
+import Settings from "../containers/Settings";
 
 import Camera from '../containers/ios/CameraScreen'
 
@@ -33,7 +34,8 @@ const Stack = {
   SwipeItems: { screen: SwipeItemsScreen },
   Map: { screen: MapScreen },
   AddLocation: { screen: AddLocation },
-  Chat: { screen: ChatScreen }
+  Chat: { screen: ChatScreen },
+  Settings: { screen: Settings }
 };
 
 export default Stack

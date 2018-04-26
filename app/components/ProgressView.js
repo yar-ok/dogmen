@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 
 const { width } = Dimensions.get("window");
-const available_width = width - 40 - 12;
+const available_width = width - 40 - 5;
 
 export default class ProgressView extends Component {
     constructor(props) {
