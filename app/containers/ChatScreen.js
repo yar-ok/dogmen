@@ -10,7 +10,8 @@ import {
   Image,
   InteractionManager,
   CameraRoll,
-  Platform
+  Platform,
+  BackHandler
 } from "react-native";
 
 import AndroidImagePicker from "../modules/AndroidImagePicker";
@@ -62,7 +63,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-class ChatComponent extends Component {
+class ChatContainer extends Component {
   constructor(props) {
     super(props);
     console.ignoredYellowBox = [
@@ -127,6 +128,20 @@ class ChatComponent extends Component {
     InteractionManager.runAfterInteractions(() => {
       this.setNavigationParams();
     });
+
+    this.backEventListener = BackHandler.addEventListener("hardwareBackPress", this.backPressed);
+  }
+
+  componentWillUnmount () {
+    this.backEventListener.remove();
+  }
+
+  backPressed = () => {
+      if (this.state.currentOption !== WRONG_VALUE) {
+        this.resetOption()
+        return true;
+      }
+      return false;
   }
 
   setNavigationParams = () => {
@@ -372,4 +387,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChatComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(ChatContainer)
