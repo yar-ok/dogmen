@@ -116,6 +116,10 @@ class Dashboard extends Component {
     this.props.navigation.navigate("Settings");
   };
 
+  webView = () => {
+    this.props.navigation.navigate("WebView");
+  };
+
   goToHorizontalSwipeItems = () => {
     this.props.navigation.navigate("SwipeItems");
   };
@@ -178,17 +182,21 @@ class Dashboard extends Component {
             text="Pending orders"
             onPressed={() => this.showPendingOrders()}
           />
-          <ScalingButton 
-          position={1}
-          text="Calendar" onPressed={() => this.showCalendar()} />
+          <ScalingButton
+            position={1}
+            text="Calendar"
+            onPressed={() => this.showCalendar()}
+          />
           <ScalingButton
             position={2}
             text="Horizontal swipe items"
             onPressed={() => this.goToHorizontalSwipeItems()}
           />
-          <ScalingButton 
+          <ScalingButton
             position={3}
-            text="Map" onPressed={() => this.goToMapScreen()} />
+            text="Map"
+            onPressed={() => this.goToMapScreen()}
+          />
           <ScalingButton
             position={4}
             text="Add location"
@@ -199,9 +207,16 @@ class Dashboard extends Component {
             text="Chat screen"
             onPressed={() => this.goChatScreen()}
           />
-          <ScalingButton 
+          <ScalingButton
             position={6}
-            text="Settings" onPressed={() => this.settings()} />
+            text="Settings"
+            onPressed={() => this.settings()}
+          />
+          <ScalingButton
+            position={7}
+            text="Web"
+            onPressed={() => this.webView()}
+          />
           <Modal
             transparent={true}
             visible={this.state.showIosCalendar}
@@ -225,7 +240,7 @@ class Dashboard extends Component {
           </Modal>
         </View>
       </ScrollView>
-  );
+    );
   }
 }
 
