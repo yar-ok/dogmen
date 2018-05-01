@@ -179,7 +179,7 @@ function getValidatedData(startDate) {
       result = moment(date).format("DD MMMM YYYY hh:mm");
     } else if (elapsedMinutes > 0) {
       result = elapsedMinutes + " min " + elapsedSeconds + " sec ago";
-    } else if (elapsedSeconds === 0) {
+    } else if (elapsedSeconds <= 0) {
       result = "just now";
     } else {
       result = elapsedSeconds + " sec ago";
