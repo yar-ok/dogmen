@@ -9,7 +9,6 @@ import {
   Dimensions,
   Animated
 } from "react-native";
-import Resources from '../utils/Resources'
 import { NavigationActions } from 'react-navigation';
 import Styles from '../utils/App.style'
 import DatabaseSettings from '../utils/DatabaseSettings'
@@ -17,7 +16,7 @@ import Constants from '../utils/Constants'
 
 import ProgressView from '../components/ProgressView'
 
-import { store, persistor } from '../config/store'
+import { store } from '../config/store'
 
 const { width } = Dimensions.get("window");
 

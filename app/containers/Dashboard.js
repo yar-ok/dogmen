@@ -64,12 +64,15 @@ class Dashboard extends Component {
         </TouchableOpacity>
       ),
       headerStyle: {
-        backgroundColor: Resources.TOOLBAR_COLOR
+        backgroundColor: store.getState().settingsState.toolbar_color
       }
     };
   };
 
   componentDidMount() {
+    const { toolbar_color } = store.getState().settingsState;
+    // alert("Color -> " + toolbar_color);
+
     InteractionManager.runAfterInteractions(() => {
       this.props.navigation.setParams({ handleLogout: this.askLogoutConfirm });
     });
@@ -118,6 +121,10 @@ class Dashboard extends Component {
 
   webView = () => {
     this.props.navigation.navigate("WebView");
+  };
+
+  setupTheme = () => {
+    this.props.navigation.navigate("Theme");
   };
 
   goToHorizontalSwipeItems = () => {
@@ -216,6 +223,11 @@ class Dashboard extends Component {
             position={7}
             text="Web"
             onPressed={() => this.webView()}
+          />
+          <ScalingButton
+            position={8}
+            text="Application theme"
+            onPressed={() => this.setupTheme()}
           />
           <Modal
             transparent={true}

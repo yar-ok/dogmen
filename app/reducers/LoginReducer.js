@@ -6,12 +6,10 @@ import { persistReducer } from "redux-persist";
 import autoMergeLevel2 from "redux-persist/lib/stateReconciler/autoMergeLevel2";
 
 const initialState = {
-  payload: {
     loading: false,
     token: '',
     error: false,
     result: false,
-  }
 }
 
 const persistConfig = {
@@ -25,8 +23,8 @@ const reducer = (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case REHYDRATE:
-      return { ...state, persistedState: payload };
+    // case REHYDRATE:
+    //   return { ...state, persistedState: payload };
 
     case types.LOGIN_USER:
       return { ...state, loading: payload.loading, error: payload.error, token: payload.token };

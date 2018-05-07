@@ -11,6 +11,7 @@ import AddLocation from "../containers/AddLocation";
 import ChatScreen from "../containers/ChatScreen";
 import Settings from "../containers/Settings";
 import WebView from "../containers/WebView";
+import ThemeSettings from "../containers/ThemeSettings";
 
 import Camera from '../containers/ios/CameraScreen'
 
@@ -37,7 +38,8 @@ const Stack = {
   AddLocation: { screen: AddLocation },
   Chat: { screen: ChatScreen },
   Settings: { screen: Settings },
-  WebView: { screen: WebView }
+  WebView: { screen: WebView },
+  Theme: { screen: ThemeSettings }
 };
 
 export default Stack

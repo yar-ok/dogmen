@@ -1,11 +1,9 @@
 import { types } from "../actions/ApiActions";
 
 const initialState = {
-  payload: {
-    loading: false,
-    error: false,
-    result: undefined
-  }
+  loading: false,
+  error: false,
+  result: undefined
 };
 
 const reducer = (state = initialState, action) => {
