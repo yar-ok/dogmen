@@ -32,7 +32,7 @@ class Settings extends Component {
   static navigationOptions = ({ navigation }) => {
     const { params = {} } = navigation.state;
     return {
-      headerTitle: <AppHeaderTitle title="Dashboard" />,
+      headerTitle: <AppHeaderTitle title="Settings" />,
       headerTintColor: "white",
       headerRight: <View />,
       headerStyle: {
