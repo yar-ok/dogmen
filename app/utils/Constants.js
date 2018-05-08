@@ -6,5 +6,9 @@ module.exports = {
 
   Gallery: "GALLERY",
   Camera: "CAMERA",
-  Contacts: "CONTACTS"
+  Contacts: "CONTACTS",
+
+  BROWN_THEME: "BROWN_THEME",
+  RED_THEME: "RED_THEME",
+  GREEN_THEME: "GREEN_THEME"
 };

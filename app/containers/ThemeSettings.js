@@ -8,6 +8,7 @@ import {
 
 import { actionCreators } from '../actions/SettingsActions'
 import { connect } from 'react-redux'
+import Constants from '../utils/Constants'
 
 const mapStateToProps = (state) => ({
     // loading: state.loginState.loading,
@@ -17,7 +18,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        changeTheme: () => { dispatch(actionCreators.changeTheme()) },
+        changeTheme: (theme) => { dispatch(actionCreators.changeTheme(theme)) },
     }
 }
 
@@ -27,7 +28,7 @@ class ThemeSettings extends Component {
             <View>
                 <Button
                 title="Click"
-                onPress={() => this.props.changeTheme()} />
+                onPress={() => this.props.changeTheme(Constants.RED_THEME)} />
             </View>
         )
     }

@@ -25,7 +25,7 @@ const reducer = (state = initialState, action) => {
 
     switch (type) {
         case types.CHANGE_THEME:
-            return { ...state, toolbar_color: payload.toolbar_color };
+            return { ...state, toolbar_color: payload.toolbar_color, app_color: payload.app_color, status_bar_color: payload.status_bar_color };
     }
 
     return state;

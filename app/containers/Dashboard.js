@@ -70,9 +70,6 @@ class Dashboard extends Component {
   };
 
   componentDidMount() {
-    const { toolbar_color } = store.getState().settingsState;
-    // alert("Color -> " + toolbar_color);
-
     InteractionManager.runAfterInteractions(() => {
       this.props.navigation.setParams({ handleLogout: this.askLogoutConfirm });
     });
@@ -177,12 +174,12 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <ScrollView style={{ flex: 1, backgroundColor: Resources.APP_COLOR }}>
+      <ScrollView style={{ flex: 1, backgroundColor: store.getState().settingsState.app_color }}>
         <View style={Styles.backgroundContainer}>
           <PushNotification />
           <StatusBar
             hidden={false}
-            backgroundColor={Resources.STATUS_BAR_COLOR}
+            backgroundColor={store.getState().settingsState.status_bar_color}
           />
           <ScalingButton
             position={0}

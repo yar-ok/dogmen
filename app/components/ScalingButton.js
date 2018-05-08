@@ -10,7 +10,8 @@ import {
   TouchableWithoutFeedback
 } from "react-native";
 import { Button } from "native-base";
-import Resources from "../utils/Resources";
+
+import { store } from "../config/store";
 
 const ScalingButton = props => {
   let scaleValue = new Animated.Value(0);
@@ -47,11 +48,23 @@ const ScalingButton = props => {
       return null
   }
 
+  buttonStyle = () => {
+    return {
+      backgroundColor: store.getState().settingsState.status_bar_color,
+      height: 50,
+      width: 100,
+      borderRadius: 5,
+      marginTop: 10,
+      alignItems: "center",
+      justifyContent: "center"
+    }
+  }
+
   return (
     <TouchableWithoutFeedback onPress={props.onPressed}>
       <Animated.View
         style={[
-          styles.button,
+          this.buttonStyle(),
           "",
           {
             transform: [{ scale: buttonScale }]
@@ -68,17 +81,8 @@ const ScalingButton = props => {
 export default ScalingButton;
 
 const styles = StyleSheet.create({
-  button: {
-    backgroundColor: Resources.STATUS_BAR_COLOR,
-    height: 50,
-    width: 100,
-    borderRadius: 5,
-    marginTop: 10,
-    alignItems: "center",
-    justifyContent: "center"
-  },
   buttonText: {
     color: "white",
     textAlign: "center"
-  },
+  }
 });

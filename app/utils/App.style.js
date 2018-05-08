@@ -1,4 +1,4 @@
-import Resources from './Resources'
+import { store } from "../config/store";
 
 export default {
   backgroundContainer: {
@@ -7,6 +7,11 @@ export default {
       height: null,
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: Resources.APP_COLOR,
+      backgroundColor: getBackgroundColor(),
   },
+}
+
+function getBackgroundColor() {
+  alert('CHECK')
+  return store.getState().settingsState.app_color
 }
