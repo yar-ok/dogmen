@@ -120,7 +120,7 @@ class Dashboard extends Component {
   };
 
   setupTheme = () => {
-    this.props.navigation.navigate("Theme");
+    this.props.navigation.navigate("Theme", { updateTheme: this.updateTheme });
   };
 
   goToHorizontalSwipeItems = () => {
@@ -170,6 +170,13 @@ class Dashboard extends Component {
   goChatScreen = () => {
     this.props.navigation.navigate("Chat");
   };
+
+  updateTheme = () => {
+    this.props.navigation.setParams({
+      backgroundColor: store.getState().settingsState.toolbar_color
+    });
+    this.forceUpdate()
+  }
 
   render() {
     return (

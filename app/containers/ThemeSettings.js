@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import {
-    StyleSheet,
-    StatusBar,
-    Text,
-    View,
-    TouchableOpacity
+  StyleSheet,
+  StatusBar,
+  Text,
+  View,
+  TouchableOpacity,
+  InteractionManager
 } from "react-native";
 
 import { actionCreators } from '../actions/SettingsActions'
@@ -17,9 +18,6 @@ import AppHeaderTitle from "../components/AppHeaderTitle";
 import { store } from "../config/store";
 
 const mapStateToProps = (state) => ({
-    // loading: state.loginState.loading,
-    // token: state.loginState.token,
-    // error: state.loginState.error,
 });
 
 const mapDispatchToProps = (dispatch) => {
@@ -43,10 +41,27 @@ class ThemeSettings extends Component {
             headerTintColor: "white",
             headerRight: <View />,
             headerStyle: {
-                backgroundColor: this.getButtonColor()
+                backgroundColor: params.toolbarColor === undefined ? store.getState().settingsState.toolbar_color : params.toolbarColor
             }
         };
     };
+
+    updateToolbarColor = (theme) => {
+        this.props.navigation.setParams({
+            toolbarColor: this.getToolbarColor(theme)
+        });
+    }
+
+    getToolbarColor = (theme) => {
+        switch (theme) {
+          case BROWN_THEME:
+                return ThemeUtils.getBrownTheme().toolbar_color;
+          case RED_THEME:
+                return ThemeUtils.getRedTheme().toolbar_color;
+          case GREEN_THEME:
+                return ThemeUtils.getGreenTheme().toolbar_color;
+        }
+    }
 
     getButtonStyle = () => {
         return {
@@ -71,11 +86,14 @@ class ThemeSettings extends Component {
     }
 
     changeTheme = () => {
-        // this.props.changeTheme(GREEN_THEME)
+        this.props.changeTheme(this.state.selectedTheme)
+        this.props.navigation.state.params.updateTheme()
+        this.props.navigation.goBack()
     }
 
     showSelectedTheme = (theme) => {
         if (theme !== this.state.selectedTheme) {
+            this.updateToolbarColor(theme);
             this.setState({
                 selectedTheme: theme
             })
