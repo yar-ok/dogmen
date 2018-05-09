@@ -1,17 +1,45 @@
+import React, { Component } from "react";
+import {
+  View,
+} from "react-native";
+
 import { store } from "../config/store";
 
-export default {
-  backgroundContainer: {
+class BackgroundContainer extends Component {
+  containerStyle = () => {
+    return {
       flex: 1,
       width: null,
       height: null,
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: getBackgroundColor(),
-  },
+      backgroundColor: store.getState().settingsState.app_color,
+    }
+  }
+
+  render() {
+    return(
+      <View style={ this.containerStyle() }>
+        { this.props.children }
+      </View>
+    )
+  }
 }
 
-function getBackgroundColor() {
-  alert('CHECK')
-  return store.getState().settingsState.app_color
-}
+export default BackgroundContainer
+
+// export default {
+//   backgroundContainer: {
+//       flex: 1,
+//       width: null,
+//       height: null,
+//       alignItems: 'center',
+//       justifyContent: 'center',
+//       backgroundColor: getBackgroundColor(),
+//   },
+// }
+
+// function getBackgroundColor() {
+//   alert('CHECK')
+//   return store.getState().settingsState.app_color
+// }

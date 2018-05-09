@@ -9,9 +9,10 @@ import {
   AppState
 } from "react-native";
 
-import Resources from "../utils/Resources";
 import AppHeaderTitle from '../components/AppHeaderTitle'
 import CardView from '../components/CardViewClickable'
+
+import { store } from "../config/store";
 
 class Settings extends Component {
   constructor(props) {
@@ -36,7 +37,7 @@ class Settings extends Component {
       headerTintColor: "white",
       headerRight: <View />,
       headerStyle: {
-        backgroundColor: Resources.TOOLBAR_COLOR
+        backgroundColor: store.getState().settingsState.toolbar_color
       }
     };
   };
@@ -109,7 +110,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white'
-    // backgroundColor: Resources.APP_COLOR
   },
   title: {
     fontSize: 18,

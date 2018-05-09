@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { StatusBar, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
-import Resources from '../utils/Resources'
-import Styles from '../utils/App.style'
+import Container from '../utils/App.style'
 
 import { connect } from 'react-redux'
 import { actionCreators } from '../actions/LoginActions'
@@ -102,23 +101,21 @@ class Login extends Component {
         }
     }, 200)
 
-    return(
-      <View style={Styles.backgroundContainer}>
-        <StatusBar hidden = {false} backgroundColor={Resources.STATUS_BAR_COLOR}/>
-        <Text style={ styles.title }>Login</Text>
-        <InputText placeholder='Enter your login' textChanged={(text) => this.updateLogin(text)}/>
+    return <Container>
+      <StatusBar hidden={false} backgroundColor={store.getState().settingsState.status_bar_color} />
+        <Text style={styles.title}>Login</Text>
+        <InputText placeholder="Enter your login" textChanged={text => this.updateLogin(text)} />
         <View style={{ height: 10 }} />
-        <InputText placeholder='Enter password' textChanged={(text) => this.updatePassword(text)}/>
-        <LoginButton onPressed={() => this.login()} text='Log in' />
-        <TouchableOpacity style={{ padding: 8 }} onPress={ () => this.forgotPassword() }>
-          <Text style={ styles.forgotPassword }>Forgot password</Text>
+        <InputText placeholder="Enter password" textChanged={text => this.updatePassword(text)} />
+        <LoginButton onPressed={() => this.login()} text="Log in" />
+        <TouchableOpacity style={{ padding: 8 }} onPress={() => this.forgotPassword()}>
+          <Text style={styles.forgotPassword}>Forgot password</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={{ padding: 8 }} onPress={ () => this.signUp() }>
-          <Text style={ styles.forgotPassword }>Sign up</Text>
+        <TouchableOpacity style={{ padding: 8 }} onPress={() => this.signUp()}>
+          <Text style={styles.forgotPassword}>Sign up</Text>
         </TouchableOpacity>
         <Spinner visible={this.props.loading} />
-      </View>
-    )
+      </Container>;
   }
 }
 

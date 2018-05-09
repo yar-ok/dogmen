@@ -10,8 +10,9 @@ import {
 } from "react-native";
 
 import AppHeaderTitle from "../components/AppHeaderTitle";
-import Resources from "../utils/Resources";
 import MapView from "react-native-maps";
+
+import { store } from "../config/store";
 
 const homePlace = {
   description: "Home",
@@ -43,7 +44,7 @@ class AddLocation extends Component {
       headerTintColor: "white",
       headerRight: <View />,
       headerStyle: {
-        backgroundColor: Resources.TOOLBAR_COLOR
+        backgroundColor: store.getState().settingsState.toolbar_color
       }
     };
   };

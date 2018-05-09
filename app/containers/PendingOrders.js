@@ -6,13 +6,14 @@ import AppPicker from '../components/AppPicker'
 import AppHeaderTitle from '../components/AppHeaderTitle'
 
 import AddOrderButton from '../components/AppButton'
-import Resources from '../utils/Resources'
 
 import { connect } from 'react-redux'
 import { actionCreators } from '../actions/OrderActions'
 
 import OrderItem from '../components/OrderItem'
 import Utils from '../utils/Utils'
+
+import { store } from "../config/store";
 
 const DEFAULT_VALUE = -1;
 
@@ -61,7 +62,7 @@ class PendingOrders extends Component {
       headerTintColor: 'white',
       headerRight: <View/>,
       headerStyle: {
-        backgroundColor: Resources.TOOLBAR_COLOR,
+        backgroundColor: store.getState().settingsState.toolbar_color,
       },
     }
   };
@@ -175,7 +176,7 @@ class PendingOrders extends Component {
         style={{width: 100}}
           onPress={() => this.saveNewPet()}
           title="Save pet"
-          color={Resources.APP_COLOR}/>
+          color={store.getState().settingsState.app_color}/>
       </TouchableOpacity>
     } else {
       // alert('in popup pets -> ' + this.props.pets.length)
@@ -198,7 +199,7 @@ class PendingOrders extends Component {
               <Button
                 onPress={() => this.showAddNewPetDialog()}
                 title="Add pet"
-                color={Resources.APP_COLOR}/>
+                color={store.getState().settingsState.app_color}/>
           </View>
         </View>
 

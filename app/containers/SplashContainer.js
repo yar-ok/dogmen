@@ -10,7 +10,7 @@ import {
   Animated
 } from "react-native";
 import { NavigationActions } from 'react-navigation';
-import Styles from '../utils/App.style'
+import Container from '../utils/App.style'
 import DatabaseSettings from '../utils/DatabaseSettings'
 import Constants from '../utils/Constants'
 
@@ -66,21 +66,17 @@ class SplashContainer extends Component {
   }
 
   render() {  
-    return (
-      <View style={Styles.backgroundContainer}>
-        <StatusBar hidden = {true}/>
+    return <Container>
+        <StatusBar hidden={true} />
         <View style={styles.logocontainer}>
-          <Image source={require('../images/splash_image.png')} style={styles.logo}/>
+          <Image source={require("../images/splash_image.png")} style={styles.logo} />
           <Text style={styles.title}>Dogmen</Text>
-         <View style={{ height: 46, width: width }}>
-          <ProgressView progress={this.state.progress} progressAnim={this.progress} />
+          <View style={{ height: 46, width: width }}>
+            <ProgressView progress={this.state.progress} progressAnim={this.progress} />
+          </View>
+          <Text style={styles.progress_status}>{this.state.progress}</Text>
         </View>
-        <Text style={styles.progress_status}>
-          { this.state.progress }
-        </Text>
-       </View>
-      </View>
-    )
+      </Container>;
 
   }
 }

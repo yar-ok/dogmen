@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 
 import ViewPhotos from '../../components/ios/ViewPhotos';
-import Resources from '../../utils/Resources'
+import { store } from "../../config/store";
 
 class CameraScreen extends Component {
   static navigationOptions = {
@@ -22,7 +22,7 @@ class CameraScreen extends Component {
     headerTintColor: 'white',
     headerRight: <View/>,
     headerStyle: {
-      backgroundColor: Resources.APP_COLOR
+      backgroundColor: store.getState().settingsState.app_color
     },
   };
 

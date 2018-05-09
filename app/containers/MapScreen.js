@@ -3,7 +3,8 @@ import React, { Component } from "react";
 import { StyleSheet, View, Text, Dimensions, Animated, Image } from "react-native";
 
 import AppHeaderTitle from "../components/AppHeaderTitle";
-import Resources from "../utils/Resources";
+
+import { store } from "../config/store";
 
 import MapView from "react-native-maps";
 import MapViewDirections from "react-native-maps-directions";
@@ -84,7 +85,7 @@ class MapScreen extends Component {
         headerTintColor: "white",
         headerRight: <View />,
         headerStyle: {
-            backgroundColor: Resources.TOOLBAR_COLOR
+            backgroundColor: store.getState().settingsState.toolbar_color
         }
         };
     };
@@ -123,7 +124,7 @@ class MapScreen extends Component {
             origin={this.state.myLocation}
             destination={this.state.destination}
             strokeWidth={3}
-            strokeColor={Resources.TOOLBAR_COLOR}
+                strokeColor={store.getState().settingsState.toolbar_color}
             apikey='AIzaSyASWkBaohhWYYp2AgAcpHba4odyu7SfWn4'
             onReady={(result) => {
                 this.setState({

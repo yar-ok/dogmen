@@ -15,9 +15,8 @@ import {
 } from "react-native";
 
 import PushNotification from '../utils/PushNotification'
-import Resources from '../utils/Resources'
 import Constants from '../utils/Constants'
-import Styles from '../utils/App.style'
+import Container from '../utils/App.style'
 
 import ScalingButton from "../components/ScalingButton";
 import AppHeaderTitle from '../components/AppHeaderTitle'
@@ -175,7 +174,7 @@ class Dashboard extends Component {
   render() {
     return (
       <ScrollView style={{ flex: 1, backgroundColor: store.getState().settingsState.app_color }}>
-        <View style={Styles.backgroundContainer}>
+        <Container>
           <PushNotification />
           <StatusBar
             hidden={false}
@@ -247,7 +246,7 @@ class Dashboard extends Component {
               />
             </TouchableOpacity>
           </Modal>
-        </View>
+        </Container>
       </ScrollView>
     );
   }

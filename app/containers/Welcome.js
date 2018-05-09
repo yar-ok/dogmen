@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { StatusBar, View } from 'react-native';
-import Resources from '../utils/Resources'
 
 import { NavigationActions } from 'react-navigation';
 
-import StartButtom from '../components/AppButton'
+import StartButton from '../components/AppButton'
+
+import { store } from "../config/store";
 
 import { IndicatorViewPager, PagerDotIndicator } from 'rn-viewpager'
 
@@ -31,8 +32,8 @@ class Welcome extends Component {
 
   render() {
     return(
-      <View style={{ flex:1, backgroundColor: Resources.APP_COLOR }}>
-        <StatusBar hidden = {false} backgroundColor={Resources.STATUS_BAR_COLOR}/>
+      <View style={{ flex: 1, backgroundColor: store.getState().settingsState.app_color }}>
+        <StatusBar hidden={false} backgroundColor={store.getState().settingsState.status_bar_color}/>
         <IndicatorViewPager
         style={{flex:1}}
         indicator={this.renderDotIndicator()}>
@@ -41,7 +42,7 @@ class Welcome extends Component {
           <View style={{backgroundColor:'#1AA094'}} />
         </IndicatorViewPager>
         <View style={{ alignItems: 'center', justifyContent: 'center', paddingBottom: 10 }}>
-          <StartButtom text='Start' onPressed={() => this.start()}/>
+          <StartButton text='Start' onPressed={() => this.start()}/>
         </View>
       </View>
     )

@@ -28,13 +28,13 @@ import {
 import ChatItem from '../components/ChatItem'
 
 import AppHeaderTitle from "../components/AppHeaderTitle";
-import Resources from "../utils/Resources";
 import OptionBtn from "../components/OptionBtn"
 import { Camera, Gallery, Contacts } from "../utils/Constants";
 import GalleryComponent from "../components/GalleryComponent"
 import ContactsListComponent from '../components/ContactsListComponent'
 import { connect } from "react-redux";
 import { actionCreators } from "../actions/ChatActions";
+import { store } from "../config/store";
 
 const WRONG_VALUE = 0;
 
@@ -106,7 +106,7 @@ class ChatContainer extends Component {
           </MenuOptions>
         </Menu>
       ),
-      headerStyle: { backgroundColor: Resources.TOOLBAR_COLOR }
+      headerStyle: { backgroundColor: store.getState().settingsState.toolbar_color }
     };
   };
 
@@ -284,6 +284,13 @@ class ChatContainer extends Component {
     });
   }
 
+  getBottomLayoutStyle = () => {
+    return {
+      backgroundColor: store.getState().settingsState.app_color,
+      marginTop: 4
+    }
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -299,7 +306,7 @@ class ChatContainer extends Component {
             />
           )}
         />
-        <View style={styles.bottomLayout}>
+        <View style={this.getBottomLayoutStyle()}>
           <View style={styles.sendContainer}>
             <TextInput
               style={styles.textInput}
@@ -382,10 +389,6 @@ const styles = StyleSheet.create({
   sendBtn: {
     color: "white",
     fontSize: 18
-  },
-  bottomLayout: {
-    backgroundColor: Resources.APP_COLOR,
-    marginTop: 4
   },
   optionsLayout: {
     flexDirection: "row",

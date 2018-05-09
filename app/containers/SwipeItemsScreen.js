@@ -13,7 +13,8 @@ import { SwipeListView } from "react-native-swipe-list-view";
 
 import UserItem from '../components/UserItem'
 import AppHeaderTitle from "../components/AppHeaderTitle";
-import Resources from "../utils/Resources";
+
+import { store } from "../config/store";
 
 import { connect } from "react-redux";
 import { actionCreators } from "../actions/ApiActions";
@@ -47,7 +48,7 @@ class SwipeItemsScreen extends Component {
       headerTintColor: "white",
       headerRight: <View />,
       headerStyle: {
-        backgroundColor: Resources.TOOLBAR_COLOR
+        backgroundColor: store.getState().settingsState.toolbar_color
       }
     };
   };

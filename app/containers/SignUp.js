@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Platform, StatusBar, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import InputText from '../components/InputText'
-import Styles from '../utils/App.style'
-import Resources from '../utils/Resources'
+import Container from '../utils/App.style'
 import SignUpButton from '../components/AppButton'
 import AndroidImagePicker from '../modules/AndroidImagePicker'
 
@@ -13,6 +12,8 @@ import { actionCreators } from '../actions/LoginActions'
 import Spinner from 'react-native-loading-spinner-overlay'
 
 import Utils from '../utils/Utils'
+
+import { store } from "../config/store";
 
 const NAME = 'Name'
 const LASTNAME = 'Lastname'
@@ -132,8 +133,8 @@ class SignUp extends Component {
     }, 200)
 
     return(
-      <View style={ Styles.backgroundContainer }>
-        <StatusBar hidden = {false} backgroundColor={Resources.STATUS_BAR_COLOR}/>
+      <Container>
+        <StatusBar hidden={false} backgroundColor={store.getState().settingsState.status_bar_color}/>
         <Text style={ styles.title }>Sign up</Text>
 
         <TouchableOpacity style={styles.imageContainer} onPress={() => this.onAddImageClicked()}>
@@ -158,7 +159,7 @@ class SignUp extends Component {
         </TouchableOpacity>
 
         <Spinner visible={this.props.loading} />
-      </View>
+      </Container>
     )
   }
 }

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Platform, StatusBar, StyleSheet, View, Text, TouchableOpacity } from 'react-native';
-import Styles from '../utils/App.style'
+import Container from '../utils/App.style'
 import InputText from '../components/InputText'
-import Resources from '../utils/Resources'
 import Spinner from 'react-native-loading-spinner-overlay'
 import { actionCreators } from '../actions/LoginActions'
 import Utils from '../utils/Utils'
+
+import { store } from "../config/store";
 
 import SendButton from '../components/AppButton'
 
@@ -76,14 +77,14 @@ class ForgotPassword extends Component {
     }
 
     return(
-      <View style={{ flex: 1, backgroundColor: Resources.APP_COLOR }}>
+      <View style={{ flex: 1, backgroundColor: store.getState().settingsState.app_color }}>
         {this.getBackButton()}
-        <View style={ Styles.backgroundContainer }>
+        <Container>
           <Text style={ styles.title }>Forgot password</Text>
           <InputText placeholder='Enter your email' textChanged={(text) => this.emailChanged(text) } />
           <SendButton onPressed={() => this.send()} text='Send' />
           <Spinner visible={this.props.loading} />
-        </View>
+        </Container>
       </View>
     )
   }
@@ -95,13 +96,6 @@ const styles = StyleSheet.create({
     marginBottom: 50,
     fontWeight: 'bold',
     color: '#ffffff'
-  },
-  button: {
-    backgroundColor: Resources.STATUS_BAR_COLOR,
-    width: 100,
-    marginTop: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   buttonText: {
     color: 'white',

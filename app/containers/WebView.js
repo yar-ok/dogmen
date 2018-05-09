@@ -7,7 +7,8 @@ import {
   InteractionManager
 } from "react-native";
 
-import Resources from '../utils/Resources'
+import { store } from "../config/store";
+
 import AppHeaderTitle from "../components/AppHeaderTitle";
 import { NavigationActions } from "react-navigation";
 
@@ -46,7 +47,7 @@ class WebViewScreen extends Component {
         </TouchableOpacity>
       ),      
       headerStyle: {
-        backgroundColor: Resources.TOOLBAR_COLOR
+        backgroundColor: store.getState().settingsState.toolbar_color
       }
     };
   };
@@ -81,11 +82,11 @@ class WebViewScreen extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1, backgroundColor: Resources.APP_COLOR }}>
+      <View style={{ flex: 1, backgroundColor: store.getState().settingsState.app_color }}>
         <WebView
           ref={WEBVIEW_REF}
           source={{ uri: "https://github.com/facebook/react-native" }}
-          style={{ flex: 1, backgroundColor: Resources.APP_COLOR }}
+          style={{ flex: 1, backgroundColor: store.getState().settingsState.app_color }}
           onLoadStart={() => this.updateLoadingState(true)}
           onLoadEnd={() => this.updateLoadingState(false)}
           onNavigationStateChange={this.onNavigationStateChange}
