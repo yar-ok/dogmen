@@ -7,6 +7,12 @@ import { persistor, store } from "./app/config/store";
 
 import App from './App';
 
+import { YellowBox } from "react-native";
+YellowBox.ignoreWarnings([
+  "Warning: isMounted(...) is deprecated",
+  "Module RCTImageLoader"
+]);
+
 export default class MyApp extends Component {
     render() {
         return <Provider store={store}>
